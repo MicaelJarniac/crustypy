@@ -69,7 +69,7 @@
 <!---->
 
 # {{ cookiecutter.project_name }}
-Simple URL builder
+{{ cookiecutter.project_short_description }}
 
 [Read the Docs][docs]
 
@@ -116,3 +116,5 @@ More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 
 ## License
 [MIT](LICENSE)
+
+Created from [cookiecutter-python-project][https://github.com/MicaelJarniac/cookiecutter-python-project]
