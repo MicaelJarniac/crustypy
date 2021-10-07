@@ -1,0 +1,12 @@
+{
+    "full_name": "Micael Jarniac",
+    "email": "micael@jarniac.dev",
+    "github_username": "MicaelJarniac",
+    "year": "2021",
+    "project_name": "Python-Project-Template",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_short_description": "A simple Python project template.",
+    "version": "0.1.0",
+    "discord_invite": "",
+    "discord_id": ""
+}
