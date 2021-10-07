@@ -21,10 +21,12 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
         - [Compatible configs][black_cc]
       - [isort][isort] <sup>[config][setup_cfg]</sup>
     - Linting
+      - [pydocstyle][pydocstyle] <sup>[config][setup_cfg]</sup>
       - [Flake8][flake8] <sup>[config][setup_cfg]</sup>
         - Plugins
           - [flake8-black][flake8-black]
           - [flake8-isort][flake8-isort]
+          - [flake8-docstrings][flake8-docstrings]
     - Automating
       - [pre-commit][pre-commit] <sup>[config][_pre-commit-config_yaml]</sup>
         <details>
@@ -32,9 +34,18 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 
           - [`isort`][isort]
           - [`black`][black]
+          - [`pydocstyle`][pydocstyle]
           - [`flake8`][flake8]
+            - [`flake8-black`][flake8-black]
+            - [`flake8-isort`][flake8-isort]
+            - [`flake8-docstrings`][flake8-docstrings]
           - [`mypy` (mirror)][pre-commit_mypy]
           - [`pre-commit-hooks`][pre-commit-hooks]
+            - `check-toml`
+            - `check-yaml`
+            - `end-of-file-fixer`
+            - `trailing-whitespace`
+            - `requirements-txt-fixer`
         </details>
       - [Semantic Pull Requests][semantic-pull-requests]
       - [semantic-release][semantic-release] (used indirectly)
@@ -44,20 +55,29 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
         - [{{ cookiecutter.project_name }}][codecov-{{ cookiecutter.project_name }}]
     - Type checking
       - [Mypy][mypy]
+        - [Mypy Extensions][mypy-extensions]
     - Testing
       - [pytest][pytest] <sup>[config][setup_cfg]</sup>
         - Plugins
           - [pytest-cov][pytest-cov]
       - [Coverage.py][coveragepy] <sup>[config][setup_cfg]</sup>
     - Documenting
-      - [Sphinx][sphinx]
+      - [Sphinx][sphinx] <sup>[config][docs_conf_py]</sup>
+        - [Read the Docs Sphinx Theme][sphinx-rtd-theme]
+        - [sphinxcontrib-spelling][sphinxcontrib-spelling]
+        - [recommonmark][recommonmark]
+      - [Google style docstrings][docstring_google]
     - Building
       - [Setuptools][setuptools]
         - [`setup.py`][setup_py]
+        - [`setup.cfg`][setup_cfg]
     - Configuration Files
       - [`setup.cfg`][setup_cfg]
       - [`pyproject.toml`][pyproject_toml]
       - [`.pre-commit-config.yaml`][_pre-commit-config_yaml]
+      - [`.editorconfig`][_editorconfig]
+      - [`docs/conf.py`][docs_conf_py]
+      - [`docs/wordlist.txt`][docs_wordlist_txt]
   - Standards
     - Commits
       - [Conventional Commits][conventionalcommits]
@@ -65,6 +85,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
       - [Semantic Versioning][semver]
     - Contributing
       - [All Contributors][allcontributors]
+    - [.gitignore][gitignore_python]
   - Editor
     - [EditorConfig][editorconfig] <sup>[config][_editorconfig]</sup>
   - Guidelines
@@ -83,15 +104,19 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 [pyproject_toml]: pyproject.toml
 [setup_cfg]: setup.cfg
 [_editorconfig]: .editorconfig
+[docs_conf_py]: docs/conf.py
+[docs_wordlist_txt]: docs/wordlist.txt
 
 [setup_py]: setup.py
 
 [black]: https://github.com/psf/black
 [black_cc]: https://black.readthedocs.io/en/stable/compatible_configs.html
 [isort]: https://github.com/PyCQA/isort
+[pydocstyle]: https://github.com/PyCQA/pydocstyle
 [flake8]: https://github.com/PyCQA/flake8
 [flake8-black]: https://github.com/peterjc/flake8-black
 [flake8-isort]: https://github.com/gforcada/flake8-isort
+[flake8-docstrings]: https://gitlab.com/pycqa/flake8-docstrings
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
 [pre-commit_mypy]: https://github.com/pre-commit/mirrors-mypy
@@ -102,10 +127,15 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 [codecov]: https://codecov.io
 [codecov-action]: https://github.com/marketplace/actions/codecov
 [mypy]: https://github.com/python/mypy
+[mypy-extensions]: https://github.com/python/mypy_extensions
 [pytest]: https://github.com/pytest-dev/pytest
 [pytest-cov]: https://github.com/pytest-dev/pytest-cov
 [coveragepy]: https://github.com/nedbat/coveragepy
 [sphinx]: https://www.sphinx-doc.org
+[sphinx-rtd-theme]: https://github.com/readthedocs/sphinx_rtd_theme
+[sphinxcontrib-spelling]: https://github.com/sphinx-contrib/spelling
+[recommonmark]: https://github.com/readthedocs/recommonmark
+[docstring_google]: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 [setuptools]: https://github.com/pypa/setuptools
 [conventionalcommits]: https://www.conventionalcommits.org
 [semver]: https://semver.org
@@ -113,6 +143,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 [no-editor-config-gitignore]: https://blog.martinhujer.cz/dont-put-idea-vscode-directories-to-projects-gitignore
 [editorconfig]: https://editorconfig.org
 [angular-contributing]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit
+[gitignore_python]: https://github.com/github/gitignore/blob/master/Python.gitignore
 </details>
 
 ## Code of conduct
@@ -321,7 +352,7 @@ source venv/bin/activate
 .\venv\Scripts\activate
 
 # Install the dependencies
-# pip install -U -r requirements.txt - currently not being used
+pip install -U -r requirements.txt
 pip install -U -r requirements-dev.txt
 
 # Set up pre-commit hooks
@@ -354,7 +385,7 @@ This repository uses [pytest](https://docs.pytest.org) for writing and running t
 Before pushing your code changes make sure all **tests pass** and the **coverage is 100%**:
 
 ```bash
-$ pytest --cov
+pytest --cov
 ```
 
 ### Docs
@@ -391,6 +422,8 @@ pip freeze > requirements-current.txt
 That will create a new file, `requirements-current.txt`, with them.
 
 You can then compare it with the current requirements listed in the other files, and update them as needed.
+
+When updating development requirements, make sure to also update the related pre-commit hooks.
 
 ## Add yourself as a contributor
 
