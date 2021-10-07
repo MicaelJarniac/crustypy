@@ -1,7 +1,7 @@
 {
-    "full_name": "Micael Jarniac",
-    "email": "micael@jarniac.dev",
-    "github_username": "MicaelJarniac",
+    "full_name": "Author Name",
+    "email": "author@example.com",
+    "github_username": "AuthorName",
     "year": "2021",
     "project_name": "Python-Project-Template",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
