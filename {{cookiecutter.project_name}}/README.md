@@ -10,7 +10,7 @@
   | ![Tests][label-tests] | [![coverage][badge-coverage]][coverage] [![pre-commit][badge-pre-commit]][pre-commit] |
   | ![Standards][label-standards] | [![SemVer 2.0.0][badge-semver]][semver] [![Conventional Commits][badge-conventional-commits]][conventional-commits] |
   | ![Code][label-code] | [![Code style: black][badge-black]][Black] [![Imports: isort][badge-isort]][isort] [![Checked with mypy][badge-mypy]][mypy] |
-  | ![Repo][label-repo] | [![GitHub issues][badge-issues]][issues] [![GitHub stars][badge-stars]][stars] [![GitHub license][badge-license]][license] [![All Contributors][badge-all-contributors]][contributors] |
+  | ![Repo][label-repo] | [![GitHub issues][badge-issues]][issues] [![GitHub stars][badge-stars]][stars] [![GitHub license][badge-license]][license] [![All Contributors][badge-all-contributors]][contributors] [![Contributor Covenant][badge-code-of-conduct]][code-of-conduct] |
 </div>
 
 <!-- Badges -->
@@ -66,6 +66,8 @@
 [badge-all-contributors]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [contributors]: #Contributors-✨
+[badge-code-of-conduct]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa?style=flat-square
+[code-of-conduct]: CODE_OF_CONDUCT.md
 <!---->
 
 # {{ cookiecutter.project_name }}
