@@ -119,4 +119,4 @@ More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 ## License
 [MIT](LICENSE)
 
-Created from [cookiecutter-python-project][https://github.com/MicaelJarniac/cookiecutter-python-project]
+Created from [cookiecutter-python-project](https://github.com/MicaelJarniac/cookiecutter-python-project).
