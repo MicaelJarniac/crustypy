@@ -8,5 +8,6 @@
     "project_short_description": "A simple Python project template.",
     "version": "0.1.0",
     "discord_invite": "",
-    "discord_id": ""
+    "discord_id": "",
+    "report_method": "{{ cookiecutter.email }}"
 }
