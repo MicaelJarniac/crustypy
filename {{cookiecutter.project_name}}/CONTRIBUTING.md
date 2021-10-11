@@ -90,6 +90,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
     - [EditorConfig][editorconfig] <sup>[config][_editorconfig]</sup>
   - Guidelines
     - [Angular `CONTRIBUTING.md`][angular-contributing]
+    - [Contributor Covenant][contributor-covenant]
   - Workflows
     - https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
     - https://nvie.com/posts/a-successful-git-branching-model
@@ -143,6 +144,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 [no-editor-config-gitignore]: https://blog.martinhujer.cz/dont-put-idea-vscode-directories-to-projects-gitignore
 [editorconfig]: https://editorconfig.org
 [angular-contributing]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit
+[contributor-covenant]: https://contributor-covenant.org
 [gitignore_python]: https://github.com/github/gitignore/blob/master/Python.gitignore
 </details>
 
