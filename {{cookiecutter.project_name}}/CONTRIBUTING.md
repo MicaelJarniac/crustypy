@@ -65,7 +65,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
       - [Sphinx][sphinx] <sup>[config][docs_conf_py]</sup>
         - [Read the Docs Sphinx Theme][sphinx-rtd-theme]
         - [sphinxcontrib-spelling][sphinxcontrib-spelling]
-        - [recommonmark][recommonmark]
+        - [MyST][myst]
       - [Google style docstrings][docstring_google]
     - Building
       - [Setuptools][setuptools]
@@ -135,7 +135,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 [sphinx]: https://www.sphinx-doc.org
 [sphinx-rtd-theme]: https://github.com/readthedocs/sphinx_rtd_theme
 [sphinxcontrib-spelling]: https://github.com/sphinx-contrib/spelling
-[recommonmark]: https://github.com/readthedocs/recommonmark
+[myst]: https://github.com/executablebooks/myst-parser
 [docstring_google]: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 [setuptools]: https://github.com/pypa/setuptools
 [conventionalcommits]: https://www.conventionalcommits.org
