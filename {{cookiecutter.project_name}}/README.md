@@ -1,8 +1,10 @@
 <div align="center">
+{%- if cookiecutter.use_discord_community == "yes" %}
 
   [![Discord][badge-chat]][chat]
   <br>
   <br>
+{%- endif %}
 
   | | ![Badges][label-badges] |
   |--|--|
@@ -14,8 +16,10 @@
 </div>
 
 <!-- Badges -->
+{%- if cookiecutter.use_discord_community == "yes" %}
 [badge-chat]: https://img.shields.io/discord/{{ cookiecutter.discord_id }}?label=chat&logo=discord&style=flat-square
 [chat]: https://discord.gg/{{ cookiecutter.discord_invite }}
+{%- endif %}
 
 <!-- Labels -->
 [label-badges]: https://img.shields.io/badge/%F0%9F%94%96-badges-purple?style=for-the-badge

@@ -7,6 +7,7 @@
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_short_description": "A simple Python project template.",
     "version": "0.0.0",
+    "use_discord_community": ["yes", "no"],
     "discord_invite": "",
     "discord_id": "",
     "report_method": "{{ cookiecutter.email }}"
