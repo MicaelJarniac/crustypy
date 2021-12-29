@@ -51,7 +51,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
         - [python-semantic-release][python-semantic-release] <sup>[config][setup_cfg]</sup>
       - [Codecov][codecov]
         - [Action][codecov-action]
-        - [{{ cookiecutter.project_name }}][codecov-{{ cookiecutter.project_name }}]
+        - [{{ cookiecutter.project_slug }}][codecov-{{ cookiecutter.project_slug }}]
       - [Nox][nox] <sup>[config][noxfile_py]</sup>
     - Type checking
       - [Mypy][mypy]
@@ -100,7 +100,7 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
     - [Don't commit `.vscode`][no-editor-config-gitignore]
     - <https://towardsdatascience.com/state-of-the-art-python-project-setup-82a046fc1f20> (pretty bad article, but useful)
 
-[codecov-{{ cookiecutter.project_name }}]: https://app.codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+[codecov-{{ cookiecutter.project_slug }}]: https://app.codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 
 [_pre-commit-config_yaml]: ../.pre-commit-config.yaml
 [pyproject_toml]: ../pyproject.toml
@@ -158,7 +158,7 @@ Help us keep **{{ cookiecutter.project_name }}** open and inclusive. Please read
 
 ### Improve documentation
 
-As a **{{ cookiecutter.project_name }}** user, you are the perfect candidate to help us improve our documentation: typo corrections, clarifications, more examples, etc. Take a look at the [documentation issues that need help](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues?q=is%3Aopen+label%3Adocumentation+label%3A"help+wanted").
+As a **{{ cookiecutter.project_name }}** user, you are the perfect candidate to help us improve our documentation: typo corrections, clarifications, more examples, etc. Take a look at the [documentation issues that need help](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues?q=is%3Aopen+label%3Adocumentation+label%3A"help+wanted").
 
 Please follow the [Documentation guidelines](#documentation).
 
@@ -168,21 +168,21 @@ Some issues are created without information requested in the [Bug report guideli
 
 ### Fix bugs and implement features
 
-Confirmed bugs and ready-to-implement features are marked with the [help wanted label](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/labels/help+wanted). Post a comment on an issue to indicate you would like to work on it and to request help from the community.
+Confirmed bugs and ready-to-implement features are marked with the [help wanted label](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/labels/help+wanted). Post a comment on an issue to indicate you would like to work on it and to request help from the community.
 
 ## Using the issue tracker
 
 The issue tracker is the channel for [bug reports](#bug-report), [features requests](#feature-request) and [submitting pull requests](#submitting-a-pull-request) only. <!-- Please use the [Support](docs/support/README.md) and [Get help](README.md#get-help) sections for support, troubleshooting and questions. -->
 
-Before opening an issue or a Pull Request, please use the [GitHub issue search](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues) to make sure the bug or feature request hasn't been already reported or fixed.
+Before opening an issue or a Pull Request, please use the [GitHub issue search](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues) to make sure the bug or feature request hasn't been already reported or fixed.
 
 ### Bug report
 
-A good bug report shouldn't leave others needing to chase you for more information. Please try to be as detailed as possible in your report and fill the information requested in the [Bug report template](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues/new?template=bug_report.md).
+A good bug report shouldn't leave others needing to chase you for more information. Please try to be as detailed as possible in your report and fill the information requested in the [Bug report template](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues/new?template=bug_report.md).
 
 ### Feature request
 
-Feature requests are welcome, but take a moment to find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible and fill the information requested in the [Feature request template](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues/new?template=feature_request.md).
+Feature requests are welcome, but take a moment to find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible and fill the information requested in the [Feature request template](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues/new?template=feature_request.md).
 
 ## Submitting a Pull Request
 
@@ -215,7 +215,7 @@ $ git push origin <topic-branch-name>
 
 **Tips**:
 - For ambitious tasks, open a Pull Request as soon as possible with the `[WIP]` prefix in the title, in order to get feedback and help from the community.
-- [Allow {{ cookiecutter.project_name }} maintainers to make changes to your Pull Request branch](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork). This way, we can rebase it and make some minor changes if necessary. All changes we make will be done in new commit and we'll ask for your approval before merging them.
+- [Allow {{ cookiecutter.project_slug }} maintainers to make changes to your Pull Request branch](https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork). This way, we can rebase it and make some minor changes if necessary. All changes we make will be done in new commit and we'll ask for your approval before merging them.
 
 ## Coding rules
 
@@ -238,11 +238,11 @@ To ensure consistency and quality, all documentation modifications must:
   - a **{{ cookiecutter.project_name }}** concept described somewhere else in the documentation, i.e. How to [contribute](CONTRIBUTING.md)
   - a third-party product/brand/service, i.e. Integrate with [GitHub](https://github.com)
   - an external concept or feature, i.e. Create a [GitHub release](https://help.github.com/articles/creating-releases)
-  - a package or module, i.e. The [`@{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}) module
+  - a package or module, i.e. The [`@{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}) module
 - Use the [single backtick `code` quoting](https://help.github.com/articles/basic-writing-and-formatting-syntax/#quoting-code) for:
   - commands inside sentences, i.e. the `pip` command
   - programming language keywords, i.e. `for`, `with`, `dict`
-  - packages or modules, i.e. The [`@{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}) module
+  - packages or modules, i.e. The [`@{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}) module
 - Use the [triple backtick `code` formatting](https://help.github.com/articles/creating-and-highlighting-code-blocks) for:
   - code examples
   - configuration examples
@@ -340,10 +340,10 @@ The default graphite width of 10mm is always used for performance reasons.
 
 ```bash
 # Clone the repo into the current directory
-git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 
 # Navigate to the newly cloned directory
-cd {{ cookiecutter.project_name }}
+cd {{ cookiecutter.project_slug }}
 
 # Set up the virtual environment
 python -m venv venv

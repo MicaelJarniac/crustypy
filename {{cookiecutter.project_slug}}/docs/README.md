@@ -30,8 +30,8 @@
 [label-repo]: https://img.shields.io/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: https://img.shields.io/github/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/Test%20with%20Nox/main?style=flat-square
-[actions]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/actions
+[badge-actions]: https://img.shields.io/github/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/Test%20with%20Nox/main?style=flat-square
+[actions]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions
 [badge-semantic-release]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
 [badge-pypi]: https://img.shields.io/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
@@ -40,8 +40,8 @@
 [docs]: https://{{ cookiecutter.project_slug }}.readthedocs.io
 
 <!-- Tests -->
-[badge-coverage]: https://img.shields.io/codecov/c/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}?logo=codecov&style=flat-square&token=yqKa1DPwPC
-[coverage]: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+[badge-coverage]: https://img.shields.io/codecov/c/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?logo=codecov&style=flat-square&token=yqKa1DPwPC
+[coverage]: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 [badge-pre-commit]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
 [pre-commit]: https://github.com/pre-commit/pre-commit
 
@@ -60,12 +60,12 @@
 [mypy]: http://mypy-lang.org
 
 <!-- Repo -->
-[badge-issues]: https://img.shields.io/github/issues/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}?style=flat-square
-[issues]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues
-[badge-stars]: https://img.shields.io/github/stars/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}?style=flat-square
-[stars]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/stargazers
-[badge-license]: https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}?style=flat-square
-[license]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/blob/main/LICENSE
+[badge-issues]: https://img.shields.io/github/issues/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
+[issues]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues
+[badge-stars]: https://img.shields.io/github/stars/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
+[stars]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/stargazers
+[badge-license]: https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
+[license]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/main/LICENSE
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -91,14 +91,14 @@ pip install {{ cookiecutter.project_distribution_name }}
 ### GitHub
 You can also install the latest version of the code directly from GitHub:
 ```bash
-pip install git+git://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+pip install git+git://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 ```
 
 ## Usage
 For more examples, see the [full documentation][docs].
 
 ```python
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_name }}
+from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
 ```
 
 ## Contributing
