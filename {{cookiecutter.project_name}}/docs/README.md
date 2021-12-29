@@ -121,6 +121,6 @@ More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
-[MIT](LICENSE)
+[MIT](../LICENSE)
 
 This project was created with the [MicaelJarniac/cookiecutter-python-project](https://github.com/MicaelJarniac/cookiecutter-python-project) template.

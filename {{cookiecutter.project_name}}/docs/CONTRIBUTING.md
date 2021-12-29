@@ -102,15 +102,15 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 
 [codecov-{{ cookiecutter.project_name }}]: https://app.codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
 
-[_pre-commit-config_yaml]: .pre-commit-config.yaml
-[pyproject_toml]: pyproject.toml
-[setup_cfg]: setup.cfg
-[_editorconfig]: .editorconfig
-[docs_conf_py]: docs/conf.py
-[docs_wordlist_txt]: docs/wordlist.txt
-[noxfile_py]: noxfile.py
+[_pre-commit-config_yaml]: ../.pre-commit-config.yaml
+[pyproject_toml]: ../pyproject.toml
+[setup_cfg]: ../setup.cfg
+[_editorconfig]: ../.editorconfig
+[docs_conf_py]: ./conf.py
+[docs_wordlist_txt]: ./wordlist.txt
+[noxfile_py]: ../noxfile.py
 
-[setup_py]: setup.py
+[setup_py]: ../setup.py
 
 [black]: https://github.com/psf/black
 [black_cc]: https://black.readthedocs.io/en/stable/compatible_configs.html
@@ -411,7 +411,7 @@ make html
 
 ### Requirements
 
-Packages that are necessary for the code to run should be on [`requirements.txt`](/requirements.txt), and those only necessary while developing should be on [`requirements-dev.txt`](/requirements-dev.txt).
+Packages that are necessary for the code to run should be on [`requirements.txt`](../requirements.txt), and those only necessary while developing should be on [`requirements-dev.txt`](../requirements-dev.txt).
 
 To see which installed packages are outdated, run `pip list --outdated`.
 
