@@ -34,8 +34,8 @@
 [actions]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/actions
 [badge-semantic-release]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
-[badge-pypi]: https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}?style=flat-square
-[pypi]: https://pypi.org/project/{{ cookiecutter.project_slug }}
+[badge-pypi]: https://img.shields.io/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
+[pypi]: https://pypi.org/project/{{ cookiecutter.project_distribution_name }}
 [badge-docs]: https://img.shields.io/readthedocs/{{ cookiecutter.project_slug }}?style=flat-square
 [docs]: https://{{ cookiecutter.project_slug }}.readthedocs.io
 
@@ -82,10 +82,10 @@
 ## Installation
 
 ### pip
-[*{{ cookiecutter.project_slug }}*][pypi] is available on [pip](https://pip.pypa.io/en/stable/):
+[*{{ cookiecutter.project_distribution_name }}*][pypi] is available on [pip](https://pip.pypa.io/en/stable/):
 
 ```bash
-pip install {{ cookiecutter.project_slug }}
+pip install {{ cookiecutter.project_distribution_name }}
 ```
 
 ### GitHub
