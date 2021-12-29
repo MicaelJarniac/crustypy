@@ -9,7 +9,7 @@
     "project_short_description": "A simple Python project template.",
     "version": "0.0.0",
     "use_discord_community": ["yes", "no"],
-    "discord_invite": "",
-    "discord_id": "",
+    "discord_invite": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
+    "discord_id": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
     "report_method": "{{ cookiecutter.email }}"
 }
