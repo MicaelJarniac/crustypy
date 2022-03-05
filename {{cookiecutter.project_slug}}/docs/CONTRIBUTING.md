@@ -433,6 +433,16 @@ You can then compare it with the current requirements listed in the other files,
 
 When updating development requirements, make sure to also update the related pre-commit hooks.
 
+### Updating template
+
+[cruft][cruft] can be used to update the project with the latest version of the template.
+
+```bash
+cruft update
+```
+
+After updating, the versions of dependencies might change, so use `pip` to reinstall the requirements with the `--upgrade` option.
+
 ## Add yourself as a contributor
 
 To add yourself as a contributor, follow the [bot usage instructions](https://allcontributors.org/docs/en/bot/usage).
