@@ -53,6 +53,8 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
         - [Action][codecov-action]
         - [{{ cookiecutter.project_slug }}][codecov-{{ cookiecutter.project_slug }}]
       - [Nox][nox] <sup>[config][noxfile_py]</sup>
+      - [Cookiecutter][cookiecutter]
+      - [cruft][cruft] <sup>[config][pyproject_toml]</sup>
     - Type checking
       - [Mypy][mypy]
         - [Mypy Extensions][mypy-extensions]
@@ -134,6 +136,8 @@ We also recommend that you read [How to Contribute to Open Source](https://opens
 [pytest-cov]: https://github.com/pytest-dev/pytest-cov
 [coveragepy]: https://github.com/nedbat/coveragepy
 [nox]: https://github.com/theacodes/nox
+[cruft]: https://github.com/cruft/cruft/
+[cookiecutter]: https://github.com/cookiecutter/cookiecutter
 [sphinx]: https://www.sphinx-doc.org
 [furo]: https://github.com/pradyunsg/furo
 [sphinxcontrib-spelling]: https://github.com/sphinx-contrib/spelling
@@ -428,6 +432,16 @@ That will create a new file, `requirements-current.txt`, with them.
 You can then compare it with the current requirements listed in the other files, and update them as needed.
 
 When updating development requirements, make sure to also update the related pre-commit hooks.
+
+### Updating template
+
+[cruft][cruft] can be used to update the project with the latest version of the template.
+
+```bash
+cruft update
+```
+
+After updating, the versions of dependencies might change, so use `pip` to reinstall the requirements with the `--upgrade` option.
 
 ## Add yourself as a contributor
 

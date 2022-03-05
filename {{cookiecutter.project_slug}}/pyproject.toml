@@ -14,3 +14,10 @@ extend-exclude = '''
   | _build
 )/
 '''
+
+[tool.cruft]
+skip = [
+  "src/{{cookiecutter.project_slug}}/__init__.py",
+  "src/{{cookiecutter.project_slug}}/_{{cookiecutter.project_slug}}.py",
+  "tests"
+]
