@@ -2,7 +2,7 @@
     "full_name": "Author Name",
     "email": "author@example.com",
     "github_username": "AuthorName",
-    "year": "2021",
+    "year": "{% now 'utc', '%Y' %}",
     "project_name": "Python-Project-Template",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_distribution_name": "{{ cookiecutter.project_slug.replace('_', '-') }}",
