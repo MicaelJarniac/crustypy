@@ -17,60 +17,60 @@
 
 <!-- Badges -->
 {%- if cookiecutter.use_discord_community == "yes" %}
-[badge-chat]: https://img.shields.io/discord/{{ cookiecutter.discord_id }}?label=chat&logo=discord&style=flat-square
+[badge-chat]: {{ cookiecutter.shields_url }}/discord/{{ cookiecutter.discord_id }}?label=chat&logo=discord&style=flat-square
 [chat]: https://discord.gg/{{ cookiecutter.discord_invite }}
 {%- endif %}
 
 <!-- Labels -->
-[label-badges]: https://img.shields.io/badge/%F0%9F%94%96-badges-purple?style=for-the-badge
-[label-build]: https://img.shields.io/badge/%F0%9F%94%A7-build-darkblue?style=flat-square
-[label-tests]: https://img.shields.io/badge/%F0%9F%A7%AA-tests-darkblue?style=flat-square
-[label-standards]: https://img.shields.io/badge/%F0%9F%93%91-standards-darkblue?style=flat-square
-[label-code]: https://img.shields.io/badge/%F0%9F%92%BB-code-darkblue?style=flat-square
-[label-repo]: https://img.shields.io/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
+[label-badges]: {{ cookiecutter.shields_url }}/badge/%F0%9F%94%96-badges-purple?style=for-the-badge
+[label-build]: {{ cookiecutter.shields_url }}/badge/%F0%9F%94%A7-build-darkblue?style=flat-square
+[label-tests]: {{ cookiecutter.shields_url }}/badge/%F0%9F%A7%AA-tests-darkblue?style=flat-square
+[label-standards]: {{ cookiecutter.shields_url }}/badge/%F0%9F%93%91-standards-darkblue?style=flat-square
+[label-code]: {{ cookiecutter.shields_url }}/badge/%F0%9F%92%BB-code-darkblue?style=flat-square
+[label-repo]: {{ cookiecutter.shields_url }}/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: https://img.shields.io/github/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/Test%20with%20Nox/main?style=flat-square
+[badge-actions]: {{ cookiecutter.shields_url }}/github/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/Test%20with%20Nox/main?style=flat-square
 [actions]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/actions
-[badge-semantic-release]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
+[badge-semantic-release]: {{ cookiecutter.shields_url }}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
-[badge-pypi]: https://img.shields.io/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
+[badge-pypi]: {{ cookiecutter.shields_url }}/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
 [pypi]: https://pypi.org/project/{{ cookiecutter.project_distribution_name }}
-[badge-docs]: https://img.shields.io/readthedocs/{{ cookiecutter.project_slug }}?style=flat-square
+[badge-docs]: {{ cookiecutter.shields_url }}/readthedocs/{{ cookiecutter.project_slug }}?style=flat-square
 [docs]: https://{{ cookiecutter.project_slug }}.readthedocs.io
 
 <!-- Tests -->
-[badge-coverage]: https://img.shields.io/codecov/c/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?logo=codecov&style=flat-square&token=yqKa1DPwPC
+[badge-coverage]: {{ cookiecutter.shields_url }}/codecov/c/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?logo=codecov&style=flat-square&token=yqKa1DPwPC
 [coverage]: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
-[badge-pre-commit]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
+[badge-pre-commit]: {{ cookiecutter.shields_url }}/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
 [pre-commit]: https://github.com/pre-commit/pre-commit
 
 <!-- Standards -->
-[badge-semver]: https://img.shields.io/badge/SemVer-2.0.0-blue?style=flat-square&logo=semver
+[badge-semver]: {{ cookiecutter.shields_url }}/badge/SemVer-2.0.0-blue?style=flat-square&logo=semver
 [semver]: https://semver.org/spec/v2.0.0.html
-[badge-conventional-commits]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow?style=flat-square
+[badge-conventional-commits]: {{ cookiecutter.shields_url }}/badge/Conventional%20Commits-1.0.0-yellow?style=flat-square
 [conventional-commits]: https://conventionalcommits.org
 
 <!-- Code -->
-[badge-black]: https://img.shields.io/badge/code%20style-black-black?style=flat-square
+[badge-black]: {{ cookiecutter.shields_url }}/badge/code%20style-black-black?style=flat-square
 [Black]: https://github.com/psf/black
-[badge-isort]: https://img.shields.io/badge/imports-isort-%231674b1?style=flat-square&labelColor=ef8336
+[badge-isort]: {{ cookiecutter.shields_url }}/badge/imports-isort-%231674b1?style=flat-square&labelColor=ef8336
 [isort]: https://pycqa.github.io/isort
-[badge-mypy]: https://img.shields.io/badge/mypy-checked-2A6DB2?style=flat-square
+[badge-mypy]: {{ cookiecutter.shields_url }}/badge/mypy-checked-2A6DB2?style=flat-square
 [mypy]: http://mypy-lang.org
 
 <!-- Repo -->
-[badge-issues]: https://img.shields.io/github/issues/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
+[badge-issues]: {{ cookiecutter.shields_url }}/github/issues/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
 [issues]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues
-[badge-stars]: https://img.shields.io/github/stars/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
+[badge-stars]: {{ cookiecutter.shields_url }}/github/stars/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
 [stars]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/stargazers
-[badge-license]: https://img.shields.io/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
+[badge-license]: {{ cookiecutter.shields_url }}/github/license/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?style=flat-square
 [license]: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/main/LICENSE
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[badge-all-contributors]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
+[badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [contributors]: #Contributors-✨
-[badge-code-of-conduct]: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa?style=flat-square
+[badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-2.1-4baaaa?style=flat-square
 [code-of-conduct]: CODE_OF_CONDUCT.md
 <!---->
 
