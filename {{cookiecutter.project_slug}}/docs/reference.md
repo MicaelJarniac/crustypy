@@ -4,9 +4,9 @@
   - Formatting
     - [Black][black] <sup>[config][pyproject_toml]</sup>
       - [Compatible configs][black_cc]
-    - [isort][isort] <sup>[config][setup_cfg]</sup>
+    - [isort][isort] <sup>[config][pyproject_toml]</sup>
   - Linting
-    - [pydocstyle][pydocstyle] <sup>[config][setup_cfg]</sup>
+    - [pydocstyle][pydocstyle] <sup>[config][pyproject_toml]</sup>
     - [Flake8][flake8] <sup>[config][setup_cfg]</sup>
       - Plugins
         - [flake8-black][flake8-black]
@@ -33,7 +33,7 @@
       </details>
     - [Semantic Pull Requests][semantic-pull-requests]
     - [semantic-release][semantic-release] (used indirectly)
-      - [python-semantic-release][python-semantic-release] <sup>[config][setup_cfg]</sup>
+      - [python-semantic-release][python-semantic-release] <sup>[config][pyproject_toml]</sup>
     - [Codecov][codecov]
       - [Action][codecov-action]
       - [{{ cookiecutter.project_slug }}][codecov-project]
@@ -41,13 +41,13 @@
     - [Cookiecutter][cookiecutter]
     - [cruft][cruft] <sup>[config][pyproject_toml]</sup>
   - Type checking
-    - [Mypy][mypy]
+    - [Mypy][mypy] <sup>[config][pyproject_toml]</sup>
       - [Mypy Extensions][mypy-extensions]
   - Testing
-    - [pytest][pytest] <sup>[config][setup_cfg]</sup>
+    - [pytest][pytest] <sup>[config][pyproject_toml]</sup>
       - Plugins
         - [pytest-cov][pytest-cov]
-    - [Coverage.py][coveragepy] <sup>[config][setup_cfg]</sup>
+    - [Coverage.py][coveragepy] <sup>[config][pyproject_toml]</sup>
   - Documenting
     - [Sphinx][sphinx] <sup>[config][docs_conf_py]</sup>
       - [Furo][furo]

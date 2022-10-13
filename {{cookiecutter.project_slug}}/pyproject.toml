@@ -15,6 +15,31 @@ extend-exclude = '''
 )/
 '''
 
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+
+[tool.pydocstyle]
+convention = "google"
+match_dir = "src"
+
+[tool.mypy]
+files = "src"
+
+[tool.semantic_release]
+changelog_file = "docs/CHANGELOG.md"
+changelog_capitalize = false
+version_variable = "src/{{ cookiecutter.project_slug }}/__init__.py:__version__"
+build_command = "python setup.py sdist"
+branch = "main"
+
+[tool.coverage.run]
+omit = ["venv/*", "tests/*"]
+command_line = "-m pytest"
+
+[tool.pytest.ini_options]
+# addopts = "--cov"
+
 [tool.cruft]
 skip = [
   "src/{{cookiecutter.project_slug}}/__init__.py",
