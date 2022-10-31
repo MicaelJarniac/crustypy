@@ -37,7 +37,7 @@ dynamic = ["version"]
 "Bug Tracker" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues"
 
 [tool.hatch.version]
-path = "{{ cookiecutter.project_slug }}/__init__.py"
+path = "src/{{ cookiecutter.project_slug }}/__init__.py"
 
 [tool.black]
 line-length = 88
