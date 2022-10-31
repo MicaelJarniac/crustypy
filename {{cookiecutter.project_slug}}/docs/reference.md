@@ -55,9 +55,8 @@
       - [MyST][myst]
     - [Google style docstrings][docstring_google]
   - Building
-    - [Setuptools][setuptools]
-      - [`setup.py`][setup_py]
-      - [`setup.cfg`][setup_cfg]
+    - [Hatchling][hatchling]
+      - [`pyproject.toml`][pyproject_toml]
   - Configuration Files
     - [`setup.cfg`][setup_cfg]
     - [`pyproject.toml`][pyproject_toml]
@@ -97,8 +96,6 @@
 [docs_wordlist_txt]: ./wordlist.txt
 [noxfile_py]: ../noxfile.py
 
-[setup_py]: ../setup.py
-
 [black]: https://github.com/psf/black
 [black_cc]: https://black.readthedocs.io/en/stable/compatible_configs.html
 [isort]: https://github.com/PyCQA/isort
@@ -128,7 +125,7 @@
 [sphinxcontrib-spelling]: https://github.com/sphinx-contrib/spelling
 [myst]: https://github.com/executablebooks/myst-parser
 [docstring_google]: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
-[setuptools]: https://github.com/pypa/setuptools
+[hatchling]: https://github.com/pypa/hatch/tree/master/backend
 [conventionalcommits]: https://www.conventionalcommits.org
 [semver]: https://semver.org
 [allcontributors]: https://github.com/all-contributors/all-contributors
