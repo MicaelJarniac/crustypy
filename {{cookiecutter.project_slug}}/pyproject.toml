@@ -1,9 +1,43 @@
+# https://packaging.python.org/en/latest/tutorials/packaging-projects
+# https://hatch.pypa.io
 [build-system]
-requires = [
-  "setuptools>=42",
-  "wheel"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ cookiecutter.project_distribution_name }}"
+authors = [
+  { name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" },
 ]
-build-backend = "setuptools.build_meta"
+description = "{{ cookiecutter.project_short_description }}"
+readme = "docs/README.md"
+requires-python = ">=3.7"
+license-files = { paths = ["LICENSE"] }
+# Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "License :: OSI Approved :: MIT License",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Typing :: Typed",
+]
+dynamic = ["version"]
+
+[project.urls]
+"Homepage" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+"Changelog" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/main/docs/CHANGELOG.md"
+"Documentation" = "https://{{ cookiecutter.project_slug }}.readthedocs.io"
+"Repository" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+"Bug Tracker" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues"
+
+[tool.hatch.version]
+path = "src/{{ cookiecutter.project_slug }}/__init__.py"
 
 [tool.black]
 line-length = 88
@@ -30,7 +64,7 @@ files = "src"
 changelog_file = "docs/CHANGELOG.md"
 changelog_capitalize = false
 version_variable = "src/{{ cookiecutter.project_slug }}/__init__.py:__version__"
-build_command = "python setup.py sdist"
+build_command = "python -m build"
 branch = "main"
 
 [tool.coverage.run]
