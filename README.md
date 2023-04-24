@@ -5,6 +5,8 @@ A basic Python project template for [Cookiecutter][cookiecutter].
 
 ### With cruft (recommended)
 Requires [cruft][cruft].
+> **Note**
+> Install cruft with optional `pyproject`, as `cruft[pyproject]`.
 
 ```bash
 cruft create https://github.com/MicaelJarniac/cookiecutter-python-project
