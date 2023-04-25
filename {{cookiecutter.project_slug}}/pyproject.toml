@@ -58,7 +58,7 @@ convention = "google"
 match_dir = "src"
 
 [tool.mypy]
-files = "src"
+files = ["src", "docs", "tests"]
 
 [tool.semantic_release]
 changelog_file = "docs/CHANGELOG.md"
@@ -68,7 +68,7 @@ build_command = "python -m build"
 branch = "main"
 
 [tool.coverage.run]
-omit = ["venv/*", "tests/*"]
+source = ["src"]
 command_line = "-m pytest"
 
 [tool.pytest.ini_options]
