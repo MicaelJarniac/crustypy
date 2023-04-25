@@ -1,5 +1,5 @@
-# Configuration file for the Sphinx documentation builder.
-#
+"""Configuration file for the Sphinx documentation builder."""
+
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
@@ -10,6 +10,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
+import importlib.util
 import os
 import sys
 
@@ -38,12 +39,14 @@ extensions = [
     "myst_parser",
 ]
 
-try:
-    import sphinxcontrib.spelling
-except ImportError:
-    pass
-else:
-    extensions.append("sphinxcontrib.spelling")
+maybe_extensions = [
+    "sphinxcontrib.spelling",
+]
+
+for extension in maybe_extensions:
+    lib = importlib.util.find_spec(extension)
+    if lib is not None:
+        extensions.append(lib.name)
 
 spelling_word_list_filename = "wordlist.txt"
 
