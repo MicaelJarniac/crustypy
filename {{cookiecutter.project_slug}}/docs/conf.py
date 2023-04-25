@@ -11,16 +11,16 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 import importlib.util
-import os
 import sys
+from pathlib import Path
 
-sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, str(Path("..").resolve()))
 
 
 # -- Project information -----------------------------------------------------
 
 project = "{{ cookiecutter.project_name }}"
-copyright = "{{ cookiecutter.year }}, {{ cookiecutter.full_name }}"
+copyright = "{{ cookiecutter.year }}, {{ cookiecutter.full_name }}"  # noqa: A001
 author = "{{ cookiecutter.full_name }}"
 
 
