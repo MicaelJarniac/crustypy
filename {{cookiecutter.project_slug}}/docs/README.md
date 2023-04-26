@@ -40,7 +40,7 @@
 [docs]: https://{{ cookiecutter.project_slug }}.readthedocs.io
 
 <!-- Tests -->
-[badge-coverage]: {{ cookiecutter.shields_url }}/codecov/c/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?logo=codecov&style=flat-square&token=yqKa1DPwPC
+[badge-coverage]: {{ cookiecutter.shields_url }}/codecov/c/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}?logo=codecov&style=flat-square
 [coverage]: https://codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 [badge-pre-commit]: {{ cookiecutter.shields_url }}/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
 [pre-commit]: https://github.com/pre-commit/pre-commit
