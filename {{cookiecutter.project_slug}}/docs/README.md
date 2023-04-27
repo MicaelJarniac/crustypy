@@ -11,7 +11,7 @@
   | ![Build][label-build] | [![Nox][badge-actions]][actions] [![semantic-release][badge-semantic-release]][semantic-release] [![PyPI][badge-pypi]][pypi] [![Read the Docs][badge-docs]][docs] |
   | ![Tests][label-tests] | [![coverage][badge-coverage]][coverage] [![pre-commit][badge-pre-commit]][pre-commit] |
   | ![Standards][label-standards] | [![SemVer 2.0.0][badge-semver]][semver] [![Conventional Commits][badge-conventional-commits]][conventional-commits] |
-  | ![Code][label-code] | [![Code style: black][badge-black]][Black] [![Imports: isort][badge-isort]][isort] [![Checked with mypy][badge-mypy]][mypy] |
+  | ![Code][label-code] | [![Code style: black][badge-black]][Black] [![Ruff][badge-ruff]][ruff] [![Checked with mypy][badge-mypy]][mypy] |
   | ![Repo][label-repo] | [![GitHub issues][badge-issues]][issues] [![GitHub stars][badge-stars]][stars] [![GitHub license][badge-license]][license] [![All Contributors][badge-all-contributors]][contributors] [![Contributor Covenant][badge-code-of-conduct]][code-of-conduct] |
 </div>
 
@@ -54,8 +54,8 @@
 <!-- Code -->
 [badge-black]: {{ cookiecutter.shields_url }}/badge/code%20style-black-black?style=flat-square
 [Black]: https://github.com/psf/black
-[badge-isort]: {{ cookiecutter.shields_url }}/badge/imports-isort-%231674b1?style=flat-square&labelColor=ef8336
-[isort]: https://pycqa.github.io/isort
+[badge-ruff]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json&style=flat-square
+[ruff]: https://github.com/charliermarsh/ruff
 [badge-mypy]: {{ cookiecutter.shields_url }}/badge/mypy-checked-2A6DB2?style=flat-square
 [mypy]: http://mypy-lang.org
 

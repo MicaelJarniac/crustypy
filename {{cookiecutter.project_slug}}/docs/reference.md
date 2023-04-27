@@ -4,26 +4,16 @@
   - Formatting
     - [Black][black] <sup>[config][pyproject_toml]</sup>
       - [Compatible configs][black_cc]
-    - [isort][isort] <sup>[config][pyproject_toml]</sup>
+    - [Ruff][ruff] <sup>[config][pyproject_toml]</sup>
   - Linting
-    - [pydocstyle][pydocstyle] <sup>[config][pyproject_toml]</sup>
-    - [Flake8][flake8] <sup>[config][setup_cfg]</sup>
-      - Plugins
-        - [flake8-black][flake8-black]
-        - [flake8-isort][flake8-isort]
-        - [flake8-docstrings][flake8-docstrings]
+    - [Ruff][ruff] <sup>[config][pyproject_toml]</sup>
   - Automating
     - [pre-commit][pre-commit] <sup>[config][_pre-commit-config_yaml]</sup>
       <details>
         <summary>Hooks</summary>
 
-        - [`isort`][isort]
+        - [`ruff`][ruff]
         - [`black`][black]
-        - [`pydocstyle`][pydocstyle]
-        - [`flake8`][flake8]
-          - [`flake8-black`][flake8-black]
-          - [`flake8-isort`][flake8-isort]
-          - [`flake8-docstrings`][flake8-docstrings]
         - [`pre-commit-hooks`][pre-commit-hooks]
           - `check-toml`
           - `check-yaml`
@@ -58,7 +48,6 @@
     - [Hatchling][hatchling]
       - [`pyproject.toml`][pyproject_toml]
   - Configuration Files
-    - [`setup.cfg`][setup_cfg]
     - [`pyproject.toml`][pyproject_toml]
     - [`.pre-commit-config.yaml`][_pre-commit-config_yaml]
     - [`.editorconfig`][_editorconfig]
@@ -84,13 +73,11 @@
   - https://github.community/t/syncing-a-fork-leaves-me-one-commit-ahead-of-upstream-master/1435/5
 - Articles
   - [Don't commit `.vscode`][no-editor-config-gitignore]
-  - <https://towardsdatascience.com/state-of-the-art-python-project-setup-82a046fc1f20> (pretty bad article, but useful)
 
 [codecov-project]: https://app.codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
 
 [_pre-commit-config_yaml]: ../.pre-commit-config.yaml
 [pyproject_toml]: ../pyproject.toml
-[setup_cfg]: ../setup.cfg
 [_editorconfig]: ../.editorconfig
 [docs_conf_py]: ./conf.py
 [docs_wordlist_txt]: ./wordlist.txt
@@ -98,12 +85,7 @@
 
 [black]: https://github.com/psf/black
 [black_cc]: https://black.readthedocs.io/en/stable/compatible_configs.html
-[isort]: https://github.com/PyCQA/isort
-[pydocstyle]: https://github.com/PyCQA/pydocstyle
-[flake8]: https://github.com/PyCQA/flake8
-[flake8-black]: https://github.com/peterjc/flake8-black
-[flake8-isort]: https://github.com/gforcada/flake8-isort
-[flake8-docstrings]: https://gitlab.com/pycqa/flake8-docstrings
+[ruff]: https://github.com/charliermarsh/ruff
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
 [rstcheck]: https://github.com/myint/rstcheck
