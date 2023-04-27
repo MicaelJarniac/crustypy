@@ -9,8 +9,8 @@ python_versions = ["3.7", "3.8", "3.9", "3.10"]
 def format_files(session: nox.Session) -> None:
     """Format files."""
     session.install("-r", "requirements-dev.txt")
-    session.run("black", ".")
     session.run("ruff", "check", "--fix-only", ".")
+    session.run("black", ".")
 
 
 @nox.session(python=python_versions[-1], reuse_venv=True)
