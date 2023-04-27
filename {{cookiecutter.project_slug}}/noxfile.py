@@ -21,8 +21,8 @@ def lint_files(session: nox.Session) -> None:
 
 
 @nox.session(python=python_versions, reuse_venv=True)
-def typecheck_code(session: nox.Session) -> None:
-    """Typecheck code."""
+def type_check_code(session: nox.Session) -> None:
+    """Type-check code."""
     session.install("-r", "requirements-dev.txt")
     session.install(".")
     session.run("mypy")
