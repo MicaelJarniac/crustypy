@@ -64,7 +64,7 @@ Here is a summary of the steps to follow:
 $ git checkout main
 $ git pull upstream main
 $ pip install -U -r requirements.txt
-$ pip install -U -r requirements-dev.txt
+$ pip install -U -e .[dev]
 ```
 3. Create a new topic branch (off the main project development branch) to contain your feature, change, or fix:
 ```bash
@@ -221,7 +221,7 @@ source venv/bin/activate
 
 # Install the dependencies
 pip install -U -r requirements.txt
-pip install -U -r requirements-dev.txt
+pip install -U -e .[dev]
 
 # Set up pre-commit hooks
 pre-commit install
@@ -275,7 +275,8 @@ make html
 
 ### Requirements
 
-Packages that are necessary for the code to run should be on [`requirements.txt`](../requirements.txt), and those only necessary while developing should be on [`requirements-dev.txt`](../requirements-dev.txt).
+All requirements should be on [`pyproject.toml`](../pyproject.toml), on their respective sections.
+Direct dependencies should have an open version range there, and have their versions pinned on [`requirements.txt`](../requirements.txt).
 
 To see which installed packages are outdated, run `pip list --outdated`.
 

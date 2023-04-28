@@ -28,6 +28,33 @@ classifiers = [
   "Typing :: Typed",
 ]
 dynamic = ["version"]
+dependencies = []
+
+[project.optional-dependencies]
+tests = [
+  "coverage==7.2.3",
+  "pytest==7.3.1",
+  "pytest-cov==4.0.0",
+]
+docs = [
+  "furo==2023.3.27",
+  "myst-parser==1.0.0",
+  "Sphinx==6.2.0",
+  "sphinxcontrib-spelling==8.0.0",
+]
+dev = [
+  "{{ cookiecutter.project_distribution_name }}[tests,docs]",
+  "black==23.3.0",
+  "build==0.10.0",
+  "mypy==1.2.0",
+  "mypy-extensions==1.0.0",
+  "nox==2023.4.22",
+  "pre-commit==3.2.2",
+  "python-semantic-release==7.33.3",
+  "ruff==0.0.263",
+  "semver==2.13.0",
+  "toml==0.10.2",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
