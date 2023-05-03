@@ -11,7 +11,7 @@ authors = [
 ]
 description = "{{ cookiecutter.project_short_description }}"
 readme = "docs/README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 license-files = { paths = ["LICENSE"] }
 # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
 classifiers = [
@@ -21,13 +21,41 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Typing :: Typed",
 ]
 dynamic = ["version"]
+dependencies = []
+
+[project.optional-dependencies]
+# Use `constraints.txt`
+tests = [
+  "coverage",
+  "pytest",
+  "pytest-cov",
+]
+docs = [
+  "furo",
+  "myst-parser",
+  "Sphinx",
+  "sphinxcontrib-spelling",
+]
+dev = [
+  "{{ cookiecutter.project_distribution_name }}[tests,docs]",
+  "black",
+  "build",
+  "mypy",
+  "mypy-extensions",
+  "nox",
+  "pre-commit",
+  "python-semantic-release",
+  "ruff",
+  "semver",
+  "toml",
+]
 
 [project.urls]
 "Homepage" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
