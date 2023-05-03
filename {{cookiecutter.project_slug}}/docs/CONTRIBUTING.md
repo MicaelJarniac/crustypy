@@ -63,8 +63,7 @@ Here is a summary of the steps to follow:
 ```bash
 $ git checkout main
 $ git pull upstream main
-$ pip install -U -r requirements.txt
-$ pip install -U -e .[dev]
+$ pip install -U -c constraints.txt -e .[dev]
 ```
 3. Create a new topic branch (off the main project development branch) to contain your feature, change, or fix:
 ```bash
@@ -220,8 +219,7 @@ source venv/bin/activate
 .\venv\Scripts\activate
 
 # Install the dependencies
-pip install -U -r requirements.txt
-pip install -U -e .[dev]
+pip install -U -c constraints.txt -e .[dev]
 
 # Set up pre-commit hooks
 pre-commit install
@@ -276,7 +274,7 @@ make html
 ### Requirements
 
 All requirements should be on [`pyproject.toml`](../pyproject.toml), on their respective sections.
-Direct dependencies should have an open version range there, and have their versions pinned on [`requirements.txt`](../requirements.txt).
+Constraints should be maintained in [`constraints.txt`](../constraints.txt).
 
 To see which installed packages are outdated, run `pip list --outdated`.
 
