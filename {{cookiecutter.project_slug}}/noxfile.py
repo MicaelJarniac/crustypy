@@ -6,7 +6,7 @@ python_versions = ["3.7", "3.8", "3.9", "3.10"]
 constraints = ("-c", "constraints.txt")
 
 
-@nox.session(python=python_versions[-1], reuse_venv=True)
+@nox.session(python=python_versions[-1])
 def format_files(session: nox.Session) -> None:
     """Format files."""
     session.install(*constraints, "ruff", "black")
@@ -14,14 +14,14 @@ def format_files(session: nox.Session) -> None:
     session.run("black", ".")
 
 
-@nox.session(python=python_versions[-1], reuse_venv=True)
+@nox.session(python=python_versions[-1])
 def lint_files(session: nox.Session) -> None:
     """Lint files."""
     session.install(*constraints, "ruff")
     session.run("ruff", "check", ".")
 
 
-@nox.session(python=python_versions, reuse_venv=True)
+@nox.session(python=python_versions)
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""
     session.install(*constraints, ".[dev]")
