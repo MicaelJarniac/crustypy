@@ -15,5 +15,5 @@
     "report_method": "{{ cookiecutter.email }}",
     "_github_path": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_distribution_name }}",
     "_github_url": "https://github.com/{{ cookiecutter._github_path }}",
-    "_readthedocs_name": "{{ project_distribution_name }}"
+    "_readthedocs_name": "{{ cookiecutter.project_distribution_name }}"
 }
