@@ -1,1 +1,1 @@
-"""Documentation for {{ cookiecutter.project_slug }}."""
+"""Documentation for {{ cookiecutter.project_distribution_name }}."""

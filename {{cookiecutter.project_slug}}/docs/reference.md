@@ -26,7 +26,7 @@
       - [python-semantic-release][python-semantic-release] <sup>[config][pyproject_toml]</sup>
     - [Codecov][codecov]
       - [Action][codecov-action]
-      - [{{ cookiecutter.project_slug }}][codecov-project]
+      - [{{ cookiecutter.project_distribution_name }}][codecov-project]
     - [Nox][nox] <sup>[config][noxfile_py]</sup>
     - [Cookiecutter][cookiecutter]
     - [cruft][cruft] <sup>[config][pyproject_toml]</sup>
@@ -74,7 +74,7 @@
 - Articles
   - [Don't commit `.vscode`][no-editor-config-gitignore]
 
-[codecov-project]: https://app.codecov.io/gh/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}
+[codecov-project]: https://app.codecov.io/gh/{{ cookiecutter._github_path }}
 
 [_pre-commit-config_yaml]: ../.pre-commit-config.yaml
 [pyproject_toml]: ../pyproject.toml

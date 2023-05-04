@@ -3,14 +3,17 @@
     "email": "author@example.com",
     "github_username": "AuthorName",
     "year": "{% now 'utc', '%Y' %}",
-    "project_name": "Python-Project-Template",
+    "project_name": "Python Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "project_distribution_name": "{{ cookiecutter.project_slug.replace('_', '-') }}",
-    "project_short_description": "A simple Python project template.",
+    "project_short_description": "A simple Python project.",
     "version": "0.0.0",
     "shields_url": "https://img.shields.io",
     "use_discord_community": ["yes", "no"],
     "discord_invite": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
     "discord_id": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
-    "report_method": "{{ cookiecutter.email }}"
+    "report_method": "{{ cookiecutter.email }}",
+    "_github_path": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_distribution_name }}",
+    "_github_url": "https://github.com/{{ cookiecutter._github_path }}",
+    "_readthedocs_name": "{{ project_distribution_name }}"
 }

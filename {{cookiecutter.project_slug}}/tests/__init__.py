@@ -1,1 +1,1 @@
-"""Testing for {{ cookiecutter.project_slug }}."""
+"""Testing for {{ cookiecutter.project_distribution_name }}."""

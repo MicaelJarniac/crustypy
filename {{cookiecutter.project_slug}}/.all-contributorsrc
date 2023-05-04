@@ -8,7 +8,7 @@
   ],
   "contributorsPerLine": 7,
   "badgeTemplate": "[badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square",
-  "projectName": "{{ cookiecutter.project_slug }}",
+  "projectName": "{{ cookiecutter.project_distribution_name }}",
   "projectOwner": "{{ cookiecutter.github_username }}",
   "repoType": "github",
   "repoHost": "https://github.com",
