@@ -30,18 +30,18 @@
 [label-repo]: {{ cookiecutter.shields_url }}/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: {{ cookiecutter.shields_url }}/github/workflow/status/{{ cookiecutter._github_path }}/Test%20with%20Nox/main?style=flat-square
-[actions]: {{ cookiecutter._github_url }}/actions
+[badge-actions]: {{ cookiecutter.shields_url }}/github/workflow/status/{{ cookiecutter.__github_path }}/Test%20with%20Nox/main?style=flat-square
+[actions]: {{ cookiecutter.__github_url }}/actions
 [badge-semantic-release]: {{ cookiecutter.shields_url }}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
 [badge-pypi]: {{ cookiecutter.shields_url }}/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
 [pypi]: https://pypi.org/project/{{ cookiecutter.project_distribution_name }}
-[badge-docs]: {{ cookiecutter.shields_url }}/readthedocs/{{ cookiecutter._readthedocs_name }}?style=flat-square
-[docs]: https://{{ cookiecutter._readthedocs_name }}.readthedocs.io
+[badge-docs]: {{ cookiecutter.shields_url }}/readthedocs/{{ cookiecutter.__readthedocs_name }}?style=flat-square
+[docs]: https://{{ cookiecutter.__readthedocs_name }}.readthedocs.io
 
 <!-- Tests -->
-[badge-coverage]: {{ cookiecutter.shields_url }}/codecov/c/gh/{{ cookiecutter._github_path }}?logo=codecov&style=flat-square
-[coverage]: https://codecov.io/gh/{{ cookiecutter._github_path }}
+[badge-coverage]: {{ cookiecutter.shields_url }}/codecov/c/gh/{{ cookiecutter.__github_path }}?logo=codecov&style=flat-square
+[coverage]: https://codecov.io/gh/{{ cookiecutter.__github_path }}
 [badge-pre-commit]: {{ cookiecutter.shields_url }}/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
 [pre-commit]: https://github.com/pre-commit/pre-commit
 
@@ -60,12 +60,12 @@
 [mypy]: http://mypy-lang.org
 
 <!-- Repo -->
-[badge-issues]: {{ cookiecutter.shields_url }}/github/issues/{{ cookiecutter._github_path }}?style=flat-square
-[issues]: {{ cookiecutter._github_url }}/issues
-[badge-stars]: {{ cookiecutter.shields_url }}/github/stars/{{ cookiecutter._github_path }}?style=flat-square
-[stars]: {{ cookiecutter._github_url }}/stargazers
-[badge-license]: {{ cookiecutter.shields_url }}/github/license/{{ cookiecutter._github_path }}?style=flat-square
-[license]: {{ cookiecutter._github_url }}/blob/main/LICENSE
+[badge-issues]: {{ cookiecutter.shields_url }}/github/issues/{{ cookiecutter.__github_path }}?style=flat-square
+[issues]: {{ cookiecutter.__github_url }}/issues
+[badge-stars]: {{ cookiecutter.shields_url }}/github/stars/{{ cookiecutter.__github_path }}?style=flat-square
+[stars]: {{ cookiecutter.__github_url }}/stargazers
+[badge-license]: {{ cookiecutter.shields_url }}/github/license/{{ cookiecutter.__github_path }}?style=flat-square
+[license]: {{ cookiecutter.__github_url }}/blob/main/LICENSE
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -91,7 +91,7 @@ pip install {{ cookiecutter.project_distribution_name }}
 ### GitHub
 You can also install the latest version of the code directly from GitHub:
 ```bash
-pip install git+git://github.com/{{ cookiecutter._github_path }}
+pip install git+git://github.com/{{ cookiecutter.__github_path }}
 ```
 
 ## Usage

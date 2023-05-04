@@ -13,7 +13,7 @@
     "discord_invite": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
     "discord_id": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
     "report_method": "{{ cookiecutter.email }}",
-    "_github_path": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_distribution_name }}",
-    "_github_url": "https://github.com/{{ cookiecutter._github_path }}",
-    "_readthedocs_name": "{{ cookiecutter.project_distribution_name }}"
+    "__github_path": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_distribution_name }}",
+    "__github_url": "https://github.com/{{ cookiecutter.__github_path }}",
+    "__readthedocs_name": "{{ cookiecutter.project_distribution_name }}"
 }

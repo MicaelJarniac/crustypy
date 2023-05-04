@@ -74,7 +74,7 @@
 - Articles
   - [Don't commit `.vscode`][no-editor-config-gitignore]
 
-[codecov-project]: https://app.codecov.io/gh/{{ cookiecutter._github_path }}
+[codecov-project]: https://app.codecov.io/gh/{{ cookiecutter.__github_path }}
 
 [_pre-commit-config_yaml]: ../.pre-commit-config.yaml
 [pyproject_toml]: ../pyproject.toml

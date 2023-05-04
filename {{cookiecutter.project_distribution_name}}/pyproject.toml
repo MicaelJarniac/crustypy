@@ -58,11 +58,11 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "{{ cookiecutter._github_url }}"
-"Changelog" = "{{ cookiecutter._github_url }}/blob/main/docs/CHANGELOG.md"
-"Documentation" = "https://{{ cookiecutter._readthedocs_name }}.readthedocs.io"
-"Repository" = "{{ cookiecutter._github_url }}"
-"Bug Tracker" = "{{ cookiecutter._github_url }}/issues"
+"Homepage" = "{{ cookiecutter.__github_url }}"
+"Changelog" = "{{ cookiecutter.__github_url }}/blob/main/docs/CHANGELOG.md"
+"Documentation" = "https://{{ cookiecutter.__readthedocs_name }}.readthedocs.io"
+"Repository" = "{{ cookiecutter.__github_url }}"
+"Bug Tracker" = "{{ cookiecutter.__github_url }}/issues"
 
 [tool.hatch.version]
 path = "src/{{ cookiecutter.project_slug }}/__init__.py"

@@ -22,7 +22,7 @@ Help us keep **{{ cookiecutter.project_name }}** open and inclusive. Please read
 
 ### Improve documentation
 
-As a **{{ cookiecutter.project_name }}** user, you are the perfect candidate to help us improve our documentation: typo corrections, clarifications, more examples, etc. Take a look at the [documentation issues that need help]({{ cookiecutter._github_url }}/issues?q=is%3Aopen+label%3Adocumentation+label%3A"help+wanted").
+As a **{{ cookiecutter.project_name }}** user, you are the perfect candidate to help us improve our documentation: typo corrections, clarifications, more examples, etc. Take a look at the [documentation issues that need help]({{ cookiecutter.__github_url }}/issues?q=is%3Aopen+label%3Adocumentation+label%3A"help+wanted").
 
 Please follow the [Documentation guidelines](#documentation).
 
@@ -32,21 +32,21 @@ Some issues are created without information requested in the [Bug report guideli
 
 ### Fix bugs and implement features
 
-Confirmed bugs and ready-to-implement features are marked with the [help wanted label]({{ cookiecutter._github_url }}/labels/help+wanted). Post a comment on an issue to indicate you would like to work on it and to request help from the community.
+Confirmed bugs and ready-to-implement features are marked with the [help wanted label]({{ cookiecutter.__github_url }}/labels/help+wanted). Post a comment on an issue to indicate you would like to work on it and to request help from the community.
 
 ## Using the issue tracker
 
 The issue tracker is the channel for [bug reports](#bug-report), [features requests](#feature-request) and [submitting pull requests](#submitting-a-pull-request) only. <!-- Please use the [Support](docs/support/README.md) and [Get help](README.md#get-help) sections for support, troubleshooting and questions. -->
 
-Before opening an issue or a Pull Request, please use the [GitHub issue search]({{ cookiecutter._github_url }}/issues) to make sure the bug or feature request hasn't been already reported or fixed.
+Before opening an issue or a Pull Request, please use the [GitHub issue search]({{ cookiecutter.__github_url }}/issues) to make sure the bug or feature request hasn't been already reported or fixed.
 
 ### Bug report
 
-A good bug report shouldn't leave others needing to chase you for more information. Please try to be as detailed as possible in your report and fill the information requested in the [Bug report template]({{ cookiecutter._github_url }}/issues/new?template=bug_report.md).
+A good bug report shouldn't leave others needing to chase you for more information. Please try to be as detailed as possible in your report and fill the information requested in the [Bug report template]({{ cookiecutter.__github_url }}/issues/new?template=bug_report.md).
 
 ### Feature request
 
-Feature requests are welcome, but take a moment to find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible and fill the information requested in the [Feature request template]({{ cookiecutter._github_url }}/issues/new?template=feature_request.md).
+Feature requests are welcome, but take a moment to find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Please provide as much detail and context as possible and fill the information requested in the [Feature request template]({{ cookiecutter.__github_url }}/issues/new?template=feature_request.md).
 
 ## Submitting a Pull Request
 
@@ -101,11 +101,11 @@ To ensure consistency and quality, all documentation modifications must:
   - a **{{ cookiecutter.project_name }}** concept described somewhere else in the documentation, i.e. How to [contribute](CONTRIBUTING.md)
   - a third-party product/brand/service, i.e. Integrate with [GitHub](https://github.com)
   - an external concept or feature, i.e. Create a [GitHub release](https://help.github.com/articles/creating-releases)
-  - a package or module, i.e. The [`@{{ cookiecutter._github_path }}`]({{ cookiecutter._github_url }}) module
+  - a package or module, i.e. The [`@{{ cookiecutter.__github_path }}`]({{ cookiecutter.__github_url }}) module
 - Use the [single backtick `code` quoting](https://help.github.com/articles/basic-writing-and-formatting-syntax/#quoting-code) for:
   - commands inside sentences, i.e. the `pip` command
   - programming language keywords, i.e. `for`, `with`, `dict`
-  - packages or modules, i.e. The [`@{{ cookiecutter._github_path }}`]({{ cookiecutter._github_url }}) module
+  - packages or modules, i.e. The [`@{{ cookiecutter.__github_path }}`]({{ cookiecutter.__github_url }}) module
 - Use the [triple backtick `code` formatting](https://help.github.com/articles/creating-and-highlighting-code-blocks) for:
   - code examples
   - configuration examples
@@ -203,7 +203,7 @@ The default graphite width of 10mm is always used for performance reasons.
 
 ```bash
 # Clone the repo into the current directory
-git clone {{ cookiecutter._github_url }}
+git clone {{ cookiecutter.__github_url }}
 
 # Navigate to the newly cloned directory
 cd {{ cookiecutter.project_distribution_name }}
