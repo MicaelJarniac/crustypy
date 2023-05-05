@@ -7,18 +7,19 @@ constraints = ("-c", "constraints.txt")
 
 
 @nox.session(python=python_versions[-1])
-def format_files(session: nox.Session) -> None:
-    """Format files."""
+def fix_files(session: nox.Session) -> None:
+    """Fix files."""
     session.install(*constraints, "ruff", "black")
     session.run("ruff", "check", "--fix-only", ".")
     session.run("black", ".")
 
 
-@nox.session(python=python_versions[-1])
+@nox.session(python=python_versions)
 def lint_files(session: nox.Session) -> None:
     """Lint files."""
-    session.install(*constraints, "ruff")
+    session.install(*constraints, "ruff", "black")
     session.run("ruff", "check", ".")
+    session.run("black", "--check", ".")
 
 
 @nox.session(python=python_versions)
