@@ -58,11 +58,11 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
-"Changelog" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/blob/main/docs/CHANGELOG.md"
-"Documentation" = "https://{{ cookiecutter.project_slug }}.readthedocs.io"
-"Repository" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
-"Bug Tracker" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues"
+"Homepage" = "{{ cookiecutter.__github_url }}"
+"Changelog" = "{{ cookiecutter.__github_url }}/blob/main/docs/CHANGELOG.md"
+"Documentation" = "https://{{ cookiecutter.__readthedocs_name }}.readthedocs.io"
+"Repository" = "{{ cookiecutter.__github_url }}"
+"Bug Tracker" = "{{ cookiecutter.__github_url }}/issues"
 
 [tool.hatch.version]
 path = "src/{{ cookiecutter.project_slug }}/__init__.py"
@@ -110,7 +110,6 @@ command_line = "-m pytest"
 
 [tool.cruft]
 skip = [
-  "src/{{cookiecutter.project_slug}}/__init__.py",
-  "src/{{cookiecutter.project_slug}}/_{{cookiecutter.project_slug}}.py",
-  "tests"
+  "src",
+  "tests",
 ]
