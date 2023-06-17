@@ -54,8 +54,8 @@
 <!-- Code -->
 [badge-black]: {{ cookiecutter.shields_url }}/badge/code%20style-black-black?style=flat-square
 [Black]: https://github.com/psf/black
-[badge-ruff]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json&style=flat-square
-[ruff]: https://github.com/charliermarsh/ruff
+[badge-ruff]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v1.json&style=flat-square
+[ruff]: https://github.com/astral-sh/ruff
 [badge-mypy]: {{ cookiecutter.shields_url }}/badge/mypy-checked-2A6DB2?style=flat-square
 [mypy]: http://mypy-lang.org
 

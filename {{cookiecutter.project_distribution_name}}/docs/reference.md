@@ -85,7 +85,7 @@
 
 [black]: https://github.com/psf/black
 [black_cc]: https://black.readthedocs.io/en/stable/compatible_configs.html
-[ruff]: https://github.com/charliermarsh/ruff
+[ruff]: https://github.com/astral-sh/ruff
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
 [rstcheck]: https://github.com/myint/rstcheck
