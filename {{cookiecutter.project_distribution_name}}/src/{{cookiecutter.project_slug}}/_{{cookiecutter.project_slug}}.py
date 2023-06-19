@@ -1,3 +1,6 @@
+from loguru import logger
+
+
 def make_greeting(name: str) -> str:
     """Make greeting message.
 
@@ -17,4 +20,5 @@ def make_greeting(name: str) -> str:
         >>> print(make_greeting("Foo"))
         Hello, Foo. Welcome to your new project!
     """
+    logger.debug(f"Welcoming {name}.")
     return f"Hello, {name}. Welcome to your new project!"

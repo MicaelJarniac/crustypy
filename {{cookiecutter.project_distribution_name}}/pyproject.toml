@@ -28,7 +28,9 @@ classifiers = [
   "Typing :: Typed",
 ]
 dynamic = ["version"]
-dependencies = []
+dependencies = [
+    "loguru >= 0.7.0",
+]
 
 [project.optional-dependencies]
 # Use `constraints.txt`
