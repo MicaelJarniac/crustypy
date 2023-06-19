@@ -30,7 +30,7 @@
 [label-repo]: {{ cookiecutter.shields_url }}/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: {{ cookiecutter.shields_url }}/github/workflow/status/{{ cookiecutter.__github_path }}/Test%20with%20Nox/main?style=flat-square
+[badge-actions]: {{ cookiecutter.shields_url }}/github/actions/workflow/status/{{ cookiecutter.__github_path }}/nox.yml?branch=main&style=flat-square
 [actions]: {{ cookiecutter.__github_url }}/actions
 [badge-semantic-release]: {{ cookiecutter.shields_url }}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
