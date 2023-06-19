@@ -25,12 +25,13 @@ def lint_files(session: nox.Session) -> None:
 @nox.session(python=python_versions)
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""
-    session.install(*constraints, ".[dev]")
+    session.install(*constraints, "-e", ".[typing]")
+    # mypy --install-types
     session.run("mypy")
 
 
 @nox.session(python=python_versions)
 def test_code(session: nox.Session) -> None:
     """Test code."""
-    session.install(*constraints, ".[tests]")
+    session.install(*constraints, "-e", ".[tests]")
     session.run("pytest")
