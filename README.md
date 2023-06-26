@@ -1,4 +1,6 @@
-# cookiecutter-python-project
+# CrustyPy
+Bake your Python projects to perfection.
+
 A basic Python project template for [Cookiecutter][cookiecutter].
 
 ## Usage
@@ -9,14 +11,14 @@ Requires [cruft][cruft].
 > Install cruft with optional `pyproject`, as `cruft[pyproject]`.
 
 ```bash
-cruft create https://github.com/MicaelJarniac/cookiecutter-python-project
+cruft create https://github.com/MicaelJarniac/crustypy
 ```
 
 ### With Cookiecutter
 [Cookiecutter][cookiecutter] can also be used, but it'll result in fewer features.
 
 ```bash
-cookiecutter gh:MicaelJarniac/cookiecutter-python-project
+cookiecutter gh:MicaelJarniac/crustypy
 ```
 
 [cruft]: https://github.com/cruft/cruft/
