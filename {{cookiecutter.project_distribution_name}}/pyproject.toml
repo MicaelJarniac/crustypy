@@ -1,20 +1,20 @@
-# https://packaging.python.org/en/latest/tutorials/packaging-projects
-# https://hatch.pypa.io
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
-name = "{{ cookiecutter.project_distribution_name }}"
-authors = [
-  { name = "{{ cookiecutter.full_name }}", email = "{{ cookiecutter.email }}" },
-]
-description = "{{ cookiecutter.project_short_description }}"
+[tool.poetry]
+name = "{{cookiecutter.project_distribution_name}}"
+version = "{{cookiecutter.version}}"  # FIXME
+description = "{{cookiecutter.project_short_description}}"
+authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
+license = "MIT"
 readme = "docs/README.md"
-requires-python = ">=3.8"
-license-files = { paths = ["LICENSE"] }
-# Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+packages = [{include = "{{cookiecutter.project_slug}}"}]
+homepage = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}"
+repository = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}"
+documentation = "https://{{cookiecutter.project_distribution_name}}.readthedocs.io"
 classifiers = [
+  # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
   "Development Status :: 1 - Planning",
   "License :: OSI Approved :: MIT License",
   "Natural Language :: English",
@@ -27,55 +27,44 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Typing :: Typed",
 ]
-dynamic = ["version"]
-dependencies = [
-    "loguru >= 0.7.0",
-]
 
-[project.optional-dependencies]
-# Use `constraints.txt`
-tests = [
-  "coverage",
-  "pytest",
-  "pytest-cov",
-]
-docs = [
-  "furo",
-  "myst-parser",
-  "Sphinx",
-  "sphinxcontrib-spelling",
-]
-stubs = [
-  # Typing stubs go here
-]
-typing = [
-  "{{ cookiecutter.project_distribution_name }}[stubs]",
-  "mypy",
-  "mypy-extensions",
-  "nox",
-  "pytest",
-]
-dev = [
-  "{{ cookiecutter.project_distribution_name }}[tests,docs,stubs,typing]",
-  "black",
-  "build",
-  "nox",
-  "pre-commit",
-  "python-semantic-release",
-  "ruff",
-  "semver",
-  "toml",
-]
+[tool.poetry.dependencies]
+python = "^3.8"
+loguru = "^0.7.0"
 
-[project.urls]
-"Homepage" = "{{ cookiecutter.__github_url }}"
-"Changelog" = "{{ cookiecutter.__github_url }}/blob/main/docs/CHANGELOG.md"
-"Documentation" = "https://{{ cookiecutter.__readthedocs_name }}.readthedocs.io"
-"Repository" = "{{ cookiecutter.__github_url }}"
-"Bug Tracker" = "{{ cookiecutter.__github_url }}/issues"
+[tool.poetry.group.tests.dependencies]
+coverage = "^7.2.7"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
 
-[tool.hatch.version]
-path = "src/{{ cookiecutter.project_slug }}/__init__.py"
+[tool.poetry.group.docs.dependencies]
+furo = "^2023.5.20"
+myst-parser = "^2.0.0"
+Sphinx = "^7.0.1"
+sphinxcontrib-spelling = "^8.0.0"
+
+[tool.poetry.group.stubs.dependencies]
+# Typing stubs go here
+
+[tool.poetry.group.typing.dependencies]
+# Also requires group `stubs`
+mypy = "^1.4.0"
+mypy-extensions = "^1.0.0"
+nox = "^2023.4.22"
+pytest = "^7.4.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+nox = "^2023.4.22"
+pre-commit = "^3.3.3"
+python-semantic-release = "^7.34.6"
+ruff = "^0.0.275"
+semver = "^3.0.1"
+toml = "^0.10.2"
+
+[tool.poetry.urls]
+"Changelog" = "https://github.com/AuthorName/python-project/blob/main/docs/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/AuthorName/python-project/issues"
 
 [tool.ruff]
 # https://beta.ruff.rs/docs/rules
