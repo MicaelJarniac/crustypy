@@ -60,7 +60,6 @@ pre-commit = "^3.3.3"
 python-semantic-release = "^7.34.6"
 ruff = "^0.0.275"
 semver = "^3.0.1"
-toml = "^0.10.2"
 
 [tool.poetry.urls]
 "Changelog" = "https://github.com/AuthorName/python-project/blob/main/docs/CHANGELOG.md"
