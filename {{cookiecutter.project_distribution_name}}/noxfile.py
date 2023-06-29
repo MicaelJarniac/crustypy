@@ -1,15 +1,42 @@
 """Nox file for automation."""
 
+from typing import Iterable, Optional
+
 import nox
 
 python_versions = ["3.8", "3.9", "3.10", "3.11"]
-constraints = ("-c", "constraints.txt")
+
+
+def install(
+    session: nox.Session,
+    *,
+    groups: Iterable[str],
+    root: bool = True,
+    only: Optional[bool] = None,
+    extras: bool = False,
+) -> None:
+    """Install the dependency groups using Poetry."""
+    if only is None:
+        only = not root
+
+    command = [
+        "poetry",
+        "install",
+        "--sync",
+        f'--{"only" if only else "with"}={",".join(groups)}',
+    ]
+    if not root:
+        command.append("--no-root")
+    if extras:
+        command.append("--all-extras")
+
+    session.run_always(*command, external=True)
 
 
 @nox.session(python=python_versions[-1])
 def fix_files(session: nox.Session) -> None:
     """Fix files."""
-    session.install(*constraints, "ruff", "black")
+    install(session, groups=["linting"], root=False)
     session.run("ruff", "check", "--fix-only", ".")
     session.run("black", ".")
 
@@ -17,7 +44,7 @@ def fix_files(session: nox.Session) -> None:
 @nox.session(python=python_versions)
 def lint_files(session: nox.Session) -> None:
     """Lint files."""
-    session.install(*constraints, "ruff", "black")
+    install(session, groups=["linting"], root=False)
     session.run("ruff", "check", ".")
     session.run("black", "--check", ".")
 
@@ -25,7 +52,13 @@ def lint_files(session: nox.Session) -> None:
 @nox.session(python=python_versions)
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""
-    session.install(*constraints, "-e", ".[typing]")
+    install(
+        session,
+        groups=["main", "typing", "stubs"],
+        root=True,
+        only=True,
+        extras=True,
+    )
     # mypy --install-types
     session.run("mypy")
 
@@ -33,5 +66,5 @@ def type_check_code(session: nox.Session) -> None:
 @nox.session(python=python_versions)
 def test_code(session: nox.Session) -> None:
     """Test code."""
-    session.install(*constraints, "-e", ".[tests]")
+    install(session, groups=["main", "tests"], root=True, only=True, extras=True)
     session.run("pytest")
