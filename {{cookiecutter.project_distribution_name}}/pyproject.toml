@@ -57,9 +57,11 @@ pytest = "^7.4.0"
 black = "^23.3.0"
 ruff = "^0.0.275"
 
+[tool.poetry.group.pre-commit.dependencies]
+pre-commit = "^3.3.3"
+
 [tool.poetry.group.dev.dependencies]
 nox = "^2023.4.22"
-pre-commit = "^3.3.3"
 python-semantic-release = "^7.34.6"
 semver = "^2.13.0"
 

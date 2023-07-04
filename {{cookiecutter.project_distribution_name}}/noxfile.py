@@ -34,19 +34,37 @@ def install(
 
 
 @nox.session(python=python_versions[-1])
-def fix_files(session: nox.Session) -> None:
-    """Fix files."""
-    install(session, groups=["linting"], root=False)
-    session.run("ruff", "check", "--fix-only", ".")
-    session.run("black", ".")
+def pre_commit(session: nox.Session) -> None:
+    """Run pre-commit."""
+    install(session, groups=["pre-commit"], root=False)
+    session.run(
+        "pre-commit",
+        "run",
+        "--all-files",
+        "--show-diff-on-failure",
+        "--hook-stage=manual",
+    )
 
 
-@nox.session(python=python_versions)
+@nox.session(python=python_versions[-1])
 def lint_files(session: nox.Session) -> None:
-    """Lint files."""
+    """Lint and fix files.
+
+    Pass `--check` to only lint, not fix.
+    `nox -s lint_files -- --check`
+    """
     install(session, groups=["linting"], root=False)
-    session.run("ruff", "check", ".")
-    session.run("black", "--check", ".")
+
+    command_ruff = ["ruff", "check", "."]
+    command_black = ["black", "."]
+
+    if "--check" in session.posargs:
+        command_black.append("--check")
+    else:
+        command_ruff.append("--fix")
+
+    session.run(*command_ruff)
+    session.run(*command_black)
 
 
 @nox.session(python=python_versions)
