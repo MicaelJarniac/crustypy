@@ -18,6 +18,7 @@ jobs:
     - name: Install and set up Poetry
       run: |
         curl -sL https://install.python-poetry.org | python - -y
+        poetry shell
     - name: Install dependencies
       run: |
         poetry install --only tests
