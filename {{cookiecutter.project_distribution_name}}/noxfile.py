@@ -29,9 +29,6 @@ def install(
         command.append("--no-root")
     if extras:
         command.append("--all-extras")
-    if "FORCE_COLOR" in session.env:
-        # https://github.com/python-poetry/poetry/issues/8152
-        command.append("--ansi")
 
     session.run_always(*command, external=True)
 
