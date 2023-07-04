@@ -12,8 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install and set up Poetry
-      run: |
-        curl -sL https://install.python-poetry.org | python - -y
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
     - uses: daisylb/setup-nox@v2.1.0
     - run: nox
