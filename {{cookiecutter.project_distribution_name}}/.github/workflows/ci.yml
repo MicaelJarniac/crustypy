@@ -7,6 +7,7 @@ on:
 
 env:
   FORCE_COLOR: 1
+  CLICOLOR_FORCE: 1
 
 jobs:
   pre-commit:
