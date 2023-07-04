@@ -5,6 +5,7 @@ from typing import Iterable, Optional
 import nox
 
 python_versions = ["3.8", "3.9", "3.10", "3.11"]
+venv_params = ["--no-setuptools", "--no-wheel"]
 
 
 def install(
@@ -33,7 +34,7 @@ def install(
     session.run_always(*command, external=True)
 
 
-@nox.session(python=python_versions[-1])
+@nox.session(python=python_versions[-1], venv_params=venv_params)
 def pre_commit(session: nox.Session) -> None:
     """Run pre-commit."""
     install(session, groups=["pre-commit"], root=False)
@@ -46,7 +47,7 @@ def pre_commit(session: nox.Session) -> None:
     )
 
 
-@nox.session(python=python_versions[-1])
+@nox.session(python=python_versions[-1], venv_params=venv_params)
 def lint_files(session: nox.Session) -> None:
     """Lint and fix files.
 
@@ -67,7 +68,7 @@ def lint_files(session: nox.Session) -> None:
     session.run(*command_black)
 
 
-@nox.session(python=python_versions)
+@nox.session(python=python_versions, venv_params=venv_params)
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""
     install(
@@ -81,7 +82,7 @@ def type_check_code(session: nox.Session) -> None:
     session.run("mypy")
 
 
-@nox.session(python=python_versions)
+@nox.session(python=python_versions, venv_params=venv_params)
 def test_code(session: nox.Session) -> None:
     """Test code."""
     install(session, groups=["main", "tests"], root=True, only=True, extras=True)
