@@ -3,7 +3,6 @@ name: Test with Nox
 on:
   workflow_run:
     workflows: ["pre-commit"]
-    branches: [develop, main]
     types:
       - completed
 
@@ -13,5 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Install and set up Poetry
+      run: |
+        curl -sL https://install.python-poetry.org | python - -y
     - uses: daisylb/setup-nox@v2.1.0
     - run: nox
