@@ -1,10 +1,9 @@
 name: Test with Nox
 
 on:
-  workflow_run:
-    workflows: ["pre-commit"]
-    types:
-      - completed
+  pull_request:
+  push:
+    branches: [main]
 
 jobs:
   build:
