@@ -54,8 +54,10 @@ nox = "^2023.4.22"
 pytest = "^7.4.0"
 
 [tool.poetry.group.linting.dependencies]
-black = "^23.3.0"
 ruff = "^0.0.275"
+
+[tool.poetry.group.formatting.dependencies]
+black = "^23.3.0"
 
 [tool.poetry.group.pre-commit.dependencies]
 pre-commit = "^3.3.3"

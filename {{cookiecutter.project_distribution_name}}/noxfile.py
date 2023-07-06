@@ -49,23 +49,16 @@ def pre_commit(session: nox.Session) -> None:
 
 @nox.session(python=python_versions[-1], venv_params=venv_params)
 def lint_files(session: nox.Session) -> None:
-    """Lint and fix files.
-
-    Pass `--check` to only lint, not fix.
-    `nox -s lint_files -- --check`
-    """
+    """Lint and fix files."""
     install(session, groups=["linting"], root=False)
+    session.run("ruff", "check", ".", "--fix")
 
-    command_ruff = ["ruff", "check", "."]
-    command_black = ["black", "."]
 
-    if "--check" in session.posargs:
-        command_black.append("--check")
-    else:
-        command_ruff.append("--fix")
-
-    session.run(*command_ruff)
-    session.run(*command_black)
+@nox.session(python=python_versions[-1], venv_params=venv_params)
+def format_files(session: nox.Session) -> None:
+    """Format files."""
+    install(session, groups=["formatting"], root=False)
+    session.run("black", ".")
 
 
 @nox.session(python=python_versions, venv_params=venv_params)
