@@ -3,7 +3,8 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
 
 env:
   FORCE_COLOR: 1
@@ -15,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: snok/install-poetry@v1
-    - uses: daisylb/setup-nox@v2.1.0
-    - run: nox
+      - uses: actions/checkout@v3
+      - uses: snok/install-poetry@v1
+      - uses: daisylb/setup-nox@v2.1.0
+      - run: nox

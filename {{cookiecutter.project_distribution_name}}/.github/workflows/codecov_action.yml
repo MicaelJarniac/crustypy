@@ -10,23 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-      with:
-        virtualenvs-in-project: true
-    - name: Install project
-      run: poetry install --no-interaction --only=main,tests
-    - name: Generate coverage report
-      run: |
-        poetry run pytest --cov --cov-report=xml
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-        token: {{ "${{ secrets.CODECOV_TOKEN }}" }}
-        file: ./coverage.xml
-        flags: unittests
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-in-project: true
+
+      - name: Install project
+        run: poetry install --no-interaction --only=main,tests
+
+      - name: Generate coverage report
+        run: |
+          poetry run pytest --cov --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{"{{"}} secrets.CODECOV_TOKEN {{"}}"}}
+          file: ./coverage.xml
+          flags: unittests

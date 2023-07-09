@@ -118,11 +118,20 @@ show_column_numbers = true
 # pretty = true
 
 [tool.semantic_release]
+changelog_capitalize = false  # FIXME
+version_toml = ["pyproject.toml:tool.poetry.version"]
+build_command = "poetry build"
+
+[tool.semantic_release.changelog]
 changelog_file = "docs/CHANGELOG.md"
-changelog_capitalize = false
-version_toml = "pyproject.toml:tool.poetry.version"
-build_command = "python -m build"
-branch = "main"
+
+[tool.semantic_release.branches.main]
+match = "main"
+
+[tool.semantic_release.branches.rc]
+match = "rc"
+prerelease = true
+prerelease_token = "rc"
 
 [tool.coverage.run]
 source = ["src"]
