@@ -118,7 +118,6 @@ show_column_numbers = true
 # pretty = true
 
 [tool.semantic_release]
-changelog_capitalize = false  # FIXME
 version_toml = ["pyproject.toml:tool.poetry.version"]
 build_command = "poetry build"
 
