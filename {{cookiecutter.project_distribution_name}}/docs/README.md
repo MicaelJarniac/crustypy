@@ -30,9 +30,9 @@
 [label-repo]: {{ cookiecutter.shields_url }}/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: {{ cookiecutter.shields_url }}/github/actions/workflow/status/{{ cookiecutter.__github_path }}/nox.yml?branch=main&style=flat-square
-[actions]: {{ cookiecutter.__github_url }}/actions
-[badge-semantic-release]: {{ cookiecutter.shields_url }}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
+[badge-actions]: {{cookiecutter.shields_url}}/github/actions/workflow/status/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/ci.yml?branch=main&style=flat-square
+[actions]: https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/actions
+[badge-semantic-release]: {{cookiecutter.shields_url}}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
 [badge-pypi]: {{ cookiecutter.shields_url }}/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
 [pypi]: https://pypi.org/project/{{ cookiecutter.project_distribution_name }}
