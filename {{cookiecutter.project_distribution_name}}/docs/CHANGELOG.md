@@ -2,6 +2,43 @@
 
 
 
+## v0.1.1 (2023-07-14)
+
+### Build
+
+* build(release): fix build command ([`f572ae9`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/f572ae9e935d72140bd1792c0463e1fb8edd5da7))
+
+* build(release): `build_command = &#34;python -m build&#34;` ([`d6b8234`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/d6b8234caf9f988f7f67f33fb1f59c51ba37ab09))
+
+* build: remove version classifiers, Poetry will add ([`53f677c`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/53f677c0a9cf0801c012449e385e3cc3bf6ecfc7))
+
+* build: fix URLs ([`83427df`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/83427dff399749be5fdb99b0bc9de4d3c302c2bd))
+
+* build(docs): fix Poetry install command ([`a6233b1`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/a6233b148abcadf62a82bafc968ff1d3fc5f05b7))
+
+### Documentation
+
+* docs(readme): fix action badge ([`aae7635`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/aae7635ba590b9b9102e2cf8b8b562a5f9a652c0))
+
+### Fix
+
+* fix: force release ([`05ca4a6`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/05ca4a6e40a6d59b388ffc359bf7436ef60ef40d))
+
+### Unknown
+
+* Merge pull request #4 from {{cookiecutter.github_username}}/template
+
+Template ([`b2cb415`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/b2cb415721b973df753c8a63838bb63a5ba53d01))
+
+* Merge pull request #3 from {{cookiecutter.github_username}}/template
+
+build(docs): fix Poetry install command ([`17f9a66`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/17f9a66566902ce78320bf3d7f6f8332d530a776))
+
+* Merge pull request #2 from {{cookiecutter.github_username}}/template
+
+docs(readme): fix action badge ([`0507f7b`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/0507f7b127d938dd86ab275e969ff5f44798acdf))
+
+
 ## v0.1.0 (2023-07-14)
 
 ### Build
