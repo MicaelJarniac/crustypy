@@ -19,8 +19,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: snok/install-poetry@v1
-
       - name: Python Semantic Release
         id: release
         uses: python-semantic-release/python-semantic-release@8.0.x
