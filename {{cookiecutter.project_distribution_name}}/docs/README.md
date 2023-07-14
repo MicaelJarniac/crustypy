@@ -11,7 +11,7 @@
   | ![Build][label-build] | [![Nox][badge-actions]][actions] [![semantic-release][badge-semantic-release]][semantic-release] [![PyPI][badge-pypi]][pypi] [![Read the Docs][badge-docs]][docs] |
   | ![Tests][label-tests] | [![coverage][badge-coverage]][coverage] [![pre-commit][badge-pre-commit]][pre-commit] |
   | ![Standards][label-standards] | [![SemVer 2.0.0][badge-semver]][semver] [![Conventional Commits][badge-conventional-commits]][conventional-commits] |
-  | ![Code][label-code] | [![Code style: black][badge-black]][Black] [![Ruff][badge-ruff]][ruff] [![Checked with mypy][badge-mypy]][mypy] |
+  | ![Code][label-code] | [![Poetry][badge-poetry]][poetry] [![Code style: black][badge-black]][Black] [![Ruff][badge-ruff]][ruff] [![Checked with mypy][badge-mypy]][mypy] |
   | ![Repo][label-repo] | [![GitHub issues][badge-issues]][issues] [![GitHub stars][badge-stars]][stars] [![GitHub license][badge-license]][license] [![All Contributors][badge-all-contributors]][contributors] [![Contributor Covenant][badge-code-of-conduct]][code-of-conduct] |
 </div>
 
@@ -52,7 +52,9 @@
 [conventional-commits]: https://conventionalcommits.org
 
 <!-- Code -->
-[badge-black]: {{ cookiecutter.shields_url }}/badge/code%20style-black-black?style=flat-square
+[badge-poetry]: {{cookiecutter.shields_url}}/endpoint?url=https://python-poetry.org/badge/v0.json&style=flat-square
+[poetry]: https://python-poetry.org
+[badge-black]: {{cookiecutter.shields_url}}/badge/code%20style-black-black?style=flat-square
 [Black]: https://github.com/psf/black
 [badge-ruff]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json&style=flat-square
 [ruff]: https://github.com/astral-sh/ruff
@@ -81,17 +83,23 @@
 
 ## Installation
 
-### pip
-[*{{ cookiecutter.project_distribution_name }}*][pypi] is available on [pip](https://pip.pypa.io/en/stable/):
+### PyPI
+[*{{cookiecutter.project_distribution_name}}*][pypi] is available on PyPI:
 
 ```bash
-pip install {{ cookiecutter.project_distribution_name }}
+# With pip
+pip install {{cookiecutter.project_distribution_name}}
+# With Poetry
+poetry add {{cookiecutter.project_distribution_name}}
 ```
 
 ### GitHub
 You can also install the latest version of the code directly from GitHub:
 ```bash
-pip install git+git://github.com/{{ cookiecutter.__github_path }}
+# With pip
+pip install git+git://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}
+# With Poetry
+poetry add git+git://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}
 ```
 
 ## Usage

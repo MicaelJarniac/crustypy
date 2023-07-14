@@ -63,7 +63,7 @@ Here is a summary of the steps to follow:
 ```bash
 $ git checkout main
 $ git pull upstream main
-$ pip install -U -c constraints.txt -e .[dev]
+$ poetry install --sync --all-extras
 ```
 3. Create a new topic branch (off the main project development branch) to contain your feature, change, or fix:
 ```bash
@@ -103,7 +103,7 @@ To ensure consistency and quality, all documentation modifications must:
   - an external concept or feature, i.e. Create a [GitHub release](https://help.github.com/articles/creating-releases)
   - a package or module, i.e. The [`@{{ cookiecutter.__github_path }}`]({{ cookiecutter.__github_url }}) module
 - Use the [single backtick `code` quoting](https://help.github.com/articles/basic-writing-and-formatting-syntax/#quoting-code) for:
-  - commands inside sentences, i.e. the `pip` command
+  - commands inside sentences, i.e. the `poetry` command
   - programming language keywords, i.e. `for`, `with`, `dict`
   - packages or modules, i.e. The [`@{{ cookiecutter.__github_path }}`]({{ cookiecutter.__github_url }}) module
 - Use the [triple backtick `code` formatting](https://help.github.com/articles/creating-and-highlighting-code-blocks) for:
@@ -208,18 +208,8 @@ git clone {{ cookiecutter.__github_url }}
 # Navigate to the newly cloned directory
 cd {{ cookiecutter.project_distribution_name }}
 
-# Set up the virtual environment
-python -m venv venv
-# Replace `python` with `python3` if necessary
-
-# Activate the virtual environment (Unix)
-source venv/bin/activate
-
-# Activate the virtual environment (Windows)
-.\venv\Scripts\activate
-
-# Install the dependencies
-pip install -U -c constraints.txt -e .[dev]
+# Set up the environment
+poetry install --sync --all-extras
 
 # Set up pre-commit hooks
 pre-commit install
@@ -273,24 +263,19 @@ make html
 
 ### Requirements
 
-All requirements should be on [`pyproject.toml`](../pyproject.toml), on their respective sections.
-Constraints should be maintained in [`constraints.txt`](../constraints.txt).
+Read the Poetry commands docs [here](https://python-poetry.org/docs/cli/).
 
-To see which installed packages are outdated, run `pip list --outdated`.
+All requirements should be listed in the `pyproject.toml` file, under their respective sections.
 
-To update installed packages, run `pip install --upgrade <package name>`.
+To add a new requirement, run `poetry add <package name>`.
 
-To generate a list of the currently installed packages and their versions, do the following:
+To see which installed packages are outdated, run `poetry show --outdated`.
 
-```bash
-pip freeze > requirements-current.txt
-```
+To update installed packages, run `poetry update <package name>`.
 
-That will create a new file, `requirements-current.txt`, with them.
+Always lock the dependencies after updating them, by running `poetry lock`.
 
-You can then compare it with the current requirements listed in the other files, and update them as needed.
-
-When updating development requirements, make sure to also update the related pre-commit hooks.
+When updating development requirements, make sure to also update the related pre-commit hooks in [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
 
 ### Updating template
 
@@ -300,7 +285,7 @@ When updating development requirements, make sure to also update the related pre
 cruft update
 ```
 
-After updating, the versions of dependencies might change, so use `pip` to reinstall the requirements with the `--upgrade` option.
+After updating, the versions of dependencies might change, so use `poetry install --sync --all-extras`.
 
 ## Add yourself as a contributor
 

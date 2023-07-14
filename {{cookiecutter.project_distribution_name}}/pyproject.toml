@@ -143,4 +143,5 @@ command_line = "-m pytest"
 skip = [
   "src",
   "tests",
+  "poetry.lock",
 ]

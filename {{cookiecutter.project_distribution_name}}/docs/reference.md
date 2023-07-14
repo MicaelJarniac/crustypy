@@ -14,6 +14,9 @@
 
         - [`ruff`][ruff]
         - [`black`][black]
+        - [`poetry`][poetry]
+          - `poetry-check`
+          - `poetry-lock`
         - [`pre-commit-hooks`][pre-commit-hooks]
           - `check-toml`
           - `check-yaml`
@@ -45,7 +48,7 @@
       - [MyST][myst]
     - [Google style docstrings][docstring_google]
   - Building
-    - [Hatchling][hatchling]
+    - [Poetry][poetry]
       - [`pyproject.toml`][pyproject_toml]
   - Configuration Files
     - [`pyproject.toml`][pyproject_toml]
@@ -107,7 +110,7 @@
 [sphinxcontrib-spelling]: https://github.com/sphinx-contrib/spelling
 [myst]: https://github.com/executablebooks/myst-parser
 [docstring_google]: https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
-[hatchling]: https://github.com/pypa/hatch/tree/master/backend
+[poetry]: https://python-poetry.org
 [conventionalcommits]: https://www.conventionalcommits.org
 [semver]: https://semver.org
 [allcontributors]: https://github.com/all-contributors/all-contributors
