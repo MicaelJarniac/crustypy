@@ -67,8 +67,8 @@ nox = "^2023.4.22"
 python-semantic-release = "^7.34.6"
 
 [tool.poetry.urls]
-"Changelog" = "https://github.com/AuthorName/python-project/blob/main/docs/CHANGELOG.md"
-"Bug Tracker" = "https://github.com/AuthorName/python-project/issues"
+"Changelog" = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/blob/main/docs/CHANGELOG.md"
+"Bug Tracker" = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/issues"
 
 [tool.ruff]
 # https://beta.ruff.rs/docs/rules
