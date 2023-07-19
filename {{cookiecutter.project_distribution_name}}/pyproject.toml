@@ -4,15 +4,15 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "{{cookiecutter.project_distribution_name}}"
-version = "0.1.1"
+version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.project_short_description}}"
 authors = ["{{cookiecutter.full_name}} <{{cookiecutter.email}}>"]
 license = "MIT"
 readme = "docs/README.md"
 packages = [{include = "{{cookiecutter.project_slug}}", from = "src"}]
-homepage = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}"
-repository = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}"
-documentation = "https://{{cookiecutter.project_distribution_name}}.readthedocs.io"
+homepage = "{{ cookiecutter.__github_url }}"
+repository = "{{ cookiecutter.__github_url }}"
+documentation = "https://{{ cookiecutter.__readthedocs_name }}.readthedocs.io"
 classifiers = [
   # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
   "Development Status :: 1 - Planning",
@@ -61,8 +61,8 @@ nox = "^2023.4.22"
 python-semantic-release = "^7.34.6"
 
 [tool.poetry.urls]
-"Changelog" = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/blob/main/docs/CHANGELOG.md"
-"Bug Tracker" = "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/issues"
+"Changelog" = "{{ cookiecutter.__github_url }}/blob/main/docs/CHANGELOG.md"
+"Bug Tracker" = "{{ cookiecutter.__github_url }}/issues"
 
 [tool.ruff]
 # https://beta.ruff.rs/docs/rules
