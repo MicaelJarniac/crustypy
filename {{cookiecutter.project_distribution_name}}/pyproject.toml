@@ -58,7 +58,7 @@ pre-commit = "^3.3.3"
 
 [tool.poetry.group.dev.dependencies]
 nox = "^2023.4.22"
-python-semantic-release = "^7.34.6"
+python-semantic-release = "^8.0.2"
 
 [tool.poetry.urls]
 "Changelog" = "{{ cookiecutter.__github_url }}/blob/main/docs/CHANGELOG.md"
