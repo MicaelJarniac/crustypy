@@ -3,6 +3,8 @@ Bake your Python projects to perfection.
 
 A basic Python project template for [Cookiecutter][cookiecutter].
 
+To see what a project generated with this template looks like, check out [crustypy-instance](https://github.com/MicaelJarniac/crustypy-instance).
+
 ## Usage
 
 ### With cruft (recommended)
