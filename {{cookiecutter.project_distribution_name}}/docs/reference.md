@@ -102,7 +102,7 @@
 [pytest]: https://github.com/pytest-dev/pytest
 [pytest-cov]: https://github.com/pytest-dev/pytest-cov
 [coveragepy]: https://github.com/nedbat/coveragepy
-[nox]: https://github.com/theacodes/nox
+[nox]: https://github.com/wntrblm/nox
 [cruft]: https://github.com/cruft/cruft/
 [cookiecutter]: https://github.com/cookiecutter/cookiecutter
 [sphinx]: https://www.sphinx-doc.org
