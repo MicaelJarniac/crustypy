@@ -38,11 +38,8 @@ myst-parser = "^2.0.0"
 Sphinx = "^7.0.1"
 sphinxcontrib-spelling = "^8.0.0"
 
-[tool.poetry.group.stubs.dependencies]
-# Typing stubs go here
-
 [tool.poetry.group.typing.dependencies]
-# Also requires group `stubs`
+# Typing stubs go here
 mypy = "^1.4.0"
 nox = "^2023.4.22"
 pytest = "^7.4.0"
