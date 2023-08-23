@@ -9,7 +9,7 @@
   | | ![Badges][label-badges] |
   |:-|:-|
   | ![Build][label-build] | [![Nox][badge-actions]][actions] [![semantic-release][badge-semantic-release]][semantic-release] [![PyPI][badge-pypi]][pypi] [![Read the Docs][badge-docs]][docs] |
-  | ![Tests][label-tests] | [![coverage][badge-coverage]][coverage] [![pre-commit][badge-pre-commit]][pre-commit] |
+  | ![Tests][label-tests] | [![coverage][badge-coverage]][coverage] [![pre-commit][badge-pre-commit]][pre-commit] [![asv][badge-asv]][asv] |
   | ![Standards][label-standards] | [![SemVer 2.0.0][badge-semver]][semver] [![Conventional Commits][badge-conventional-commits]][conventional-commits] |
   | ![Code][label-code] | [![Poetry][badge-poetry]][poetry] [![Code style: black][badge-black]][Black] [![Ruff][badge-ruff]][ruff] [![Checked with mypy][badge-mypy]][mypy] |
   | ![Repo][label-repo] | [![GitHub issues][badge-issues]][issues] [![GitHub stars][badge-stars]][stars] [![GitHub license][badge-license]][license] [![All Contributors][badge-all-contributors]][contributors] [![Contributor Covenant][badge-code-of-conduct]][code-of-conduct] |
@@ -44,6 +44,8 @@
 [coverage]: https://codecov.io/gh/{{ cookiecutter.__github_path }}
 [badge-pre-commit]: {{ cookiecutter.shields_url }}/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white
 [pre-commit]: https://github.com/pre-commit/pre-commit
+[badge-asv]: {{cookiecutter.shields_url}}/badge/benchmarked%20by-asv-blue?style=flat-square
+[asv]: https://github.com/airspeed-velocity/asv
 
 <!-- Standards -->
 [badge-semver]: {{ cookiecutter.shields_url }}/badge/SemVer-2.0.0-blue?style=flat-square&logo=semver
