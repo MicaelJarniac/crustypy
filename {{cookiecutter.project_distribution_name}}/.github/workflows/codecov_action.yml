@@ -23,7 +23,7 @@ jobs:
           virtualenvs-in-project: true
 
       - name: Install project
-        run: poetry install --no-interaction --only=main,tests
+        run: poetry install --no-interaction --only=main,tests --all-extras
 
       - name: Generate coverage report
         run: |
