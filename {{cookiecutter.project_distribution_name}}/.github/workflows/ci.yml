@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - rc
 
 env:
   FORCE_COLOR: 1
