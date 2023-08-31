@@ -3,7 +3,9 @@ name: Codecov
 on:
   pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
+      - rc
 
 jobs:
   run:
