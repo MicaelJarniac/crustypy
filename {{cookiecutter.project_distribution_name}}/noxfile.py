@@ -1,6 +1,11 @@
 """Nox file for automation."""
 
-from typing import Iterable, Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 import nox
 
@@ -13,7 +18,7 @@ def install(
     *,
     groups: Iterable[str],
     root: bool = True,
-    only: Optional[bool] = None,
+    only: bool | None = None,
     extras: bool = False,
 ) -> None:
     """Install the dependency groups using Poetry."""
@@ -52,6 +57,12 @@ def lint_files(session: nox.Session) -> None:
     """Lint and fix files."""
     install(session, groups=["linting"], root=False)
     session.run("ruff", "check", ".", "--fix")
+
+
+@nox.session(python=python_versions[-1], venv_params=venv_params)
+def format_files(session: nox.Session) -> None:
+    """Format files."""
+    install(session, groups=["linting"], root=False)
     session.run("ruff", "format")
 
 
