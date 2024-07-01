@@ -54,13 +54,6 @@ def lint_files(session: nox.Session) -> None:
     session.run("ruff", "check", ".", "--fix")
 
 
-@nox.session(python=python_versions[-1], venv_params=venv_params)
-def format_files(session: nox.Session) -> None:
-    """Format files."""
-    install(session, groups=["formatting"], root=False)
-    session.run("black", ".")
-
-
 @nox.session(python=python_versions, venv_params=venv_params)
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""

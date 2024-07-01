@@ -53,9 +53,6 @@ pytest-benchmark = "^4.0.0"
 [tool.poetry.group.linting.dependencies]
 ruff = "^0.0.275"
 
-[tool.poetry.group.formatting.dependencies]
-black = "^23.3.0"
-
 [tool.poetry.group.pre-commit.dependencies]
 pre-commit = "^3.3.3"
 
@@ -90,16 +87,6 @@ builtins-ignorelist = ["id", "type"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
-
-[tool.black]
-line-length = 88  # Default
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-    \.git
-  | _build
-)/
-'''
 
 [tool.mypy]
 files = ["src", "docs", "tests", "noxfile.py"]

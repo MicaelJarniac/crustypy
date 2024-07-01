@@ -229,7 +229,7 @@ It can be run on demand with `pre-commit run`, and optionally on all files with 
 
 ### Lint
 
-This repository uses [Ruff](https://beta.ruff.rs/docs) for linting and [black](https://black.readthedocs.io) for formatting. black formatting will be automatically verified and fixed.
+This repository uses [Ruff](https://beta.ruff.rs/docs) for linting and formatting.
 
 **Tips**:
 - [Set up your editor](#set-up-your-editor) to see linting errors directly in your editor and automatically fix them on save.

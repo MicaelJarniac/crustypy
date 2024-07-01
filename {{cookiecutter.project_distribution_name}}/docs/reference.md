@@ -2,8 +2,6 @@
 
 - Tools
   - Formatting
-    - [Black][black] <sup>[config][pyproject_toml]</sup>
-      - [Compatible configs][black_cc]
     - [Ruff][ruff] <sup>[config][pyproject_toml]</sup>
   - Linting
     - [Ruff][ruff] <sup>[config][pyproject_toml]</sup>
@@ -13,7 +11,6 @@
         <summary>Hooks</summary>
 
         - [`ruff`][ruff]
-        - [`black`][black]
         - [`poetry`][poetry]
           - `poetry-check`
           - `poetry-lock`
@@ -88,8 +85,6 @@
 [docs_wordlist_txt]: ./wordlist.txt
 [noxfile_py]: ../noxfile.py
 
-[black]: https://github.com/psf/black
-[black_cc]: https://black.readthedocs.io/en/stable/compatible_configs.html
 [ruff]: https://github.com/astral-sh/ruff
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
