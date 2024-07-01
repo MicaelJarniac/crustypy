@@ -51,7 +51,7 @@ pytest = "^7.4.0"
 pytest-benchmark = "^4.0.0"
 
 [tool.poetry.group.linting.dependencies]
-ruff = "^0.0.275"
+ruff = "^0.5.0"
 
 [tool.poetry.group.pre-commit.dependencies]
 pre-commit = "^3.3.3"
@@ -71,8 +71,6 @@ select = ["ALL"]
 ignore = [
   "D203",
   "D213",
-  "ANN101",
-  "ANN102",
 ]
 unfixable = ["ERA001"]
 force-exclude = true
@@ -87,6 +85,9 @@ builtins-ignorelist = ["id", "type"]
 
 [tool.ruff.pydocstyle]
 convention = "google"
+
+[tool.ruff.format]
+docstring-code-format = true
 
 [tool.mypy]
 files = ["src", "docs", "tests", "noxfile.py"]

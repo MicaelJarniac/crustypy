@@ -52,6 +52,7 @@ def lint_files(session: nox.Session) -> None:
     """Lint and fix files."""
     install(session, groups=["linting"], root=False)
     session.run("ruff", "check", ".", "--fix")
+    session.run("ruff", "format")
 
 
 @nox.session(python=python_versions, venv_params=venv_params)
