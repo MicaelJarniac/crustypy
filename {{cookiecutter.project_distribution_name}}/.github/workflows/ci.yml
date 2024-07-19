@@ -9,7 +9,6 @@ on:
 
 env:
   FORCE_COLOR: 1
-  CLICOLOR_FORCE: 1  # https://github.com/astral-sh/ruff/issues/5499
   PRE_COMMIT_COLOR: "always"  # https://github.com/pre-commit/pre-commit/issues/2918
 
 jobs:
