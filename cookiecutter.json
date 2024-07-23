@@ -9,11 +9,27 @@
     "project_short_description": "A simple Python project.",
     "version": "0.0.0",
     "shields_url": "https://img.shields.io",
-    "use_discord_community": ["yes", "no"],
-    "discord_invite": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
-    "discord_id": "{% if cookiecutter.use_discord_community == 'no' %}inactive{% endif %}",
+    "use_discord_community": true,
+    "discord_invite": "{% if not cookiecutter.use_discord_community %}inactive{% endif %}",
+    "discord_id": "{% if not cookiecutter.use_discord_community %}inactive{% endif %}",
     "report_method": "{{ cookiecutter.email }}",
     "__github_path": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_distribution_name }}",
     "__github_url": "https://github.com/{{ cookiecutter.__github_path }}",
-    "__readthedocs_name": "{{ cookiecutter.project_distribution_name }}"
+    "__readthedocs_name": "{{ cookiecutter.project_distribution_name }}",
+    "__prompts__": {
+        "full_name": "Author Name",
+        "email": "Author Email",
+        "github_username": "GitHub Username",
+        "year": "Year",
+        "project_name": "Project Name",
+        "project_slug": "Project Slug",
+        "project_distribution_name": "Project Distribution Name",
+        "project_short_description": "Project Short Description",
+        "version": "Version",
+        "shields_url": "Shields URL",
+        "use_discord_community": "Use Discord Community",
+        "discord_invite": "Discord Invite",
+        "discord_id": "Discord ID",
+        "report_method": "Report Method"
+    }
 }
