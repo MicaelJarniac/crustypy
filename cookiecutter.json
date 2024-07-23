@@ -28,8 +28,8 @@
         "version": "Version",
         "shields_url": "Shields URL",
         "use_discord_community": "Use Discord Community",
-        "discord_invite": "Discord Invite",
-        "discord_id": "Discord ID",
+        "discord_invite": "Discord Server Invite (last part only)",
+        "discord_id": "Discord Server ID",
         "report_method": "Report Method"
     }
 }
