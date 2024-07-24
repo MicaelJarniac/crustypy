@@ -1,5 +1,5 @@
 <div align="center">
-{%- if cookiecutter.use_discord_community %}
+{%- if cookiecutter.discord_invite %}
 
   [![Discord][badge-chat]][chat]
   <br>
@@ -16,8 +16,8 @@
 </div>
 
 <!-- Badges -->
-{%- if cookiecutter.use_discord_community %}
-[badge-chat]: {{ cookiecutter.shields_url }}/discord/{{ cookiecutter.discord_id }}?label=chat&logo=discord&style=flat-square
+{%- if cookiecutter.discord_invite %}
+[badge-chat]: {{ cookiecutter.shields_url }}/badge/dynamic/json?color=green&label=chat&query=%24.approximate_presence_count&suffix=%20online&logo=discord&style=flat-square&url=https%3A%2F%2Fdiscord.com%2Fapi%2Fv10%2Finvites%2F{{ cookiecutter.discord_invite }}%3Fwith_counts%3Dtrue
 [chat]: https://discord.gg/{{ cookiecutter.discord_invite }}
 {%- endif %}
 
