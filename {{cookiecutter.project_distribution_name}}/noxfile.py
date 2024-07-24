@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 import nox
 
-python_versions = ["3.8", "3.9", "3.10", "3.11"]
+python_versions = ["3.9", "3.10", "3.11", "3.12"]
 venv_params = ["--no-setuptools", "--no-wheel"]
 
 
