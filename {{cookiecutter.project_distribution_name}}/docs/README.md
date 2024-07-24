@@ -1,5 +1,5 @@
 <div align="center">
-{%- if cookiecutter.use_discord_community == "yes" %}
+{%- if cookiecutter.use_discord_community %}
 
   [![Discord][badge-chat]][chat]
   <br>
@@ -16,7 +16,7 @@
 </div>
 
 <!-- Badges -->
-{%- if cookiecutter.use_discord_community == "yes" %}
+{%- if cookiecutter.use_discord_community %}
 [badge-chat]: {{ cookiecutter.shields_url }}/discord/{{ cookiecutter.discord_id }}?label=chat&logo=discord&style=flat-square
 [chat]: https://discord.gg/{{ cookiecutter.discord_invite }}
 {%- endif %}
