@@ -25,7 +25,7 @@ dynamic = [
 homepage = "{{ cookiecutter.__github_url }}"
 source = "{{ cookiecutter.__github_url }}"
 download = "https://pypi.org/project/{{cookiecutter.project_distribution_name}}/#files"
-changelog = "{{ cookiecutter.__github_url }}/blob/main/docs/CHANGELOG.md"
+changelog = "{{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/docs/CHANGELOG.md"
 documentation = "https://{{ cookiecutter.__readthedocs_name }}.readthedocs.io"
 issues = "{{ cookiecutter.__github_url }}/issues"
 
@@ -123,7 +123,7 @@ build_command = """
 changelog_file = "docs/CHANGELOG.md"
 
 [tool.semantic_release.branches.main]
-match = "main"
+match = "{{ cookiecutter.main_branch }}"
 
 [tool.semantic_release.branches.rc]
 match = "rc"

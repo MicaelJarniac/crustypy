@@ -61,8 +61,8 @@ Here is a summary of the steps to follow:
 1. [Set up the workspace](#set-up-the-workspace)
 2. If you cloned a while ago, get the latest changes from upstream and update dependencies:
 ```bash
-$ git checkout main
-$ git pull upstream main
+$ git checkout {{ cookiecutter.main_branch }}
+$ git pull upstream {{ cookiecutter.main_branch }}
 $ poetry install --sync --all-extras
 ```
 3. Create a new topic branch (off the main project development branch) to contain your feature, change, or fix:
