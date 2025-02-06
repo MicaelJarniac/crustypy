@@ -8,6 +8,7 @@
     "project_distribution_name": "{{ cookiecutter.project_name | slugify }}",
     "project_short_description": "A simple Python project.",
     "version": "0.0.0",
+    "main_branch": "main",
     "shields_url": "https://img.shields.io",
     "discord_invite": "",
     "report_method": "{{ cookiecutter.email }}",
@@ -24,6 +25,7 @@
         "project_distribution_name": "Project Distribution Name",
         "project_short_description": "Project Short Description",
         "version": "Version",
+        "main_branch": "Main Branch",
         "shields_url": "Shields URL",
         "discord_invite": "Discord Server Invite (code only) (leave empty to disable)",
         "report_method": "Report Method"

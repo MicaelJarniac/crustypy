@@ -30,7 +30,7 @@
 [label-repo]: {{ cookiecutter.shields_url }}/badge/%F0%9F%93%81-repo-darkblue?style=flat-square
 
 <!-- Build -->
-[badge-actions]: {{ cookiecutter.shields_url }}/github/actions/workflow/status/{{ cookiecutter.__github_path }}/ci.yml?branch=main&style=flat-square
+[badge-actions]: {{ cookiecutter.shields_url }}/github/actions/workflow/status/{{ cookiecutter.__github_path }}/ci.yml?branch={{ cookiecutter.main_branch }}&style=flat-square
 [actions]: {{ cookiecutter.__github_url }}/actions
 [badge-semantic-release]: {{ cookiecutter.shields_url }}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
 [semantic-release]: https://github.com/semantic-release/semantic-release
@@ -67,7 +67,7 @@
 [badge-stars]: {{ cookiecutter.shields_url }}/github/stars/{{ cookiecutter.__github_path }}?style=flat-square
 [stars]: {{ cookiecutter.__github_url }}/stargazers
 [badge-license]: {{ cookiecutter.shields_url }}/github/license/{{ cookiecutter.__github_path }}?style=flat-square
-[license]: {{ cookiecutter.__github_url }}/blob/main/LICENSE
+[license]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/LICENSE
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
