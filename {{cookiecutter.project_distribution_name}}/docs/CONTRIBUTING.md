@@ -63,7 +63,7 @@ Here is a summary of the steps to follow:
 ```bash
 $ git checkout {{ cookiecutter.main_branch }}
 $ git pull upstream {{ cookiecutter.main_branch }}
-$ poetry install --sync --all-extras
+$ poetry install --all-extras
 ```
 3. Create a new topic branch (off the main project development branch) to contain your feature, change, or fix:
 ```bash
@@ -209,7 +209,7 @@ git clone {{ cookiecutter.__github_url }}
 cd {{ cookiecutter.project_distribution_name }}
 
 # Set up the environment
-poetry install --sync --all-extras
+poetry install --all-extras
 
 # Set up pre-commit hooks
 pre-commit install
