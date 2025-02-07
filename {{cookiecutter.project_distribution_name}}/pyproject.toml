@@ -11,7 +11,7 @@ authors = [
 ]
 license = {text = "MIT"}
 readme = "docs/README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.9,<4.0"  # py_ver
 
 dependencies = [
     "loguru (>=0.7.3,<0.8.0)"
