@@ -74,7 +74,7 @@ nox = "^2023.4.22"
 python-semantic-release = "^8.0.2"
 
 [tool.ruff]
-# https://beta.ruff.rs/docs/rules
+# https://docs.astral.sh/ruff/rules/
 line-length = 88  # Default
 force-exclude = true
 src = ["src"]
@@ -85,6 +85,8 @@ select = ["ALL"]
 ignore = [
   "D203",
   "D213",
+  "COM812",
+  "ISC001",
 ]
 unfixable = ["ERA001"]
 
