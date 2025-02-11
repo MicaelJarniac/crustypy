@@ -63,7 +63,7 @@ Here is a summary of the steps to follow:
 ```bash
 $ git checkout {{ cookiecutter.main_branch }}
 $ git pull upstream {{ cookiecutter.main_branch }}
-$ poetry install --all-extras
+$ uv sync --all-extras
 ```
 3. Create a new topic branch (off the main project development branch) to contain your feature, change, or fix:
 ```bash
@@ -103,7 +103,7 @@ To ensure consistency and quality, all documentation modifications must:
   - an external concept or feature, i.e. Create a [GitHub release](https://help.github.com/articles/creating-releases)
   - a package or module, i.e. The [`@{{ cookiecutter.__github_path }}`]({{ cookiecutter.__github_url }}) module
 - Use the [single backtick `code` quoting](https://help.github.com/articles/basic-writing-and-formatting-syntax/#quoting-code) for:
-  - commands inside sentences, i.e. the `poetry` command
+  - commands inside sentences, i.e. the `uv` command
   - programming language keywords, i.e. `for`, `with`, `dict`
   - packages or modules, i.e. The [`@{{ cookiecutter.__github_path }}`]({{ cookiecutter.__github_url }}) module
 - Use the [triple backtick `code` formatting](https://help.github.com/articles/creating-and-highlighting-code-blocks) for:
@@ -209,7 +209,7 @@ git clone {{ cookiecutter.__github_url }}
 cd {{ cookiecutter.project_distribution_name }}
 
 # Set up the environment
-poetry install --all-extras
+uv sync --all-extras
 
 # Set up pre-commit hooks
 pre-commit install
@@ -263,17 +263,17 @@ make html
 
 ### Requirements
 
-Read the Poetry commands docs [here](https://python-poetry.org/docs/cli/).
+Read the uv docs [here](https://docs.astral.sh/uv/).
 
 All requirements should be listed in the `pyproject.toml` file, under their respective sections.
 
-To add a new requirement, run `poetry add <package name>`.
+To add a new requirement, run `uv add <package name>`.
 
-To see which installed packages are outdated, run `poetry show --outdated`.
+To see which installed packages are outdated, run `uv tree --outdated`.
 
-To update installed packages, run `poetry update <package name>`.
+To update installed packages, run `uv lock --upgrade-package <package name>`.
 
-Always lock the dependencies after updating them, by running `poetry lock`.
+Always lock the dependencies after updating them, by running `uv lock`.
 
 When updating development requirements, make sure to also update the related pre-commit hooks in [`.pre-commit-config.yaml`](../.pre-commit-config.yaml).
 
@@ -285,7 +285,7 @@ When updating development requirements, make sure to also update the related pre
 cruft update
 ```
 
-After updating, the versions of dependencies might change, so use `poetry install --sync --all-extras`.
+After updating, the versions of dependencies might change, so use `uv sync --all-extras`.
 
 ## Add yourself as a contributor
 
