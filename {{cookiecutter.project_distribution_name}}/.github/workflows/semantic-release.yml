@@ -33,6 +33,7 @@ jobs:
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         if: steps.release.outputs.released == 'true'
+        continue-on-error: true
 
       - name: Publish package to GitHub
         uses: python-semantic-release/publish-action@v9.19.1
