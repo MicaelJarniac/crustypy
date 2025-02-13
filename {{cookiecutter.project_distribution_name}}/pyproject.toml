@@ -128,7 +128,7 @@ build_command = """
   uv build
 """
 
-[tool.semantic_release.changelog]
+[tool.semantic_release.changelog.default_templates]
 changelog_file = "docs/CHANGELOG.md"
 
 [tool.semantic_release.branches.main]
