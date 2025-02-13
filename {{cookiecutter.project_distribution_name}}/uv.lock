@@ -1684,7 +1684,7 @@ wheels = [
 
 [[package]]
 name = "{{cookiecutter.project_distribution_name}}"
-version = "{{cookiecutter.version}}"
+version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "loguru" },
