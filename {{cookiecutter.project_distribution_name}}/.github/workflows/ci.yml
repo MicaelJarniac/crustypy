@@ -13,6 +13,7 @@ env:
 
 jobs:
   generate-jobs:
+    name: Generate Session Jobs
     runs-on: ubuntu-latest
     outputs:
       session: ${{"{{"}} steps.set-matrix.outputs.session {{"}}"}}
@@ -22,7 +23,7 @@ jobs:
     - id: set-matrix
       shell: bash
       run: echo session=$(nox --json -l | jq -c '[.[].session]') | tee --append $GITHUB_OUTPUT
-  checks:
+  sessions:
     name: Session ${{"{{"}} matrix.session {{"}}"}}
     needs: [generate-jobs]
     runs-on: ubuntu-latest
