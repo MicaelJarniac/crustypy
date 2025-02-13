@@ -56,6 +56,12 @@ def pre_commit(session: nox.Session) -> None:
 
 
 @nox.session(python=python_version)
+def lock_dependencies(session: nox.Session) -> None:
+    """Lock the dependencies."""
+    session.run("uv", "lock")
+
+
+@nox.session(python=python_version)
 def lint_files(session: nox.Session) -> None:
     """Lint and fix files."""
     install(session, groups=["linting"], root=False)
