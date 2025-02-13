@@ -19,10 +19,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{"{{"}} github.sha {{"}}"}}
+
+      - run: |
+          git checkout -B ${{"{{"}} github.ref_name {{"}}"}} ${{"{{"}} github.sha {{"}}"}}
 
       - name: Python Semantic Release
         id: release
-        uses: python-semantic-release/python-semantic-release@v8.0.2
+        uses: python-semantic-release/python-semantic-release@v9.19.1
         with:
           github_token: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
 
@@ -31,7 +35,7 @@ jobs:
         if: steps.release.outputs.released == 'true'
 
       - name: Publish package to GitHub
-        uses: python-semantic-release/upload-to-gh-release@main
+        uses: python-semantic-release/publish-action@v9.19.1
         if: steps.release.outputs.released == 'true'
         with:
           github_token: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
