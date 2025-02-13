@@ -1,9 +1,20 @@
 # CHANGELOG
 
 
+## v0.3.0 ({{cookiecutter.year}}-02-13)
+
+### Features
+
+- Release to GitHub even if PyPI fails
+  ([`b34e788`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/b34e7886d07fc924484f0078467932c213f61981))
+
+
 ## v0.2.0 ({{cookiecutter.year}}-02-13)
 
 ### Chores
+
+- Fix deprecated option
+  ([`d2532c8`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/d2532c8c0890066fab336b2b83eed3f146a14f58))
 
 - Rename jobs
   ([`73e1001`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/73e10015e6bf80187348a19a0f1b1f7bcca08a1e))
