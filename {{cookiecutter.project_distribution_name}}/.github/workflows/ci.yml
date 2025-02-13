@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: snok/install-poetry@v1
-      - uses: daisylb/setup-nox@v2.1.0
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - uses: wntrblm/nox@{{cookiecutter.main_branch}}
       - run: nox

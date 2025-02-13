@@ -18,9 +18,9 @@ classifiers = [
   "Programming Language :: Python :: 3",
 ]
 
-requires-python = ">=3.9,<4.0"  # py_ver
+requires-python = ">=3.9"  # py_ver
 dependencies = [
-    "loguru (>=0.7.3,<0.8.0)"
+    "loguru>=0.7.3",
 ]
 
 [build-system]
@@ -48,9 +48,9 @@ benchmarking = [
 ]
 docs = [
     "furo>=2024.8.6",
-    "myst-parser>=4.0.0",
-    "sphinx>=8.1.3",
-    "sphinxcontrib-spelling>=8.0.1",
+    "myst-parser>=3.0.1",
+    "sphinx>=7.4.7",
+    "sphinxcontrib-spelling>=8.0.0",
 ]
 typing = [
     {include-group = "tests"},
@@ -75,7 +75,7 @@ dev = [
     {include-group = "linting"},
     {include-group = "pre-commit"},
     {include-group = "automation"},
-    "ipython>=8.32.0",
+    "ipython>=8.18.1",
     "python-semantic-release>=9.19.0",
 ]
 
@@ -84,7 +84,6 @@ dev = [
 line-length = 88  # Default
 force-exclude = true
 src = ["src"]
-target-version = "py39"
 
 [tool.ruff.lint]
 select = ["ALL"]
