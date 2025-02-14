@@ -38,6 +38,8 @@ issues = "{{ cookiecutter.__github_url }}/issues"
 [dependency-groups]
 tests = [
     "coverage>=7.6.11",
+    "hypothesis>=6.125.3",
+    "inline-snapshot>=0.20.2",
     "pytest>=8.3.4",
     "pytest-benchmark>=5.1.0",
     "pytest-cov>=6.0.0",
@@ -145,6 +147,9 @@ command_line = "-m pytest"
 
 [tool.pytest.ini_options]
 # addopts = "--cov"
+
+[tool.inline-snapshot]
+format-command = "ruff format --stdin-filename {filename}"
 
 [tool.cruft]
 skip = [

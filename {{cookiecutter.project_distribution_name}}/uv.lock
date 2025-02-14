@@ -493,6 +493,20 @@ wheels = [
 ]
 
 [[package]]
+name = "hypothesis"
+version = "6.125.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "attrs" },
+    { name = "exceptiongroup", marker = "python_full_version < '3.11'" },
+    { name = "sortedcontainers" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/96/d2/cc7f63610cb1307c84c1aa4c1475c0be5762c9cc91f21a4abd3e34f12bca/hypothesis-6.125.3.tar.gz", hash = "sha256:6276d9d8f7f91ebd7ad95081f004bcf5699afb4d680a8321861cbf3a5de45d3b", size = 418155 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/55/97/36e2e1dec3d60c99443a9d25e8a21e9bfdf4ba91c1396587b8b74f37db13/hypothesis-6.125.3-py3-none-any.whl", hash = "sha256:ae0381987d0ccacc62867343acc38a0ca5e959fc4da98b3e018b0debf080a557", size = 480812 },
+]
+
+[[package]]
 name = "identify"
 version = "2.6.7"
 source = { registry = "https://pypi.org/simple" }
@@ -550,6 +564,21 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d7/4b/cbd8e699e64a6f16ca3a8220661b5f83792b3017d0f79807cb8708d33913/iniconfig-2.0.0.tar.gz", hash = "sha256:2d91e135bf72d31a410b17c16da610a82cb55f6b0477d1a902134b24a455b8b3", size = 4646 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ef/a6/62565a6e1cf69e10f5727360368e451d4b7f58beeac6173dc9db836a5b46/iniconfig-2.0.0-py3-none-any.whl", hash = "sha256:b6a85871a79d2e3b22d2d1b94ac2824226a63c6b741c88f7ae975f18b6778374", size = 5892 },
+]
+
+[[package]]
+name = "inline-snapshot"
+version = "0.20.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "asttokens" },
+    { name = "executing" },
+    { name = "rich" },
+    { name = "tomli", marker = "python_full_version < '3.11'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/57/1d/eb7aca1df3900f4d27f55c55e7aa9464ab9b1f2d2a7150f66cf82ca0ba2b/inline_snapshot-0.20.2.tar.gz", hash = "sha256:c276a2e018575d50e720e9b79b70f7030d292120f96e6be2e138a87a5a6d096b", size = 91060 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/27/d7/e9fdfdd574290c6f093f7a3c6b9968b1c6f99da4cdc41e6a790ddd51782c/inline_snapshot-0.20.2-py3-none-any.whl", hash = "sha256:52507d2976ea80abdcf72a89d31d0fda9a46f37cbae3ee1dcb67c9324b34ef44", size = 47844 },
 ]
 
 [[package]]
@@ -1388,6 +1417,15 @@ wheels = [
 ]
 
 [[package]]
+name = "sortedcontainers"
+version = "2.4.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e8/c4/ba2f8066cceb6f23394729afe52f3bf7adec04bf9ed2c820b39e19299111/sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88", size = 30594 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/32/46/9cb0e58b2deb7f82b84065f37f3bffeb12413f947f9388e4cac22c4621ce/sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0", size = 29575 },
+]
+
+[[package]]
 name = "soupsieve"
 version = "2.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1702,6 +1740,8 @@ dev = [
     { name = "asv" },
     { name = "coverage" },
     { name = "furo" },
+    { name = "hypothesis" },
+    { name = "inline-snapshot" },
     { name = "ipython", version = "8.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
     { name = "ipython", version = "8.32.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
     { name = "mypy" },
@@ -1737,12 +1777,16 @@ pre-commit = [
 ]
 tests = [
     { name = "coverage" },
+    { name = "hypothesis" },
+    { name = "inline-snapshot" },
     { name = "pytest" },
     { name = "pytest-benchmark" },
     { name = "pytest-cov" },
 ]
 typing = [
     { name = "coverage" },
+    { name = "hypothesis" },
+    { name = "inline-snapshot" },
     { name = "mypy" },
     { name = "nox", extra = ["uv"] },
     { name = "pytest" },
@@ -1763,6 +1807,8 @@ dev = [
     { name = "asv", specifier = ">=0.6.4" },
     { name = "coverage", specifier = ">=7.6.11" },
     { name = "furo", specifier = ">=2024.8.6" },
+    { name = "hypothesis", specifier = ">=6.125.3" },
+    { name = "inline-snapshot", specifier = ">=0.20.2" },
     { name = "ipython", specifier = ">=8.18.1" },
     { name = "mypy", specifier = ">=1.15.0" },
     { name = "myst-parser", specifier = ">=3.0.1" },
@@ -1787,12 +1833,16 @@ linting = [{ name = "ruff", specifier = ">=0.9.6" }]
 pre-commit = [{ name = "pre-commit", specifier = ">=4.1.0" }]
 tests = [
     { name = "coverage", specifier = ">=7.6.11" },
+    { name = "hypothesis", specifier = ">=6.125.3" },
+    { name = "inline-snapshot", specifier = ">=0.20.2" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "pytest-benchmark", specifier = ">=5.1.0" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
 ]
 typing = [
     { name = "coverage", specifier = ">=7.6.11" },
+    { name = "hypothesis", specifier = ">=6.125.3" },
+    { name = "inline-snapshot", specifier = ">=0.20.2" },
     { name = "mypy", specifier = ">=1.15.0" },
     { name = "nox", extras = ["uv"], specifier = ">={{cookiecutter.year}}.2.9" },
     { name = "pytest", specifier = ">=8.3.4" },
