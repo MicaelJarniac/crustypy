@@ -1,7 +1,20 @@
 # CHANGELOG
 
 
+## v0.4.0 ({{cookiecutter.year}}-02-14)
+
+### Features
+
+- More testing tools
+  ([`a98094d`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/a98094d8bcfdd9538d94889dfac3eb7e04eec1dd))
+
+
 ## v0.3.0 ({{cookiecutter.year}}-02-13)
+
+### Chores
+
+- Publish to PyPI after GitHub
+  ([`337fcf5`](https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_distribution_name}}/commit/337fcf5193b4900cef00bd5c260ae097b9ce1bba))
 
 ### Features
 

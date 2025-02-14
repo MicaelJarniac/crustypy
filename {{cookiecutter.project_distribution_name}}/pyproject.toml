@@ -1,6 +1,6 @@
 [project]
 name = "{{cookiecutter.project_distribution_name}}"
-version = "0.3.0"
+version = "0.4.0"
 description = "{{cookiecutter.project_short_description}}"
 authors = [
   {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"},

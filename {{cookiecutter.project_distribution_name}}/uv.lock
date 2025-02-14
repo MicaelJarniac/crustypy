@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.9"
 resolution-markers = [
     "python_full_version >= '3.10'",
@@ -1722,7 +1723,7 @@ wheels = [
 
 [[package]]
 name = "{{cookiecutter.project_distribution_name}}"
-version = "0.3.0"
+version = "0.4.0"
 source = { editable = "." }
 dependencies = [
     { name = "loguru" },
