@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -9,9 +10,12 @@ if TYPE_CHECKING:
 
 import nox
 
-# py_ver
-python_versions = ["3.9", "3.10", "3.11", "3.12"]
-venv_params = ["--no-setuptools", "--no-wheel"]
+nox.options.default_venv_backend = "uv"
+
+python_versions = (
+    (Path(__file__).parent / ".python-versions").read_text().strip().split("\n")
+)
+python_version = (Path(__file__).parent / ".python-version").read_text().strip()
 
 
 def install(
@@ -19,28 +23,26 @@ def install(
     *,
     groups: Iterable[str],
     root: bool = True,
-    only: bool | None = None,
     extras: bool = False,
 ) -> None:
-    """Install the dependency groups using Poetry."""
-    if only is None:
-        only = not root
-
+    """Install the dependency groups using uv."""
     command = [
-        "poetry",
-        "install",
-        "--sync",
-        f'--{"only" if only else "with"}={",".join(groups)}',
+        "uv",
+        "sync",
+        "--frozen",
+        "--no-default-groups",
+        f"--python={session.virtualenv.location}",
+        *(f"--{'group' if root else 'only-group'}={group}" for group in groups),
     ]
-    if not root:
-        command.append("--no-root")
     if extras:
         command.append("--all-extras")
 
-    session.run_always(*command, external=True)
+    session.run_install(
+        *command, env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location}
+    )
 
 
-@nox.session(python=python_versions[-1], venv_params=venv_params)
+@nox.session(python=python_version)
 def pre_commit(session: nox.Session) -> None:
     """Run pre-commit."""
     install(session, groups=["pre-commit"], root=False)
@@ -53,36 +55,36 @@ def pre_commit(session: nox.Session) -> None:
     )
 
 
-@nox.session(python=python_versions[-1], venv_params=venv_params)
+@nox.session(python=python_version)
+def lock_dependencies(session: nox.Session) -> None:
+    """Lock the dependencies."""
+    session.run("uv", "lock")
+
+
+@nox.session(python=python_version)
 def lint_files(session: nox.Session) -> None:
     """Lint and fix files."""
     install(session, groups=["linting"], root=False)
     session.run("ruff", "check", ".", "--fix")
 
 
-@nox.session(python=python_versions[-1], venv_params=venv_params)
+@nox.session(python=python_version)
 def format_files(session: nox.Session) -> None:
     """Format files."""
     install(session, groups=["linting"], root=False)
     session.run("ruff", "format")
 
 
-@nox.session(python=python_versions, venv_params=venv_params)
+@nox.session(python=python_versions)
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""
-    install(
-        session,
-        groups=["main", "typing"],
-        root=True,
-        only=True,
-        extras=True,
-    )
+    install(session, groups=["typing"], root=True, extras=True)
     # mypy --install-types
     session.run("mypy")
 
 
-@nox.session(python=python_versions, venv_params=venv_params)
+@nox.session(python=python_versions)
 def test_code(session: nox.Session) -> None:
     """Test code."""
-    install(session, groups=["main", "tests"], root=True, only=True, extras=True)
+    install(session, groups=["tests"], root=True, extras=True)
     session.run("pytest")
