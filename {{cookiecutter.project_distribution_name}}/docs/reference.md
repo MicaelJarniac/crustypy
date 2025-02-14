@@ -10,9 +10,6 @@
       <details>
         <summary>Hooks</summary>
 
-        - [`ruff`][ruff]
-        - [`uv`][uv]
-          - `uv-lock`
         - [`pre-commit-hooks`][pre-commit-hooks]
           - `check-toml`
           - `check-yaml`
