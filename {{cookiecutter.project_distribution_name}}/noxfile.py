@@ -88,3 +88,17 @@ def test_code(session: nox.Session) -> None:
     """Test code."""
     install(session, groups=["tests"], root=True, extras=True)
     session.run("pytest")
+
+
+@nox.session(python=python_version)
+def docs(session: nox.Session) -> None:
+    """Build documentation with MkDocs."""
+    install(session, groups=["docs"], root=False)
+    session.run("mkdocs", "build", "--strict")
+
+
+@nox.session(python=python_version)
+def docs_serve(session: nox.Session) -> None:
+    """Serve documentation locally with live reload."""
+    install(session, groups=["docs"], root=False)
+    session.run("mkdocs", "serve")
