@@ -7,6 +7,8 @@ copyright: "Copyright &copy; {{ cookiecutter.year }}, {{ cookiecutter.full_name 
 
 # Documentation source directory (relative to this config file)
 docs_dir: "."
+# Build output directory (outside docs dir to avoid conflicts)
+site_dir: "../site"
 
 theme:
   name: material
