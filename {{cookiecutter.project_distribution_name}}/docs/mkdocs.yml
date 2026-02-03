@@ -125,7 +125,7 @@ nav:
   - Reference:
     - Tools & Standards: reference.md
     - API Reference: api.md
-  - Contributors: README.md#contributors-
+  - Contributors: README.md#contributors
 
 extra:
   social:
