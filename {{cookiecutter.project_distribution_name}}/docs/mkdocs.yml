@@ -115,17 +115,17 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Home: index.md
+  - Home: README.md
   - Getting Started:
-    - Installation: index.md#installation
-    - Usage: index.md#usage
+    - Installation: README.md#installation
+    - Usage: README.md#usage
   - Contributing:
     - Guide: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
   - Reference:
     - Tools & Standards: reference.md
     - API Reference: api.md
-  - Contributors: index.md#contributors-
+  - Contributors: README.md#contributors-
 
 extra:
   social:
