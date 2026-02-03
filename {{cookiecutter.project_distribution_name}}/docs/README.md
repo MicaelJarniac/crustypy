@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" markdown="1">
 {%- if cookiecutter.discord_invite %}
 
   [![Discord][badge-chat]][chat]
@@ -79,6 +79,9 @@
 <!---->
 
 # {{ cookiecutter.project_name }}
+
+Welcome to **{{ cookiecutter.project_name }}'s** documentation!
+
 {{ cookiecutter.project_short_description }}
 
 [Read the Docs][docs]
