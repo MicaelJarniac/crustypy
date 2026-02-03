@@ -116,16 +116,12 @@ markdown_extensions:
 
 nav:
   - Home: README.md
-  - Getting Started:
-    - Installation: README.md#installation
-    - Usage: README.md#usage
   - Contributing:
     - Guide: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
   - Reference:
     - Tools & Standards: reference.md
     - API Reference: api.md
-  - Contributors: README.md#contributors
 
 extra:
   social:
