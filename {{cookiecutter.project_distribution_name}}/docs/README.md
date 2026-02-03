@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" markdown="1">
 {%- if cookiecutter.discord_invite %}
 
   [![Discord][badge-chat]][chat]
