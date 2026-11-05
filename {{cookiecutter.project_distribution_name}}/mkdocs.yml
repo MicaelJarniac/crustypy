@@ -119,6 +119,7 @@ nav:
   - Contributing:
     - Guide: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
+    - Changelog: CHANGELOG.md
   - Reference:
     - Tools & Standards: reference.md
     - API Reference: api.md
@@ -131,8 +132,9 @@ extra:
     - icon: fontawesome/brands/python
       link: "https://pypi.org/project/{{ cookiecutter.project_distribution_name }}"
       name: PyPI Package
-  version:
-    provider: mike
+  # No `version.provider: mike` -- `mike` is not installed and Read the Docs
+  # builds with plain `mkdocs`, so declaring it renders a version selector
+  # backed by a `versions.json` that is never generated.
 
 extra_css:
   - stylesheets/extra.css

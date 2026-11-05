@@ -13,6 +13,7 @@
         - [`pre-commit-hooks`][pre-commit-hooks]
           - `check-toml`
           - `check-yaml`
+          - `check-json`
           - `end-of-file-fixer`
           - `trailing-whitespace`
           - `requirements-txt-fixer`
@@ -27,8 +28,7 @@
     - [Cookiecutter][cookiecutter]
     - [cruft][cruft] <sup>[config][pyproject_toml]</sup>
   - Type checking
-    - [Mypy][mypy] <sup>[config][pyproject_toml]</sup>
-      - [Mypy Extensions][mypy-extensions]
+    - [ty][ty] <sup>[config][pyproject_toml]</sup>
   - Testing
     - [pytest][pytest] <sup>[config][pyproject_toml]</sup>
       - Plugins
@@ -73,24 +73,22 @@
 
 [codecov-project]: https://app.codecov.io/gh/{{ cookiecutter.__github_path }}
 
-[_pre-commit-config_yaml]: ../.pre-commit-config.yaml
-[pyproject_toml]: ../pyproject.toml
-[_editorconfig]: ../.editorconfig
-[docs_mkdocs_yml]: ../mkdocs.yml
+[_pre-commit-config_yaml]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/.pre-commit-config.yaml
+[pyproject_toml]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/pyproject.toml
+[_editorconfig]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/.editorconfig
+[docs_mkdocs_yml]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/mkdocs.yml
 [docs_wordlist_txt]: ./wordlist.txt
-[noxfile_py]: ../noxfile.py
+[noxfile_py]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/noxfile.py
 
 [ruff]: https://github.com/astral-sh/ruff
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
-[rstcheck]: https://github.com/myint/rstcheck
 [semantic-pull-requests]: https://github.com/zeke/semantic-pull-requests
 [semantic-release]: https://github.com/semantic-release/semantic-release
 [python-semantic-release]: https://github.com/relekang/python-semantic-release
 [codecov]: https://codecov.io
 [codecov-action]: https://github.com/marketplace/actions/codecov
-[mypy]: https://github.com/python/mypy
-[mypy-extensions]: https://github.com/python/mypy_extensions
+[ty]: https://github.com/astral-sh/ty
 [pytest]: https://github.com/pytest-dev/pytest
 [pytest-cov]: https://github.com/pytest-dev/pytest-cov
 [pytest-benchmark]: https://github.com/ionelmc/pytest-benchmark
