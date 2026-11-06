@@ -120,6 +120,15 @@ from {{ cookiecutter.project_slug }} import make_greeting
 print(make_greeting("World"))
 ```
 
+### Logging
+*{{cookiecutter.project_distribution_name}}* logs with [Loguru](https://github.com/Delgan/loguru), disabled by default as befits a library. Opt in from your application:
+
+```python
+from loguru import logger
+
+logger.enable("{{ cookiecutter.project_slug }}")
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

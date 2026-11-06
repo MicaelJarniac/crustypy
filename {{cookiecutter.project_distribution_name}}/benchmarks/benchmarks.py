@@ -1,5 +1,7 @@
 """Benchmarking for {{cookiecutter.project_distribution_name}}."""
 
+__all__: tuple[str, ...] = ("MemSuite", "TimeSuite")
+
 from {{cookiecutter.project_slug}} import make_greeting
 
 

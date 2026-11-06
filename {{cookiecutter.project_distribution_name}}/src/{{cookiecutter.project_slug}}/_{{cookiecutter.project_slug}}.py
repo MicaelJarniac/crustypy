@@ -1,3 +1,7 @@
+"""Example module; replace it with your own code."""
+
+__all__: tuple[str, ...] = ("make_greeting",)
+
 from loguru import logger
 
 
