@@ -73,8 +73,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[contributors]: #Contributors-✨
-[badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-2.1-4baaaa?style=flat-square
+[contributors]: #contributors
+[badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-3.0-4baaaa?style=flat-square
 [code-of-conduct]: CODE_OF_CONDUCT.md
 <!---->
 
@@ -136,7 +136,7 @@ Please make sure to update tests as appropriate.
 
 More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 
-## Contributors ✨
+## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -149,6 +149,6 @@ More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
-[MIT](../LICENSE)
+[MIT][license]
 
 This project was created with the [MicaelJarniac/crustypy](https://github.com/MicaelJarniac/crustypy) template.

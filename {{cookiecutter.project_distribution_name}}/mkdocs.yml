@@ -10,6 +10,14 @@ docs_dir: "docs"
 # Build output directory (outside docs dir to avoid conflicts)
 site_dir: "site"
 
+# Report broken links, anchors and pages missing from `nav` as warnings, so
+# `mkdocs build --strict` (nox, Read the Docs) fails on them.
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+
 theme:
   name: material
   palette:
@@ -119,6 +127,7 @@ nav:
   - Contributing:
     - Guide: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
+    - Security Policy: SECURITY.md
     - Changelog: CHANGELOG.md
   - Reference:
     - Tools & Standards: reference.md

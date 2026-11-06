@@ -1,6 +1,6 @@
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 'v5.0.0'
+    rev: 'v6.0.0'
     hooks:
     -   id: check-toml
     -   id: check-yaml
@@ -8,7 +8,21 @@ repos:
     -   id: check-json
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
-    -   id: requirements-txt-fixer
+# Keep in step with the `ruff` version in uv.lock.
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 'v0.17.4'
+    hooks:
+    -   id: ruff-check
+        args: [--fix]
+    -   id: ruff-format
+-   repo: https://github.com/astral-sh/uv-pre-commit
+    rev: '0.13.7'
+    hooks:
+    -   id: uv-lock
+-   repo: https://github.com/crate-ci/typos
+    rev: 'v1.52.0'
+    hooks:
+    -   id: typos
 -   repo: https://github.com/zizmorcore/zizmor-pre-commit
     rev: 'v1.32.0'
     hooks:

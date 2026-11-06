@@ -202,6 +202,13 @@ filterwarnings = [
 [tool.inline-snapshot]
 format-command = "ruff format --stdin-filename {filename}"
 
+[tool.typos.files]
+# Lockfiles hold hashes and third-party names, not prose.
+extend-exclude = ["uv.lock"]
+
+[tool.typos.default.extend-words]
+# Accepted spellings go here, e.g. `teh = "teh"`.
+
 [tool.cruft]
 skip = [
   "src",
