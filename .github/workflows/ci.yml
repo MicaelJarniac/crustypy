@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_COLOR: 1
+
+jobs:
+  bake:
+    name: Bake (${{ matrix.variant }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # checkout
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: default
+            args: ""
+          - variant: discord
+            args: discord_invite=abc123
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "**/pyproject.toml"
+      - name: Bake the template
+        env:
+          ARGS: ${{ matrix.args }}
+        # ARGS is intentionally unquoted so it splits into key=value pairs.
+        run: |
+          # shellcheck disable=SC2086
+          uvx cookiecutter --no-input --output-dir "$RUNNER_TEMP" . $ARGS
+      # A fresh project has no lockfile; create it and commit everything, as a
+      # new project would before its first CI run.
+      - name: Initialize the project
+        working-directory: ${{ runner.temp }}/python-project
+        run: |
+          git init --quiet --initial-branch=main
+          uv lock
+          git add --all
+          git -c user.name=ci -c user.email=ci@example.com commit --quiet -m init
+      - name: Run every nox session, as the generated CI would
+        working-directory: ${{ runner.temp }}/python-project
+        env:
+          CI: "true"
+        run: uv run --frozen --only-group=automation nox
+      - name: Lint the generated workflows
+        working-directory: ${{ runner.temp }}/python-project
+        run: |
+          uvx --from actionlint-py actionlint
+          uvx zizmor --offline --persona pedantic .
