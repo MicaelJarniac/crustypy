@@ -36,7 +36,7 @@ jobs:
         enable-cache: true
     - id: set-matrix
       shell: bash
-      run: echo session=$(uv run --frozen --only-group=automation nox --json -l | jq -c '[.[].session]') | tee --append "$GITHUB_OUTPUT"
+      run: echo "session=$(uv run --frozen --only-group=automation nox --json -l | jq -c '[.[].session]')" | tee --append "$GITHUB_OUTPUT"
 
   sessions:
     name: Session ${{"{{"}} matrix.session {{"}}"}}
