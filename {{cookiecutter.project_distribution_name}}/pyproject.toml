@@ -15,7 +15,7 @@ classifiers = [
   "Typing :: Typed",
   # https://github.com/astral-sh/uv/issues/8716
   "License :: OSI Approved :: MIT License",
-  # Keep in sync with `requires-python` and `.python-versions`.
+  # Keep in sync with `requires-python`. Nox reads its test matrix from these.
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.14",

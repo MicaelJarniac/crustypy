@@ -106,16 +106,18 @@ You can also install the latest version of the code directly from GitHub:
 # With uv
 uv add git+{{ cookiecutter.__github_url }}
 # With pip
-pip install git+git://github.com/{{ cookiecutter.__github_path }}
+pip install git+{{ cookiecutter.__github_url }}
 # With Poetry
-poetry add git+git://github.com/{{ cookiecutter.__github_path }}
+poetry add git+{{ cookiecutter.__github_url }}
 ```
 
 ## Usage
 For more examples, see the [full documentation][docs].
 
 ```python
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+from {{ cookiecutter.project_slug }} import make_greeting
+
+print(make_greeting("World"))
 ```
 
 ## Contributing

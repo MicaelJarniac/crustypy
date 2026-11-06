@@ -44,5 +44,5 @@ jobs:
     # Run nox from the locked `automation` group rather than wntrblm/nox, which
     # tracks `main` and always runs nox itself on Python 3.12. This way nox runs
     # on `.python-version` at the version pinned in uv.lock, and uv provides
-    # each session's interpreter from `.python-versions`.
+    # each session's interpreter from the classifiers in pyproject.toml.
     - run: uv run --frozen --only-group=automation nox -s "${{"{{"}} matrix.session {{"}}"}}"
