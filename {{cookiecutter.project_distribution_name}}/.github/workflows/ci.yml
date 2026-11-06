@@ -4,11 +4,16 @@ on:
   pull_request:
   push:
     branches:
-      - {{ cookiecutter.main_branch }}
+      - "{{ cookiecutter.main_branch }}"
       - rc
 
-permissions:
-  contents: read
+permissions: {}
+
+concurrency:
+  group: ${{"{{"}} github.workflow {{"}}"}}-${{"{{"}} github.ref {{"}}"}}
+  # Only cancel superseded PR runs. Runs on release branches always finish,
+  # so a passing push is never cut off mid-release.
+  cancel-in-progress: ${{"{{"}} github.event_name == 'pull_request' {{"}}"}}
 
 env:
   FORCE_COLOR: 1
@@ -18,31 +23,158 @@ jobs:
   generate-jobs:
     name: Generate Session Jobs
     runs-on: ubuntu-latest
+    permissions:
+      contents: read  # checkout
     outputs:
       session: ${{"{{"}} steps.set-matrix.outputs.session {{"}}"}}
     steps:
-    - uses: actions/checkout@v4
-    - uses: astral-sh/setup-uv@v5
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
       with:
         enable-cache: true
     - id: set-matrix
       shell: bash
-      run: echo session=$(uv run --frozen --only-group=automation nox --json -l | jq -c '[.[].session]') | tee --append $GITHUB_OUTPUT
+      run: echo session=$(uv run --frozen --only-group=automation nox --json -l | jq -c '[.[].session]') | tee --append "$GITHUB_OUTPUT"
+
   sessions:
     name: Session ${{"{{"}} matrix.session {{"}}"}}
     needs: [generate-jobs]
     runs-on: ubuntu-latest
+    permissions:
+      contents: read  # checkout
+      id-token: write  # Codecov OIDC upload
     strategy:
       fail-fast: false
       matrix:
         session: ${{"{{"}} fromJson(needs.generate-jobs.outputs.session) {{"}}"}}
     steps:
-    - uses: actions/checkout@v4
-    - uses: astral-sh/setup-uv@v5
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
       with:
         enable-cache: true
     # Run nox from the locked `automation` group rather than wntrblm/nox, which
     # tracks `main` and always runs nox itself on Python 3.12. This way nox runs
     # on `.python-version` at the version pinned in uv.lock, and uv provides
     # each session's interpreter from the classifiers in pyproject.toml.
-    - run: uv run --frozen --only-group=automation nox -s "${{"{{"}} matrix.session {{"}}"}}"
+    - run: uv run --frozen --only-group=automation nox -s "$SESSION"
+      env:
+        SESSION: ${{"{{"}} matrix.session {{"}}"}}
+    - name: Upload coverage to Codecov
+      if: startsWith(matrix.session, 'test_code')
+      uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5  # v7.1.1
+      with:
+        use_oidc: true
+        files: ./coverage.xml
+        flags: unittests
+        name: ${{"{{"}} matrix.session {{"}}"}}
+
+  release:
+    name: Release
+    # Every session must pass first, so a red build can never be released.
+    needs: [sessions]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    permissions:
+      contents: write  # push the release commit and tag, create the release
+    outputs:
+      released: ${{"{{"}} steps.release.outputs.released {{"}}"}}
+      tag: ${{"{{"}} steps.release.outputs.tag {{"}}"}}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          ref: ${{"{{"}} github.sha {{"}}"}}
+          # PSR pushes with GH_TOKEN itself; don't leave a token in .git/config.
+          persist-credentials: false
+
+      - run: git checkout -B "$REF_NAME" "$SHA"
+        env:
+          REF_NAME: ${{"{{"}} github.ref_name {{"}}"}}
+          SHA: ${{"{{"}} github.sha {{"}}"}}
+
+      # No cache: this job produces the artifacts that get published, so it
+      # must not restore anything a PR run could have written.
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+        with:
+          enable-cache: false
+
+      # Run semantic-release from the locked `release` group rather than the
+      # published Docker actions. The lockfile pins PSR and everything it
+      # imports (GitPython broke the actions from the outside once, see
+      # https://github.com/python-semantic-release/python-semantic-release/issues/1476),
+      # so releases stay reproducible and Dependabot bumps it like any other
+      # dependency.
+      - name: Python Semantic Release
+        id: release
+        env:
+          GH_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+          uv sync --frozen --no-default-groups --only-group=release
+          uv run --no-sync semantic-release version
+
+      # continue-on-error because this only attaches build artifacts to the
+      # GitHub release, which is a convenience: the tag, the release notes and
+      # the PyPI upload are what actually constitute a release. Letting it fail
+      # the job aborts the PyPI upload, leaving a version tagged on GitHub but
+      # absent from PyPI -- e.g. when GitHub has immutable releases turned on,
+      # since assets cannot be added to a release after it is created. A
+      # failure here is reported by the follow-up step rather than silently
+      # swallowed.
+      - name: Publish package to GitHub
+        id: publish_github
+        if: steps.release.outputs.released == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
+          TAG: ${{"{{"}} steps.release.outputs.tag {{"}}"}}
+        run: uv run --no-sync semantic-release publish --tag "$TAG"
+
+      - name: Warn if release assets were not attached
+        if: >-
+          steps.release.outputs.released == 'true'
+          && steps.publish_github.outcome == 'failure'
+        env:
+          TAG: ${{"{{"}} steps.release.outputs.tag {{"}}"}}
+        run: |
+          echo "::warning title=Release assets not attached::Could not upload \
+          build artifacts to the $TAG GitHub release. The tag and the PyPI \
+          upload are unaffected. If the repo has immutable releases enabled, \
+          assets must be attached when the release is created; consider \
+          setting upload_to_vcs_release = false in pyproject.toml."
+
+      - name: Store the distribution packages
+        if: steps.release.outputs.released == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
+  publish-pypi:
+    name: Publish to PyPI
+    needs: [release]
+    if: needs.release.outputs.released == 'true'
+    runs-on: ubuntu-latest
+    # Trusted publishing: register this workflow (ci.yml) and environment on
+    # PyPI. Protection rules on the environment can gate uploads further.
+    environment:
+      name: pypi
+      url: https://pypi.org/p/{{ cookiecutter.project_distribution_name }}
+    permissions:
+      id-token: write  # PyPI trusted publishing
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333  # v8.0.2
+        with:
+          name: python-package-distributions
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086  # v1.14.3

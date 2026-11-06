@@ -140,8 +140,8 @@ allow_zero_version = true
 # BREAKING CHANGE footer without accidentally declaring the API stable;
 # reaching 1.0.0 stays a deliberate decision.
 major_on_zero = false
+# `uv` is already on PATH (astral-sh/setup-uv), and PSR passes PATH through.
 build_command = """
-  pip install uv
   uv lock
   git add uv.lock
   uv build

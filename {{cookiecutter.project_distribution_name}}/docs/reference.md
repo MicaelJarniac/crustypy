@@ -17,10 +17,13 @@
           - `end-of-file-fixer`
           - `trailing-whitespace`
           - `requirements-txt-fixer`
+        - [`zizmor`][zizmor]
       </details>
     - [Semantic Pull Requests][semantic-pull-requests]
     - [semantic-release][semantic-release] (used indirectly)
       - [python-semantic-release][python-semantic-release] <sup>[config][pyproject_toml]</sup>
+    - [Dependabot][dependabot] <sup>[config][_github_dependabot_yml]</sup>
+    - [zizmor][zizmor]
     - [Codecov][codecov]
       - [Action][codecov-action]
       - [{{ cookiecutter.project_distribution_name }}][codecov-project]
@@ -78,6 +81,7 @@
 [_editorconfig]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/.editorconfig
 [docs_mkdocs_yml]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/mkdocs.yml
 [docs_wordlist_txt]: ./wordlist.txt
+[_github_dependabot_yml]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/.github/dependabot.yml
 [noxfile_py]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/noxfile.py
 
 [ruff]: https://github.com/astral-sh/ruff
@@ -86,6 +90,8 @@
 [semantic-pull-requests]: https://github.com/zeke/semantic-pull-requests
 [semantic-release]: https://github.com/semantic-release/semantic-release
 [python-semantic-release]: https://github.com/relekang/python-semantic-release
+[dependabot]: https://docs.github.com/en/code-security/dependabot
+[zizmor]: https://docs.zizmor.sh
 [codecov]: https://codecov.io
 [codecov-action]: https://github.com/marketplace/actions/codecov
 [ty]: https://github.com/astral-sh/ty
