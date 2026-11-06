@@ -79,8 +79,7 @@ def format_files(session: nox.Session) -> None:
 def type_check_code(session: nox.Session) -> None:
     """Type-check code."""
     install(session, groups=["typing"], root=True, extras=True)
-    # mypy --install-types
-    session.run("mypy")
+    session.run("ty", "check")
 
 
 @nox.session(python=python_versions)

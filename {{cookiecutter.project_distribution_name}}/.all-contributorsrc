@@ -12,5 +12,7 @@
   "projectOwner": "{{ cookiecutter.github_username }}",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }

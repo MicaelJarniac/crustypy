@@ -7,6 +7,9 @@ on:
       - {{ cookiecutter.main_branch }}
       - rc
 
+permissions:
+  contents: read
+
 env:
   FORCE_COLOR: 1
   PRE_COMMIT_COLOR: "always"  # https://github.com/pre-commit/pre-commit/issues/2918
@@ -19,10 +22,12 @@ jobs:
       session: ${{"{{"}} steps.set-matrix.outputs.session {{"}}"}}
     steps:
     - uses: actions/checkout@v4
-    - uses: wntrblm/nox@main
+    - uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
     - id: set-matrix
       shell: bash
-      run: echo session=$(nox --json -l | jq -c '[.[].session]') | tee --append $GITHUB_OUTPUT
+      run: echo session=$(uv run --frozen --only-group=automation nox --json -l | jq -c '[.[].session]') | tee --append $GITHUB_OUTPUT
   sessions:
     name: Session ${{"{{"}} matrix.session {{"}}"}}
     needs: [generate-jobs]
@@ -36,5 +41,8 @@ jobs:
     - uses: astral-sh/setup-uv@v5
       with:
         enable-cache: true
-    - uses: wntrblm/nox@main
-    - run: nox -s "${{"{{"}} matrix.session {{"}}"}}"
+    # Run nox from the locked `automation` group rather than wntrblm/nox, which
+    # tracks `main` and always runs nox itself on Python 3.12. This way nox runs
+    # on `.python-version` at the version pinned in uv.lock, and uv provides
+    # each session's interpreter from `.python-versions`.
+    - run: uv run --frozen --only-group=automation nox -s "${{"{{"}} matrix.session {{"}}"}}"
