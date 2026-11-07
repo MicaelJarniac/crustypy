@@ -5,17 +5,16 @@ description = "{{cookiecutter.project_short_description}}"
 authors = [
   {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"},
 ]
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "docs/README.md"
 classifiers = [
-  # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+  # https://pypi.org/classifiers/
   "Development Status :: 1 - Planning",
   "Natural Language :: English",
   "Operating System :: OS Independent",
   "Typing :: Typed",
-  # https://github.com/astral-sh/uv/issues/8716
-  "License :: OSI Approved :: MIT License",
-  # Keep in sync with `requires-python` and `.python-versions`.
+  # Keep in sync with `requires-python`. Nox reads its test matrix from these.
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.14",
@@ -28,8 +27,8 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.13.7,<0.14"]
+build-backend = "uv_build"
 
 [project.urls]
 homepage = "{{ cookiecutter.__github_url }}"
@@ -41,43 +40,45 @@ issues = "{{ cookiecutter.__github_url }}/issues"
 
 [dependency-groups]
 tests = [
-    "coverage>=7.6.11",
-    "hypothesis>=6.125.3",
-    "inline-snapshot>=0.20.2",
-    "pytest>=8.3.4",
-    "pytest-benchmark>=5.1.0",
-    "pytest-cov>=6.0.0",
+    "coverage>=7.17.2",
+    "hypothesis>=6.170.15",
+    "inline-snapshot>=0.36.1",
+    "pytest>=9.2.0",
+    "pytest-benchmark>=5.3.1",
+    "pytest-cov>=7.1.0",
 ]
 benchmarking = [
-    "asv>=0.6.4",
-    "virtualenv>=20.29.1",
+    "asv>=0.6.6",
+    # asv.conf.json builds the wheel with `python -m build`.
+    "build>=1.6.1",
+    "virtualenv>=21.15.6",
 ]
 docs = [
-    "mkdocs>=1.5.3",
-    "mkdocs-material>=9.5.2",
-    "mkdocstrings[python]>=0.24.0",
-    "mkdocs-autorefs>=0.5.0",
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.8.0",
+    "mkdocstrings[python]>=1.0.8",
+    "mkdocs-autorefs>=1.4.5",
 ]
 typing = [
     {include-group = "tests"},
     {include-group = "automation"},
-    "ty>=0.0.75",
+    "ty>=0.0.99",
     # Typing stubs go here
 ]
 linting = [
-    "ruff>=0.9.6",
+    "ruff>=0.17.4",
 ]
 pre-commit = [
-    "pre-commit>=4.1.0",
+    "pre-commit>=4.7.0",
 ]
 release = [
-    "python-semantic-release>=10.6.1",
+    "python-semantic-release>=10.7.0",
 ]
 automation = [
     # 2026.2.9 passes `uv venv --clear`, which uv>=0.10 requires to replace an
     # existing venv. Older nox left the directory for uv to clobber, so every
     # session failed on its second local run.
-    "nox[uv]>=2026.2.9",
+    "nox[uv]>=2026.10.20",
 ]
 dev = [
     {include-group = "tests"},
@@ -88,7 +89,7 @@ dev = [
     {include-group = "pre-commit"},
     {include-group = "automation"},
     {include-group = "release"},
-    "ipython>=8.18.1",
+    "ipython>=9.18.1",
 ]
 
 [tool.ruff]
@@ -100,10 +101,8 @@ src = ["src"]
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
-  "D203",
-  "D213",
+  # Conflicts with the formatter's magic trailing comma.
   "COM812",
-  "ISC001",
   # Per-file copyright headers: the top-level LICENSE covers the project.
   "CPY001",
 ]
@@ -140,8 +139,8 @@ allow_zero_version = true
 # BREAKING CHANGE footer without accidentally declaring the API stable;
 # reaching 1.0.0 stays a deliberate decision.
 major_on_zero = false
+# `uv` is already on PATH (astral-sh/setup-uv), and PSR passes PATH through.
 build_command = """
-  pip install uv
   uv lock
   git add uv.lock
   uv build
@@ -182,10 +181,13 @@ branch = true
 fail_under = 100
 show_missing = true
 
-[tool.pytest.ini_options]
-# addopts = "--cov"
+[tool.pytest]
+minversion = "9.0"
+# Error on unknown config keys and markers, duplicate parametrize IDs, and
+# xfail tests that unexpectedly pass.
+strict = true
 # Docstring examples are part of the docs; keep them running.
-addopts = "--doctest-modules"
+addopts = ["--doctest-modules"]
 testpaths = ["tests", "src"]
 filterwarnings = [
   # Unclosed resources (files, sockets, database connections) left to the
@@ -199,6 +201,13 @@ filterwarnings = [
 
 [tool.inline-snapshot]
 format-command = "ruff format --stdin-filename {filename}"
+
+[tool.typos.files]
+# Lockfiles hold hashes and third-party names, not prose.
+extend-exclude = ["uv.lock"]
+
+[tool.typos.default.extend-words]
+# Accepted spellings go here, e.g. `teh = "teh"`.
 
 [tool.cruft]
 skip = [

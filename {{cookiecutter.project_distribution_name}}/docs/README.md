@@ -73,8 +73,8 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[contributors]: #Contributors-✨
-[badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-2.1-4baaaa?style=flat-square
+[contributors]: #contributors
+[badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-3.0-4baaaa?style=flat-square
 [code-of-conduct]: CODE_OF_CONDUCT.md
 <!---->
 
@@ -106,16 +106,27 @@ You can also install the latest version of the code directly from GitHub:
 # With uv
 uv add git+{{ cookiecutter.__github_url }}
 # With pip
-pip install git+git://github.com/{{ cookiecutter.__github_path }}
+pip install git+{{ cookiecutter.__github_url }}
 # With Poetry
-poetry add git+git://github.com/{{ cookiecutter.__github_path }}
+poetry add git+{{ cookiecutter.__github_url }}
 ```
 
 ## Usage
 For more examples, see the [full documentation][docs].
 
 ```python
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+from {{ cookiecutter.project_slug }} import make_greeting
+
+print(make_greeting("World"))
+```
+
+### Logging
+*{{cookiecutter.project_distribution_name}}* logs with [Loguru](https://github.com/Delgan/loguru), disabled by default as befits a library. Opt in from your application:
+
+```python
+from loguru import logger
+
+logger.enable("{{ cookiecutter.project_slug }}")
 ```
 
 ## Contributing
@@ -125,7 +136,7 @@ Please make sure to update tests as appropriate.
 
 More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 
-## Contributors ✨
+## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -138,6 +149,6 @@ More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
-[MIT](../LICENSE)
+[MIT][license]
 
 This project was created with the [MicaelJarniac/crustypy](https://github.com/MicaelJarniac/crustypy) template.

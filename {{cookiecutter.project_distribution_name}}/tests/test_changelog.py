@@ -6,55 +6,77 @@ flag is missing, the file is written back unchanged and nothing warns about it,
 so releases silently go unrecorded. These tests fail the build instead.
 """
 
-from __future__ import annotations
+__all__: tuple[str, ...] = ()
 
 import tomllib
 from pathlib import Path
-from typing import Any
+from typing import Final, Literal, TypedDict, cast
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-PYPROJECT = REPO_ROOT / "pyproject.toml"
-RELEASE_HEADING = "\n## v"
+REPO_ROOT: Final = Path(__file__).resolve().parent.parent
+PYPROJECT: Final = REPO_ROOT / "pyproject.toml"
+RELEASE_HEADING: Final = "\n## v"
+
+
+class _DefaultTemplates(TypedDict):
+    changelog_file: str
+
+
+class _ChangelogConfig(TypedDict):
+    mode: Literal["init", "update"]
+    insertion_flag: str
+    default_templates: _DefaultTemplates
+
+
+class _SemanticRelease(TypedDict):
+    changelog: _ChangelogConfig
+
+
+class _Tool(TypedDict):
+    semantic_release: _SemanticRelease
+
+
+class _Project(TypedDict):
+    version: str
+
+
+class _PyProject(TypedDict):
+    """The parts of pyproject.toml these tests read."""
+
+    project: _Project
+    tool: _Tool
 
 
 @pytest.fixture(scope="module")
-def pyproject() -> dict[str, Any]:
+def pyproject() -> _PyProject:
     """The parsed pyproject.toml."""
     with PYPROJECT.open("rb") as fh:
-        return tomllib.load(fh)
+        return cast("_PyProject", tomllib.load(fh))
 
 
 @pytest.fixture(scope="module")
-def changelog_config(pyproject: dict[str, object]) -> dict[str, Any]:
+def changelog_config(pyproject: _PyProject) -> _ChangelogConfig:
     """The ``[tool.semantic_release.changelog]`` table."""
-    tool = pyproject["tool"]
-    assert isinstance(tool, dict)
-    changelog = tool["semantic_release"]["changelog"]
-    assert isinstance(changelog, dict)
-    return changelog
+    return pyproject["tool"]["semantic_release"]["changelog"]
 
 
 @pytest.fixture(scope="module")
-def changelog_text(changelog_config: dict[str, object]) -> str:
+def changelog_text(changelog_config: _ChangelogConfig) -> str:
     """Contents of the changelog file PSR is configured to write."""
-    templates = changelog_config["default_templates"]
-    assert isinstance(templates, dict)
-    changelog_file = templates["changelog_file"]
-    assert isinstance(changelog_file, str)
+    changelog_file = changelog_config["default_templates"]["changelog_file"]
     return (REPO_ROOT / changelog_file).read_text(encoding="utf-8")
 
 
 def test_changelog_mode_is_pinned_to_update(
-    changelog_config: dict[str, object],
+    changelog_config: _ChangelogConfig,
 ) -> None:
     """The mode is explicit, so a future PSR default flip cannot change behavior."""
     assert changelog_config["mode"] == "update"
 
 
 def test_changelog_carries_the_insertion_flag_below_the_title(
-    changelog_config: dict[str, object], changelog_text: str
+    changelog_config: _ChangelogConfig, changelog_text: str
 ) -> None:
     """Update mode splices new releases in at the flag, so it must be present.
 
@@ -64,8 +86,6 @@ def test_changelog_carries_the_insertion_flag_below_the_title(
     release there is no heading yet, so nothing may follow the flag at all.
     """
     flag = changelog_config["insertion_flag"]
-    assert isinstance(flag, str)
-
     assert changelog_text.count(flag) == 1, "exactly one insertion flag expected"
     flag_at = changelog_text.index(flag)
     first_release_at = changelog_text.find(RELEASE_HEADING)
@@ -81,7 +101,7 @@ def test_changelog_carries_the_insertion_flag_below_the_title(
 
 
 def test_current_version_is_recorded(
-    pyproject: dict[str, object], changelog_text: str
+    pyproject: _PyProject, changelog_text: str
 ) -> None:
     """The released version in pyproject.toml has a changelog heading.
 
@@ -95,9 +115,7 @@ def test_current_version_is_recorded(
     """
     if RELEASE_HEADING not in changelog_text:
         pytest.skip("nothing released yet")
-    project = pyproject["project"]
-    assert isinstance(project, dict)
-    version = project["version"]
+    version = pyproject["project"]["version"]
     assert f"{RELEASE_HEADING}{version} (" in changelog_text, (
         f"v{version} is missing from the changelog"
     )
