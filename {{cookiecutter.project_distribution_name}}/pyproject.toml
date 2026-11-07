@@ -210,9 +210,12 @@ extend-exclude = ["uv.lock"]
 # Accepted spellings go here, e.g. `teh = "teh"`.
 
 [tool.cruft]
+# Your code, which `cruft update` leaves alone. tests/test_changelog.py is not
+# listed: it guards the release setup above and changes along with it.
 skip = [
   "src",
-  "tests",
+  "tests/__init__.py",
+  "tests/test_{{ cookiecutter.project_slug }}.py",
   "benchmarks",
   ".asv",
   "uv.lock",
