@@ -42,9 +42,11 @@ jobs:
     name: Session ${{"{{"}} matrix.session {{"}}"}}
     needs: [generate-jobs]
     runs-on: ubuntu-latest
+    # No id-token here: these jobs run the project's code and every locked
+    # dependency, including on pull requests. Coverage goes up from the
+    # `coverage` job instead, so no session can mint an OIDC token.
     permissions:
       contents: read  # checkout
-      id-token: write  # Codecov OIDC upload
     strategy:
       fail-fast: false
       matrix:
@@ -63,14 +65,36 @@ jobs:
     - run: uv run --frozen --only-group=automation nox -s "$SESSION"
       env:
         SESSION: ${{"{{"}} matrix.session {{"}}"}}
-    - name: Upload coverage to Codecov
+    - name: Store the coverage report
       if: startsWith(matrix.session, 'test_code')
-      uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5  # v7.1.1
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
       with:
-        use_oidc: true
-        files: ./coverage.xml
-        flags: unittests
-        name: ${{"{{"}} matrix.session {{"}}"}}
+        name: coverage-${{"{{"}} strategy.job-index {{"}}"}}
+        path: coverage.xml
+        if-no-files-found: error
+
+  coverage:
+    name: Upload coverage
+    needs: [sessions]
+    # Upload whatever the test sessions produced, even if another session failed.
+    if: ${{"{{"}} !cancelled() {{"}}"}}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # checkout, so Codecov can map the report to the source
+      id-token: write  # Codecov OIDC upload
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333  # v8.0.2
+        with:
+          pattern: coverage-*
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5  # v7.1.1
+        with:
+          use_oidc: true
+          files: ./coverage-*/coverage.xml
+          flags: unittests
+          disable_search: true
 
   release:
     name: Release
@@ -122,6 +146,16 @@ jobs:
           uv sync --frozen --no-default-groups --only-group=release
           uv run --no-sync semantic-release version
 
+      # Hand the build to the PyPI job straight after tagging, before anything
+      # optional can fail, so a tagged release reaches PyPI whenever possible.
+      - name: Store the distribution packages
+        if: steps.release.outputs.released == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
       # continue-on-error because this only attaches build artifacts to the
       # GitHub release, which is a convenience: the tag, the release notes and
       # the PyPI upload are what actually constitute a release. Letting it fail
@@ -152,21 +186,15 @@ jobs:
           assets must be attached when the release is created; consider \
           setting upload_to_vcs_release = false in pyproject.toml."
 
-      - name: Store the distribution packages
-        if: steps.release.outputs.released == 'true'
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
-        with:
-          name: python-package-distributions
-          path: dist/
-          if-no-files-found: error
-
   publish-pypi:
     name: Publish to PyPI
     needs: [release]
     if: needs.release.outputs.released == 'true'
     runs-on: ubuntu-latest
-    # Trusted publishing: register this workflow (ci.yml) and environment on
-    # PyPI. Protection rules on the environment can gate uploads further.
+    # Trusted publishing: register this workflow (ci.yml) *and* the `pypi`
+    # environment on PyPI. PyPI treats the environment as optional, but without
+    # it any job in this workflow could publish; with it, only this one can.
+    # Restrict the environment's deployment branches to the release branches.
     environment:
       name: pypi
       url: https://pypi.org/p/{{ cookiecutter.project_distribution_name }}

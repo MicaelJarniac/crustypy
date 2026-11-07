@@ -43,7 +43,7 @@ jobs:
         # ARGS is intentionally unquoted so it splits into key=value pairs.
         run: |
           # shellcheck disable=SC2086
-          uvx cookiecutter --no-input --output-dir "$RUNNER_TEMP" . $ARGS
+          uvx cookiecutter@2.7.1 --no-input --output-dir "$RUNNER_TEMP" . $ARGS
       # A fresh project has no lockfile; create it and commit everything, as a
       # new project would before its first CI run.
       - name: Initialize the project
@@ -61,5 +61,5 @@ jobs:
       - name: Lint the generated workflows
         working-directory: ${{ runner.temp }}/python-project
         run: |
-          uvx --from actionlint-py actionlint
-          uvx zizmor --offline --persona pedantic .
+          uvx --from actionlint-py==1.7.12.25 actionlint
+          uvx zizmor@1.32.0 --offline --persona pedantic .

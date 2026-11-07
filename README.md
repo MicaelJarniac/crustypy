@@ -39,5 +39,23 @@ git add uv.lock
 
 To publish to PyPI, add a [trusted publisher](https://docs.pypi.org/trusted-publishers/) for workflow `ci.yml` and environment `pypi`.
 
+> [!IMPORTANT]
+> Fill in the environment. PyPI marks it optional, but without it every job in `ci.yml` could publish, not just the release job.
+> Then, under *Settings → Environments → pypi*, limit deployment branches to `main` (and `rc` if you use it).
+
+## Updating an existing project
+With cruft, run `cruft update` and review the diff. Some updates need manual steps on GitHub or PyPI; they're listed below, newest first.
+
+### Releases moved into `ci.yml` (November 2026)
+`semantic-release.yml` and `codecov_action.yml` are gone. Releasing and the Codecov upload are now jobs in `ci.yml`, and publishing runs in a `pypi` environment. Before the first release after updating:
+
+1. On PyPI, edit the project's trusted publisher (*Manage → Publishing*): set the workflow to `ci.yml` and the environment to `pypi`.
+2. On GitHub, create the `pypi` environment (*Settings → Environments*) and limit its deployment branches to the release branches.
+3. Delete `.python-versions` (Nox now reads the versions from the classifiers) and `docs/wordlist.txt` (replaced by typos) if cruft left them behind.
+4. If `docs/CHANGELOG.md` conflicts, keep your release history and put `<!-- version list -->` on the line right under the title.
+5. Run `uv lock --upgrade`. A plain `uv lock` keeps old pins that predate Python 3.15 (an old `typing_extensions` breaks pytest there).
+
+Until step 1 is done, the release job tags and creates the GitHub release, but the PyPI upload fails.
+
 [cruft]: https://github.com/cruft/cruft/
 [cookiecutter]: https://github.com/cookiecutter/cookiecutter

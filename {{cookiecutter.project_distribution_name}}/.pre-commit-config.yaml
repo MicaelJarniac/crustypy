@@ -8,13 +8,21 @@ repos:
     -   id: check-json
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
-# Keep in step with the `ruff` version in uv.lock.
--   repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.17.4'
+# Ruff runs from the locked `linting` group, so uv.lock is its only pin.
+-   repo: local
     hooks:
     -   id: ruff-check
-        args: [--fix]
+        name: ruff check
+        entry: uv run --frozen --only-group=linting ruff check --fix --force-exclude
+        language: unsupported
+        types_or: [python, pyi]
+        require_serial: true
     -   id: ruff-format
+        name: ruff format
+        entry: uv run --frozen --only-group=linting ruff format --force-exclude
+        language: unsupported
+        types_or: [python, pyi]
+        require_serial: true
 -   repo: https://github.com/astral-sh/uv-pre-commit
     rev: '0.13.7'
     hooks:

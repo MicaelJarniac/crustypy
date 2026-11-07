@@ -303,7 +303,7 @@ To update installed packages, run `uv lock --upgrade-package <package name>`.
 
 Always lock the dependencies after updating them, by running `uv lock`.
 
-[Dependabot](https://docs.github.com/en/code-security/dependabot) opens weekly grouped updates for the dependencies, the pre-commit hooks and the GitHub Actions. When bumping Ruff by hand, keep the `ruff-pre-commit` hook in [`.pre-commit-config.yaml`]({{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/.pre-commit-config.yaml) on the same version.
+[Dependabot](https://docs.github.com/en/code-security/dependabot) opens weekly grouped updates for the dependencies, the pre-commit hooks and the GitHub Actions. The Ruff pre-commit hooks run the version locked in `uv.lock`, so there is nothing else to keep in step.
 
 ### Updating template
 

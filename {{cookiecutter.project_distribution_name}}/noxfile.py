@@ -21,7 +21,10 @@ PYTHON_VERSIONS: Final = nox.project.python_versions(PYPROJECT)
 PYTHON_VERSION: Final = (ROOT / ".python-version").read_text().strip()
 # CI checks instead of fixing, so a run never passes by rewriting files nobody
 # commits. Locally, sessions fix in place.
-CI: Final = bool(os.environ.get("CI"))
+CI: Final = os.environ.get("CI", "").lower() not in {"", "0", "false", "no"}
+# pre-commit hooks that duplicate a dedicated session (lint_files,
+# format_files, lock_dependencies), skipped when nox runs pre-commit.
+DEDICATED_SESSION_HOOKS: Final = ("ruff-check", "ruff-format", "uv-lock")
 
 
 def install(
@@ -58,6 +61,8 @@ def pre_commit(session: nox.Session) -> None:
         "--all-files",
         "--show-diff-on-failure",
         "--hook-stage=manual",
+        # Their own sessions already run these.
+        env={"SKIP": ",".join(DEDICATED_SESSION_HOOKS)},
     )
 
 
@@ -71,7 +76,10 @@ def lock_dependencies(session: nox.Session) -> None:
 def lint_files(session: nox.Session) -> None:
     """Lint files, fixing what can be fixed outside CI."""
     install(session, groups=["linting"], root=False)
-    session.run("ruff", "check", ".", *([] if CI else ["--fix"]))
+    # In CI, report as GitHub annotations so errors show inline on the PR.
+    session.run(
+        "ruff", "check", ".", *(["--output-format=github"] if CI else ["--fix"])
+    )
 
 
 @nox.session(python=PYTHON_VERSION)
