@@ -64,6 +64,7 @@
 [ty]: https://github.com/astral-sh/ty
 
 <!-- Repo -->
+<!-- Absolute links: this file is also the PyPI description, where relative ones break. -->
 [badge-issues]: {{ cookiecutter.shields_url }}/github/issues/{{ cookiecutter.__github_path }}?style=flat-square
 [issues]: {{ cookiecutter.__github_url }}/issues
 [badge-stars]: {{ cookiecutter.shields_url }}/github/stars/{{ cookiecutter.__github_path }}?style=flat-square
@@ -73,9 +74,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[contributors]: #contributors
+[contributors]: {{ cookiecutter.__github_url }}#contributors
 [badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-3.0-4baaaa?style=flat-square
-[code-of-conduct]: CODE_OF_CONDUCT.md
+[code-of-conduct]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/docs/CODE_OF_CONDUCT.md
 <!---->
 
 # {{ cookiecutter.project_name }}
@@ -134,7 +135,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
+More details can be found in [CONTRIBUTING]({{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/docs/CONTRIBUTING.md).
 
 ## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
