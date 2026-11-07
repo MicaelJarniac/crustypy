@@ -39,5 +39,9 @@ git add uv.lock
 
 To publish to PyPI, add a [trusted publisher](https://docs.pypi.org/trusted-publishers/) for workflow `ci.yml` and environment `pypi`.
 
+> [!IMPORTANT]
+> Fill in the environment. PyPI marks it optional, but without it every job in `ci.yml` could publish, not just the release job.
+> Then, under *Settings → Environments → pypi*, limit deployment branches to `main` (and `rc` if you use it).
+
 [cruft]: https://github.com/cruft/cruft/
 [cookiecutter]: https://github.com/cookiecutter/cookiecutter
