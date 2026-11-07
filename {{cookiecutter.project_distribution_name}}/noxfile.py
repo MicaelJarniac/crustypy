@@ -22,6 +22,9 @@ PYTHON_VERSION: Final = (ROOT / ".python-version").read_text().strip()
 # CI checks instead of fixing, so a run never passes by rewriting files nobody
 # commits. Locally, sessions fix in place.
 CI: Final = bool(os.environ.get("CI"))
+# pre-commit hooks that duplicate a dedicated session (lint_files,
+# format_files, lock_dependencies), skipped when nox runs pre-commit.
+DEDICATED_SESSION_HOOKS: Final = ("ruff-check", "ruff-format", "uv-lock")
 
 
 def install(
@@ -58,6 +61,8 @@ def pre_commit(session: nox.Session) -> None:
         "--all-files",
         "--show-diff-on-failure",
         "--hook-stage=manual",
+        # Their own sessions already run these.
+        env={"SKIP": ",".join(DEDICATED_SESSION_HOOKS)},
     )
 
 

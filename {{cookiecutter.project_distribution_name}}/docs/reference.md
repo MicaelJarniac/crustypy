@@ -16,7 +16,7 @@
           - `check-json`
           - `end-of-file-fixer`
           - `trailing-whitespace`
-        - [`ruff-pre-commit`][ruff-pre-commit]
+        - Local, from `uv.lock`
           - `ruff-check`
           - `ruff-format`
         - [`uv-pre-commit`][uv-pre-commit]
@@ -110,7 +110,6 @@
 [pytest-benchmark]: https://github.com/ionelmc/pytest-benchmark
 [hypothesis]: https://hypothesis.readthedocs.io
 [inline-snapshot]: https://15r10nk.github.io/inline-snapshot
-[ruff-pre-commit]: https://github.com/astral-sh/ruff-pre-commit
 [uv-pre-commit]: https://github.com/astral-sh/uv-pre-commit
 [uv_build]: https://docs.astral.sh/uv/concepts/build-backend/
 [typos]: https://github.com/crate-ci/typos
