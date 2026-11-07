@@ -104,6 +104,17 @@ def test_code(session: nox.Session) -> None:
 
 
 @nox.session(python=PYTHON_VERSION)
+def benchmarks(session: nox.Session) -> None:
+    """Run each asv benchmark once, so a broken benchmark fails the build.
+
+    A smoke run, not a measurement. To compare commits, use asv directly.
+    """
+    install(session, groups=["benchmarking"], root=True)
+    session.run("asv", "machine", "--yes")
+    session.run("asv", "run", "--python=same", "--quick", "--show-stderr")
+
+
+@nox.session(python=PYTHON_VERSION)
 def docs(session: nox.Session) -> None:
     """Build documentation with MkDocs."""
     install(session, groups=["docs"], root=True)

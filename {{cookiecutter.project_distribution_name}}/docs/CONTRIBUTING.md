@@ -264,6 +264,15 @@ This repository uses [ty](https://docs.astral.sh/ty) for type checking:
 uv run ty check
 ```
 
+### Benchmarks
+
+This repository uses [airspeed velocity (`asv`)](https://asv.readthedocs.io) for benchmarks, in `benchmarks/`. Nox runs each benchmark once to check it works; to measure, compare two commits:
+
+```bash
+uv run asv machine --yes  # Once per machine
+uv run asv continuous {{ cookiecutter.main_branch }} HEAD
+```
+
 ### Running every check
 
 [Nox](https://nox.thea.codes) runs every check exactly as CI does, on every supported Python version:
