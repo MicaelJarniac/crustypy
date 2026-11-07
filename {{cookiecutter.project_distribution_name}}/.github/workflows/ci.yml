@@ -123,6 +123,27 @@ jobs:
           REF_NAME: ${{"{{"}} github.ref_name {{"}}"}}
           SHA: ${{"{{"}} github.sha {{"}}"}}
 
+      # Release runs queue behind each other, so by now a later push may have
+      # moved the branch on. PSR would then refuse to push its release commit
+      # and fail the run. Skip instead: the later run releases these commits
+      # too. PSR still refuses if the branch moves after this check.
+      - name: Check the branch has not moved on
+        id: upstream
+        env:
+          GH_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
+          REPO: ${{"{{"}} github.repository {{"}}"}}
+          REF_NAME: ${{"{{"}} github.ref_name {{"}}"}}
+          SHA: ${{"{{"}} github.sha {{"}}"}}
+        run: |
+          head=$(gh api "repos/$REPO/git/ref/heads/$REF_NAME" --jq .object.sha)
+          if [ "$head" = "$SHA" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice title=Release skipped::$REF_NAME moved on to $head; \
+          the run for that commit releases instead."
+            echo "current=false" >> "$GITHUB_OUTPUT"
+          fi
+
       # No cache: this job produces the artifacts that get published, so it
       # must not restore anything a PR run could have written.
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
@@ -137,6 +158,7 @@ jobs:
       # dependency.
       - name: Python Semantic Release
         id: release
+        if: steps.upstream.outputs.current == 'true'
         env:
           GH_TOKEN: ${{"{{"}} secrets.GITHUB_TOKEN {{"}}"}}
         run: |
