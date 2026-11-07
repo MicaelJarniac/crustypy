@@ -21,7 +21,7 @@ classifiers = [
   "Programming Language :: Python :: 3.15",
 ]
 
-requires-python = ">=3.14"  # py_ver
+requires-python = ">=3.14"
 dependencies = [
     "loguru>=0.7.3",
 ]
@@ -123,7 +123,7 @@ convention = "google"
 docstring-code-format = true
 
 [tool.ty.src]
-include = ["src", "docs", "tests", "benchmarks", "noxfile.py"]
+include = ["src", "tests", "benchmarks", "noxfile.py"]
 
 [tool.ty.rules]
 # Fail on every diagnostic, not just the ones ty reports as errors by default.

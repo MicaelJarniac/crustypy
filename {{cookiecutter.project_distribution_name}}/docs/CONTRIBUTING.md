@@ -149,12 +149,14 @@ The type must be one of the following:
 | Type         | Description                                                                        |
 |--------------|------------------------------------------------------------------------------------|
 | **build**    | Changes that affect the build system or external dependencies                      |
+| **chore**    | Other changes that don't modify source or test files                               |
 | **ci**       | Changes to our CI configuration files and scripts (example scopes: GitHub Actions) |
 | **docs**     | Documentation only changes                                                         |
 | **feat**     | A new feature                                                                      |
 | **fix**      | A bug fix                                                                          |
 | **perf**     | A code change that improves performance                                            |
 | **refactor** | A code change that neither fixes a bug nor adds a feature                          |
+| **revert**   | Reverts a previous commit (see [Revert](#revert))                                  |
 | **style**    | Changes that do not affect the meaning of the code (white-space, formatting, etc)  |
 | **test**     | Adding missing tests or correcting existing tests                                  |
 
