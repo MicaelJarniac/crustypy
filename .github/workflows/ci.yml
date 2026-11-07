@@ -117,7 +117,7 @@ jobs:
           exit "$status"
 
   update:
-    name: cruft update from main
+    name: cruft update from the base branch
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
