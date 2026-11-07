@@ -146,6 +146,16 @@ jobs:
           uv sync --frozen --no-default-groups --only-group=release
           uv run --no-sync semantic-release version
 
+      # Hand the build to the PyPI job straight after tagging, before anything
+      # optional can fail, so a tagged release reaches PyPI whenever possible.
+      - name: Store the distribution packages
+        if: steps.release.outputs.released == 'true'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
+
       # continue-on-error because this only attaches build artifacts to the
       # GitHub release, which is a convenience: the tag, the release notes and
       # the PyPI upload are what actually constitute a release. Letting it fail
@@ -175,14 +185,6 @@ jobs:
           upload are unaffected. If the repo has immutable releases enabled, \
           assets must be attached when the release is created; consider \
           setting upload_to_vcs_release = false in pyproject.toml."
-
-      - name: Store the distribution packages
-        if: steps.release.outputs.released == 'true'
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9  # v7.0.2
-        with:
-          name: python-package-distributions
-          path: dist/
-          if-no-files-found: error
 
   publish-pypi:
     name: Publish to PyPI
