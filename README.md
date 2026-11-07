@@ -43,6 +43,10 @@ To publish to PyPI, add a [trusted publisher](https://docs.pypi.org/trusted-publ
 > Fill in the environment. PyPI marks it optional, but without it every job in `ci.yml` could publish, not just the release job.
 > Then, under *Settings → Environments → pypi*, limit deployment branches to `main` (and `rc` if you use it).
 
+The release job pushes the version bump and changelog straight to the release branch, as `github-actions[bot]` with the workflow's `GITHUB_TOKEN`. GitHub doesn't let you add that token to a ruleset's or branch protection's bypass list, so on the release branches:
+- Rules that only block force pushes and deletions are fine.
+- Rules that require a pull request or passing status checks reject the release push, and the release fails before tagging. To keep them, release with a [GitHub App](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/making-authenticated-api-requests-with-a-github-app-in-a-github-actions-workflow) token whose app is on the bypass list instead of `GITHUB_TOKEN`.
+
 ## Updating an existing project
 With cruft, run `cruft update` and review the diff. Some updates need manual steps on GitHub or PyPI; they're listed below, newest first.
 

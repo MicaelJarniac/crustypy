@@ -105,6 +105,9 @@ jobs:
     concurrency:
       group: release
       cancel-in-progress: false
+    # This pushes to the release branch as github-actions[bot], which branch
+    # rules requiring pull requests or status checks reject. For the options,
+    # see https://github.com/MicaelJarniac/crustypy#after-generating
     permissions:
       contents: write  # push the release commit and tag, create the release
     outputs:
