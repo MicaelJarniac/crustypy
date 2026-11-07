@@ -6,11 +6,11 @@ from {{cookiecutter.project_slug}} import make_greeting
 
 
 class TimeSuite:
-    """A benchmark suite for timing {{cookiecutter.project_distribution_name}}."""
+    """Benchmarks for execution time."""
 
     def setup(self) -> None:
         """Set up the benchmark by initializing the `name` attribute."""
-        self.name = "{{cookiecutter.full_name}}"
+        self.name = "World"
 
     def time_make_greeting(self) -> None:
         """Benchmark the `make_greeting` function for its execution time."""
@@ -18,11 +18,11 @@ class TimeSuite:
 
 
 class MemSuite:
-    """A benchmark suite for measuring the memory usage of {{cookiecutter.project_distribution_name}}."""
+    """Benchmarks for memory usage."""
 
     def setup(self) -> None:
         """Set up the benchmark by initializing the `name` attribute."""
-        self.name = "{{cookiecutter.full_name}}"
+        self.name = "World"
 
     def mem_make_greeting(self) -> str:
         """Benchmark the `make_greeting` function for its memory usage."""
