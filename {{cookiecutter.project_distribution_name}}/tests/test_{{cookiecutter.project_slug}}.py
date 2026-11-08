@@ -17,8 +17,8 @@ if TYPE_CHECKING:
 
 def test_make_greeting_benchmark(benchmark: BenchmarkFixture) -> None:
     """Test `make_greeting`."""
-    result = benchmark(make_greeting, "{{cookiecutter.full_name}}")
-    assert result == "Hello, {{cookiecutter.full_name}}. Welcome to your new project!"
+    result = benchmark(make_greeting, "World")
+    assert result == "Hello, World. Welcome to your new project!"
 
 
 @given(name=st.text())

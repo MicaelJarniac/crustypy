@@ -1,4 +1,7 @@
-"""{{ cookiecutter.project_short_description }}"""
+"""Public API.
+
+{{ cookiecutter.project_short_description | wordwrap(79) }}
+"""
 
 __all__: tuple[str, ...] = ("make_greeting",)
 

@@ -29,6 +29,14 @@ jobs:
             args: ""
           - variant: discord
             args: discord_invite=abc123
+          # Valid answers that are long, lack a final period or hold
+          # apostrophes and non-ASCII, so generated code must not embed them
+          # in ways that break lint, formatting or parsing.
+          - variant: unusual
+            args: |-
+              full_name=Maria Fernanda O'Brien Rodrigues da Silva Pereira
+              project_name=Seán's Unusually Long Project Name
+              project_short_description=An unusually long description, with no final period, that is well over the line length limit
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
@@ -40,26 +48,105 @@ jobs:
       - name: Bake the template
         env:
           ARGS: ${{ matrix.args }}
-        # ARGS is intentionally unquoted so it splits into key=value pairs.
+        # One key=value answer per line of ARGS.
         run: |
-          # shellcheck disable=SC2086
-          uvx cookiecutter@2.7.1 --no-input --output-dir "$RUNNER_TEMP" . $ARGS
+          mapfile -t args < <(printf '%s' "$ARGS")
+          uvx cookiecutter@2.7.1 --no-input --output-dir "$RUNNER_TEMP/out" . "${args[@]}"
+          project=$(echo "$RUNNER_TEMP"/out/*)
+          echo "PROJECT=$project" >> "$GITHUB_ENV"
       # A fresh project has no lockfile; create it and commit everything, as a
       # new project would before its first CI run.
       - name: Initialize the project
-        working-directory: ${{ runner.temp }}/python-project
         run: |
+          cd "$PROJECT"
+          git init --quiet --initial-branch=main
+          uv lock
+          git add --all
+          git -c user.name=ci -c user.email=ci@example.com commit --quiet -m "feat: initial commit"
+      - name: Run every nox session, as the generated CI would
+        env:
+          CI: "true"
+        run: |
+          cd "$PROJECT"
+          uv run --frozen --only-group=automation nox
+      - name: Lint the generated workflows
+        run: |
+          cd "$PROJECT"
+          uvx --from actionlint-py==1.7.12.25 actionlint
+          uvx zizmor@1.32.0 --offline --persona pedantic .
+      # Exercise the release configuration without pushing or publishing.
+      - name: Dry-run the release
+        run: |
+          cd "$PROJECT"
+          git remote add origin https://github.com/example/example.git
+          uv run --frozen --only-group=release semantic-release --noop version
+
+  reject:
+    name: Reject broken answers
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # checkout
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+      - name: Check the pre-generation hook rejects each one
+        run: |
+          status=0
+          while IFS= read -r answer; do
+            out="$RUNNER_TEMP/reject"
+            if uvx cookiecutter@2.7.1 --no-input --output-dir "$out" . "$answer" >/dev/null 2>&1; then
+              echo "::error::Baked a project with $answer"
+              status=1
+            elif [ -n "$(ls -A "$out" 2>/dev/null)" ]; then
+              echo "::error::Rejected $answer, but only after writing files"
+              status=1
+            fi
+            rm -rf "$out"
+          done <<'EOF'
+          project_name=2048 Game
+          project_name=match
+          project_name=json
+          project_name=tests
+          project_short_description=Tools for "fast" parsing
+          full_name=Back\slash
+          email=not-an-email
+          version=1.0
+          EOF
+          exit "$status"
+
+  update:
+    name: cruft update from the base branch
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read  # checkout
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2  # v10.3.3
+      # Existing projects get template changes through cruft. Bake from the
+      # base branch, then update to this change: it must apply without
+      # conflicts and leave the project in sync with the template.
+      - name: Bake from the base branch and update
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.sha }}
+        run: |
+          cruft() { uvx --from 'cruft[pyproject]==2.16.0' cruft "$@"; }
+          cd "$RUNNER_TEMP"
+          cruft create --no-input --checkout "$BASE" "$GITHUB_WORKSPACE"
+          cd python-project
           git init --quiet --initial-branch=main
           uv lock
           git add --all
           git -c user.name=ci -c user.email=ci@example.com commit --quiet -m init
-      - name: Run every nox session, as the generated CI would
-        working-directory: ${{ runner.temp }}/python-project
-        env:
-          CI: "true"
-        run: uv run --frozen --only-group=automation nox
-      - name: Lint the generated workflows
-        working-directory: ${{ runner.temp }}/python-project
-        run: |
-          uvx --from actionlint-py==1.7.12.25 actionlint
-          uvx zizmor@1.32.0 --offline --persona pedantic .
+          cruft update --skip-apply-ask --checkout "$HEAD"
+          if rejects=$(git ls-files --others --exclude-standard '*.rej') && [ -n "$rejects" ]; then
+            echo "::error::cruft update left conflicts: $rejects"
+            exit 1
+          fi
+          cruft check --checkout "$HEAD"

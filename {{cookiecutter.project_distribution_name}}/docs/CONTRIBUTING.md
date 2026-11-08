@@ -149,12 +149,14 @@ The type must be one of the following:
 | Type         | Description                                                                        |
 |--------------|------------------------------------------------------------------------------------|
 | **build**    | Changes that affect the build system or external dependencies                      |
+| **chore**    | Other changes that don't modify source or test files                               |
 | **ci**       | Changes to our CI configuration files and scripts (example scopes: GitHub Actions) |
 | **docs**     | Documentation only changes                                                         |
 | **feat**     | A new feature                                                                      |
 | **fix**      | A bug fix                                                                          |
 | **perf**     | A code change that improves performance                                            |
 | **refactor** | A code change that neither fixes a bug nor adds a feature                          |
+| **revert**   | Reverts a previous commit (see [Revert](#revert))                                  |
 | **style**    | Changes that do not affect the meaning of the code (white-space, formatting, etc)  |
 | **test**     | Adding missing tests or correcting existing tests                                  |
 
@@ -260,6 +262,15 @@ This repository uses [ty](https://docs.astral.sh/ty) for type checking:
 
 ```bash
 uv run ty check
+```
+
+### Benchmarks
+
+This repository uses [airspeed velocity (`asv`)](https://asv.readthedocs.io) for benchmarks, in `benchmarks/`. Nox runs each benchmark once to check it works; to measure, compare two commits:
+
+```bash
+uv run asv machine --yes  # Once per machine
+uv run asv continuous {{ cookiecutter.main_branch }} HEAD
 ```
 
 ### Running every check

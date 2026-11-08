@@ -24,8 +24,7 @@
         - [`typos`][typos]
         - [`zizmor`][zizmor]
       </details>
-    - [semantic-release][semantic-release] (used indirectly)
-      - [python-semantic-release][python-semantic-release] <sup>[config][pyproject_toml]</sup>
+    - [Python Semantic Release][python-semantic-release] <sup>[config][pyproject_toml]</sup>
     - [Dependabot][dependabot] <sup>[config][_github_dependabot_yml]</sup>
     - [zizmor][zizmor]
     - [Codecov][codecov]
@@ -98,7 +97,6 @@
 [ruff]: https://github.com/astral-sh/ruff
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
-[semantic-release]: https://github.com/semantic-release/semantic-release
 [python-semantic-release]: https://github.com/python-semantic-release/python-semantic-release
 [dependabot]: https://docs.github.com/en/code-security/dependabot
 [zizmor]: https://docs.zizmor.sh

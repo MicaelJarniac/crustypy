@@ -43,8 +43,15 @@ To publish to PyPI, add a [trusted publisher](https://docs.pypi.org/trusted-publ
 > Fill in the environment. PyPI marks it optional, but without it every job in `ci.yml` could publish, not just the release job.
 > Then, under *Settings → Environments → pypi*, limit deployment branches to `main` (and `rc` if you use it).
 
+The release job pushes the version bump and changelog straight to the release branch, as `github-actions[bot]` with the workflow's `GITHUB_TOKEN`. GitHub doesn't let you add that token to a ruleset's or branch protection's bypass list, so on the release branches:
+- Rules that only block force pushes and deletions are fine.
+- Rules that require a pull request or passing status checks reject the release push, and the release fails before tagging. To keep them, release with a [GitHub App](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/making-authenticated-api-requests-with-a-github-app-in-a-github-actions-workflow) token whose app is on the bypass list instead of `GITHUB_TOKEN`.
+
 ## Updating an existing project
 With cruft, run `cruft update` and review the diff. Some updates need manual steps on GitHub or PyPI; they're listed below, newest first.
+
+### cruft updates `tests/test_changelog.py` (November 2026)
+`[tool.cruft] skip` used to list all of `tests`, so template changes to `tests/test_changelog.py` never reached existing projects. It now lists only the example test. cruft reads the skip list from your project before updating, so the first `cruft update` after this one is the first to touch `tests/test_changelog.py`.
 
 ### Releases moved into `ci.yml` (November 2026)
 `semantic-release.yml` and `codecov_action.yml` are gone. Releasing and the Codecov upload are now jobs in `ci.yml`, and publishing runs in a `pypi` environment. Before the first release after updating:

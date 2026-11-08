@@ -10,3 +10,26 @@ updates:
     groups:
       github-actions:
         patterns: ["*"]
+
+  # The pins generated projects start with. Outside the root, Dependabot reads
+  # the workflow files in `directory` itself, not in its .github/workflows.
+  # The Jinja placeholders in these files are still valid YAML.
+  - package-ecosystem: github-actions
+    directory: "/{{cookiecutter.project_distribution_name}}/.github/workflows"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      template-github-actions:
+        patterns: ["*"]
+
+  - package-ecosystem: pre-commit
+    directory: "/{{cookiecutter.project_distribution_name}}"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      template-pre-commit:
+        patterns: ["*"]

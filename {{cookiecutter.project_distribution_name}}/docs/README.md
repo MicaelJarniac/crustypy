@@ -8,7 +8,7 @@
 
   | | ![Badges][label-badges] |
   |:-|:-|
-  | ![Build][label-build] | [![Nox][badge-actions]][actions] [![semantic-release][badge-semantic-release]][semantic-release] [![PyPI][badge-pypi]][pypi] [![Read the Docs][badge-docs]][docs] |
+  | ![Build][label-build] | [![Nox][badge-actions]][actions] [![Python Semantic Release][badge-semantic-release]][semantic-release] [![PyPI][badge-pypi]][pypi] [![Read the Docs][badge-docs]][docs] |
   | ![Tests][label-tests] | [![coverage][badge-coverage]][coverage] [![pre-commit][badge-pre-commit]][pre-commit] [![asv][badge-asv]][asv] |
   | ![Standards][label-standards] | [![SemVer 2.0.0][badge-semver]][semver] [![Conventional Commits][badge-conventional-commits]][conventional-commits] |
   | ![Code][label-code] | [![uv][badge-uv]][uv] [![Ruff][badge-ruff]][ruff] [![Nox][badge-nox]][nox] [![ty][badge-ty]][ty] |
@@ -33,7 +33,7 @@
 [badge-actions]: {{ cookiecutter.shields_url }}/github/actions/workflow/status/{{ cookiecutter.__github_path }}/ci.yml?branch={{ cookiecutter.main_branch }}&style=flat-square
 [actions]: {{ cookiecutter.__github_url }}/actions
 [badge-semantic-release]: {{ cookiecutter.shields_url }}/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079?style=flat-square
-[semantic-release]: https://github.com/semantic-release/semantic-release
+[semantic-release]: https://github.com/python-semantic-release/python-semantic-release
 [badge-pypi]: {{ cookiecutter.shields_url }}/pypi/v/{{ cookiecutter.project_distribution_name }}?style=flat-square
 [pypi]: https://pypi.org/project/{{ cookiecutter.project_distribution_name }}
 [badge-docs]: {{ cookiecutter.shields_url }}/readthedocs/{{ cookiecutter.__readthedocs_name }}?style=flat-square
@@ -64,6 +64,7 @@
 [ty]: https://github.com/astral-sh/ty
 
 <!-- Repo -->
+<!-- Absolute links: this file is also the PyPI description, where relative ones break. -->
 [badge-issues]: {{ cookiecutter.shields_url }}/github/issues/{{ cookiecutter.__github_path }}?style=flat-square
 [issues]: {{ cookiecutter.__github_url }}/issues
 [badge-stars]: {{ cookiecutter.shields_url }}/github/stars/{{ cookiecutter.__github_path }}?style=flat-square
@@ -73,9 +74,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [badge-all-contributors]: {{ cookiecutter.shields_url }}/badge/all_contributors-0-orange.svg?style=flat-square
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-[contributors]: #contributors
+[contributors]: {{ cookiecutter.__github_url }}#contributors
 [badge-code-of-conduct]: {{ cookiecutter.shields_url }}/badge/Contributor%20Covenant-3.0-4baaaa?style=flat-square
-[code-of-conduct]: CODE_OF_CONDUCT.md
+[code-of-conduct]: {{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/docs/CODE_OF_CONDUCT.md
 <!---->
 
 # {{ cookiecutter.project_name }}
@@ -134,7 +135,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-More details can be found in [CONTRIBUTING](CONTRIBUTING.md).
+More details can be found in [CONTRIBUTING]({{ cookiecutter.__github_url }}/blob/{{ cookiecutter.main_branch }}/docs/CONTRIBUTING.md).
 
 ## Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
