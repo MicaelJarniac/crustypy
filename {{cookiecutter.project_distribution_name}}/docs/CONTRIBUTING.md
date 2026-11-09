@@ -314,6 +314,8 @@ To update installed packages, run `uv lock --upgrade-package <package name>`.
 
 Always lock the dependencies after updating them, by running `uv lock`.
 
+uv only resolves releases at least a week old (`exclude-newer` in `pyproject.toml`), so a freshly published version, possibly a compromised one, cannot reach `uv.lock` before it has had time to be caught. Version floors must name releases older than a week. To take an urgent fix sooner, exempt just that package, e.g. `exclude-newer-package = { <package name> = false }` under `[tool.uv]`, and remove the exemption once the release is a week old.
+
 [Dependabot](https://docs.github.com/en/code-security/dependabot) opens weekly grouped updates for the dependencies, the pre-commit hooks and the GitHub Actions. The Ruff pre-commit hooks run the version locked in `uv.lock`, so there is nothing else to keep in step.
 
 ### Updating template

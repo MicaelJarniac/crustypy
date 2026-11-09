@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["uv_build>=0.13.7,<0.14"]
+requires = ["uv_build>=0.13.6,<0.14"]
 build-backend = "uv_build"
 
 [project.urls]
@@ -40,8 +40,8 @@ issues = "{{ cookiecutter.__github_url }}/issues"
 
 [dependency-groups]
 tests = [
-    "coverage>=7.17.2",
-    "hypothesis>=6.170.15",
+    "coverage>=7.17.0",
+    "hypothesis>=6.170.14",
     "inline-snapshot>=0.36.1",
     "pytest>=9.2.0",
     "pytest-benchmark>=5.3.1",
@@ -51,7 +51,7 @@ benchmarking = [
     "asv>=0.6.6",
     # asv.conf.json builds the wheel with `python -m build`.
     "build>=1.6.1",
-    "virtualenv>=21.15.6",
+    "virtualenv>=21.15.2",
 ]
 docs = [
     "mkdocs>=1.6.1",
@@ -62,11 +62,11 @@ docs = [
 typing = [
     {include-group = "tests"},
     {include-group = "automation"},
-    "ty>=0.0.99",
+    "ty>=0.0.95",
     # Typing stubs go here
 ]
 linting = [
-    "ruff>=0.17.4",
+    "ruff>=0.17.3",
 ]
 pre-commit = [
     "pre-commit>=4.7.0",
@@ -91,6 +91,14 @@ dev = [
     {include-group = "release"},
     "ipython>=9.18.1",
 ]
+
+[tool.uv]
+# Resolve only releases at least a week old, so a hijacked release is usually
+# caught and yanked before it can be locked (supply-chain hygiene, matching
+# the Dependabot cooldown). The cutoff is stored in uv.lock and only moves
+# when the lockfile is re-resolved, e.g. by `uv lock --upgrade`. Dependency
+# floors must therefore name releases older than a week.
+exclude-newer = "1 week"
 
 [tool.ruff]
 # https://docs.astral.sh/ruff/rules/
