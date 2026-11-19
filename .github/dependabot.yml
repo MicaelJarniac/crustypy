@@ -14,8 +14,10 @@ updates:
   # The pins generated projects start with. Outside the root, Dependabot reads
   # the workflow files in `directory` itself, not in its .github/workflows.
   # The Jinja placeholders in these files are still valid YAML.
+  # Dependabot rejects unescaped braces in `directory` as glob patterns
+  # (dependabot/dependabot-core#10525), so they are escaped as `\\{`, `\\}`.
   - package-ecosystem: github-actions
-    directory: "/{{cookiecutter.project_distribution_name}}/.github/workflows"
+    directory: "/\\{\\{cookiecutter.project_distribution_name\\}\\}/.github/workflows"
     schedule:
       interval: weekly
     cooldown:
@@ -25,7 +27,7 @@ updates:
         patterns: ["*"]
 
   - package-ecosystem: pre-commit
-    directory: "/{{cookiecutter.project_distribution_name}}"
+    directory: "/\\{\\{cookiecutter.project_distribution_name\\}\\}"
     schedule:
       interval: weekly
     cooldown:
